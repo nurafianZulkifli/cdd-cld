@@ -106,6 +106,22 @@ class TransitDisplay {
         }
     }
 
+    stopAllVideos() {
+        const videoContainer = document.querySelector('.video-container');
+        let video = videoContainer.querySelector('.station-video-temp');
+        const videoCld = document.querySelector('.station-video-cld');
+        
+        if (video) {
+            video.pause();
+            video.currentTime = 0;
+        }
+        
+        if (videoCld) {
+            videoCld.pause();
+            videoCld.currentTime = 0;
+        }
+    }
+
     playAudio(audioPath) {
         const audio = document.getElementById('doorsAudio');
         if (!audio) return;
@@ -152,6 +168,9 @@ class TransitDisplay {
                 audio.currentTime = 0;
             }
         } else {
+            // Stop all existing videos first
+            this.stopAllVideos();
+            
             // Hide blank image and show video
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
@@ -176,7 +195,7 @@ class TransitDisplay {
             this.playAudio('announcements/dc-ann.wav');
         }
 
-        this.showToast('Door status changed');
+        this.showToast('Doors Closing Triggered');
     }
 
     showCurrentStation() {
@@ -218,6 +237,9 @@ class TransitDisplay {
     playStation(station, messagePrefix = 'Now at:') {
         this.currentStation = station.name;
         this.closeModal();
+        
+        // Stop all existing videos first
+        this.stopAllVideos();
         
         const videoContainer = document.querySelector('.video-container');
         let video = videoContainer.querySelector('.station-video-temp');
@@ -298,6 +320,9 @@ class TransitDisplay {
 
     playMessage(message) {
         this.closeModal();
+        
+        // Stop all existing videos first
+        this.stopAllVideos();
         
         const videoContainer = document.querySelector('.video-container');
         let video = videoContainer.querySelector('.station-video-temp');
