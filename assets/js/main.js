@@ -11,16 +11,16 @@ class TransitDisplay {
         // Station data with associated videos and announcements
         this.stations = [
             { name: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', loop: true },
-            { name: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', loop: true },
-            { name: 'Choa Chu Kang', cddVideo: 'video/toMSP/choa-chu-kang_cdd.mp4', cldVideo: 'video/choa-chu-kang_cld.mp4', audio: 'announcements/choa-chu-kang-ann.wav', loop: true },
-            { name: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', loop: true }
+            { name: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', loop: true },
+            { name: 'Choa Chu Kang', cddVideo: 'video/toMSP/choa-chu-kang_cdd.mp4', cldVideo: 'video/toMSP/choa-chu-kang_cld.mp4', audio: 'announcements/choa-chu-kang-ann.wav', loop: true },
+            { name: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', loop: true }
         ];
         
         // Message data with associated videos and announcements
         this.messages = {
             alert: [
                 { id: 1, title: 'Emergency Evacuation', cddVideo: 'video/alert-cdd.mp4', cldVideo: 'video/alert-cld.mp4', audio: 'announcements/alert-evacuation-ann.wav', loop: false },
-                { id: 2, title: 'Door Obstruction', cddVideo: '../video/Msg_DoorObstruct_CDD.mp4', cldVideo: '../video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', loop: false }
+                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', loop: false }
             ],
             safety: [
                 { id: 1, title: 'Mind the Gap', cddVideo: 'video/gap-cdd.mp4', cldVideo: 'video/gap-cld.mp4', audio: 'announcements/safety-gap-ann.wav', loop: false },
