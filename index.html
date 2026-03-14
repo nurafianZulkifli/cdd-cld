@@ -35,22 +35,18 @@
 
         <!-- Control Buttons -->
         <footer class="control-panel">
-            <button class="control-button doors-btn" data-action="doors">
-                <span class="btn-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></span>
-                <span class="btn-text">Doors Closing</span>
-            </button>
-            <button class="control-button current-btn" data-action="prev">
-                <span class="btn-icon"><i class="fa-solid fa-location-dot"></i></span>
-                <span class="btn-text">Current Station</span>
-            </button>
-            <button class="control-button next-btn" data-action="next">
-                <span class="btn-icon"><i class="fa-solid fa-angles-left"></i></span>
-                <span class="btn-text">Next Station</span>
-            </button>
             <button class="control-button messages-btn" data-action="messages">
                 <span class="btn-icon"><i class="fa-solid fa-message"></i></span>
                 <span class="btn-text">Messages</span>
             </button>
+            <button class="control-button line-btn" data-action="line">
+                <span class="btn-icon"><i class="fa-solid fa-location-dot"></i></span>
+                <span class="btn-text">Stations</span>
+            </button>
+                <button class="control-button station-btn" data-action="station">
+                    <span class="btn-icon"><i class="fa-solid fa-train-subway"></i></span>
+                    <span class="btn-text">Lines</span>
+                </button>
         </footer>
 
         <!-- Modal for Messages -->
@@ -89,10 +85,49 @@
             </div>
         </div>
 
+        <!-- Modal for Lines -->
+        <div id="linesModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Select Line</h2>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="line-tabs">
+                    <button class="line-tab-btn active" data-tab="current">Current Station</button>
+                    <button class="line-tab-btn" data-tab="next">Next Station</button>
+                    <button class="line-tab-btn" data-tab="general">General</button>
+                </div>
+                <div class="modal-body">
+                    <div class="line-categories">
+                        <!-- Line category buttons will be populated here -->
+                    </div>
+                    <div class="lines-list" id="linesList">
+                        <!-- Lines will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Transit Lines -->
+        <div id="transitLinesModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Select Transit Line</h2>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="transit-lines-list" id="transitLinesList">
+                        <!-- Transit lines will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Status Toast -->
         <div id="statusToast" class="status-toast hidden"></div>
     </div>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/lines.js"></script>
 </body>
 </html>

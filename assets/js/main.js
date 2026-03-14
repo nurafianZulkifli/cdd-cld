@@ -1,77 +1,28 @@
-// Transit Station Display UI - Interactive Script
+// Core Page Functions - Main Controller
 
-class TransitDisplay {
+class PageController {
     constructor() {
-        // Current and Next station data
-        this.currentStationData = {
-            current: [
-                { id: 1, title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 2, title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld_arr.mp4', audio: 'announcements/bukit-gombak-arr-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 3, title: 'Choa Chu Kang', cddVideo: 'video/toMSP/choa-chu-kang_cdd_arr.mp4', cldVideo: 'video/toMSP/choa-chu-kang_cld_arr.mp4', audio: 'announcements/choa-chu-kang-arr-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 4, title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd_arr.mp4', cldVideo: 'video/toMSP/yew-tee_cld_arr.mp4', audio: 'announcements/yew-tee-arr-ann.wav', cddLoop: true, cldLoop: false }
-            ],
-            next: [
-                { id: 1, title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 2, title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 3, title: 'Choa Chu Kang', cddVideo: 'video/toMSP/choa-chu-kang_cdd.mp4', cldVideo: 'video/toMSP/choa-chu-kang_cld.mp4', audio: 'announcements/choa-chu-kang-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 4, title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', cddLoop: true, cldLoop: false }
-            ]
-        };
-        
-        this.currentStation = this.currentStationData.current[0];
-        
-        // Message data with associated videos and announcements
-        this.messages = {
-            alert: [
-                { id: 1, title: 'Emergency Evacuation', cddVideo: 'video/alert-cdd.mp4', cldVideo: 'video/alert-cld.mp4', audio: 'announcements/alert-evacuation-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', cddLoop: false, cldLoop: false }
-            ],
-            safety: [
-                { id: 1, title: 'Mind the Gap', cddVideo: 'video/gap-cdd.mp4', cldVideo: 'video/gap-cld.mp4', audio: 'announcements/safety-gap-ann.wav', cddLoop: false, cldLoop: false },
-                { id: 2, title: 'Hold the Handrail', cddVideo: 'video/handrail-cdd.mp4', cldVideo: 'video/handrail-cld.mp4', audio: 'announcements/safety-handrail-ann.wav', cddLoop: false, cldLoop: false }
-            ],
-            service: [
-                { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/maint-cdd.mp4', cldVideo: 'video/maint-cld.mp4', audio: 'announcements/service-maintenance-ann.wav', cddLoop: false, cldLoop: false },
-                { id: 2, title: 'System Update', cddVideo: 'video/update-cdd.mp4', cldVideo: 'video/update-cld.mp4', audio: 'announcements/service-update-ann.wav', cddLoop: false, cldLoop: false }
-            ],
-            info: [
-                { id: 1, title: 'Welcome Message', cddVideo: 'video/welcome-cdd.mp4', cldVideo: 'video/welcome-cld.mp4', audio: 'announcements/info-welcome-ann.wav', cddLoop: false, cldLoop: false },
-                { id: 2, title: 'Station Info', cddVideo: 'video/info-cdd.mp4', cldVideo: 'video/info-cld.mp4', audio: 'announcements/info-station-ann.wav', cddLoop: false, cldLoop: false }
-            ]
-        };
-        
         this.init();
     }
 
     init() {
-        this.setupEventListeners();
-        this.initializeStation();
+        this.setupCoreEventListeners();
+        this.setupStyles();
+        console.log('Page Controller initialized');
     }
 
-    setupEventListeners() {
-        // Control buttons
-        const controlButtons = document.querySelectorAll('.control-button');
-        controlButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => this.handleControlClick(e));
-        });
-
-        // Navigation buttons
-        const navButtons = document.querySelectorAll('.nav-btn');
-        navButtons.forEach(btn => {
-            btn.addEventListener('click', () => this.handleNavigation());
-        });
-
+    setupCoreEventListeners() {
         // Modal close buttons
         const modalCloseButtons = document.querySelectorAll('.modal-close');
         modalCloseButtons.forEach(btn => {
-            btn.addEventListener('click', () => this.closeModal());
+            btn.addEventListener('click', () => this.closeAllModals());
         });
 
         // Close modal on background click
         const messagesModal = document.getElementById('messagesModal');
         if (messagesModal) {
             messagesModal.addEventListener('click', (e) => {
-                if (e.target === messagesModal) this.closeModal();
+                if (e.target === messagesModal) this.closeAllModals();
             });
         }
 
@@ -79,34 +30,24 @@ class TransitDisplay {
         const stationsModal = document.getElementById('stationsModal');
         if (stationsModal) {
             stationsModal.addEventListener('click', (e) => {
-                if (e.target === stationsModal) this.closeModal();
+                if (e.target === stationsModal) this.closeAllModals();
             });
         }
 
-        // Category buttons
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => this.switchCategory(e.target.getAttribute('data-category')));
-        });
-    }
+        // Close lines modal on background click
+        const linesModal = document.getElementById('linesModal');
+        if (linesModal) {
+            linesModal.addEventListener('click', (e) => {
+                if (e.target === linesModal) this.closeAllModals();
+            });
+        }
 
-    handleControlClick(event) {
-        const button = event.currentTarget;
-        const action = button.getAttribute('data-action');
-
-        switch(action) {
-            case 'doors':
-                this.toggleDoors();
-                break;
-            case 'prev':
-                this.showCurrentStation();
-                break;
-            case 'next':
-                this.showNextStation();
-                break;
-            case 'messages':
-                this.showMessages();
-                break;
+        // Close transit lines modal on background click
+        const transitLinesModal = document.getElementById('transitLinesModal');
+        if (transitLinesModal) {
+            transitLinesModal.addEventListener('click', (e) => {
+                if (e.target === transitLinesModal) this.closeAllModals();
+            });
         }
     }
 
@@ -148,205 +89,11 @@ class TransitDisplay {
         }
     }
 
-    toggleDoors() {
-        const videoContainer = document.querySelector('.video-container');
-        let video = videoContainer.querySelector('.station-video-temp');
-        const videoCld = document.querySelector('.station-video-cld');
-        
-        // Stop all existing videos first
-        this.stopAllVideos();
-        
-        const blankImg = videoContainer.querySelector('img');
-        if (blankImg) blankImg.style.display = 'none';
-        
-        // Update video sources and play doors closing
-        if (video) {
-            video.querySelector('source').src = 'video/DC-CDD.mp4';
-            video.style.display = 'block';
-            video.loop = false;
-            video.load();
-            video.play().catch(err => console.log('Video play error:', err));
-        }
-        
-        if (videoCld) {
-            videoCld.querySelector('source').src = 'video/DC-CLD.mp4';
-            videoCld.loop = false;
-            videoCld.load();
-            videoCld.play().catch(err => console.log('Video play error:', err));
-        }
-        
-        // Play doors closing announcement
-        this.playAudio('announcements/dc-ann.wav');
-        
-        this.showToast('Doors Closing Triggered');
-    }
-
-    showCurrentStation() {
-        this.currentMessagePrefix = 'Now at:';
-        this.currentStationCategory = 'current';
-        const modal = document.getElementById('stationsModal');
-        if (modal) {
-            this.displayStations();
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    showNextStation() {
-        this.currentMessagePrefix = 'Next:';
-        this.currentStationCategory = 'next';
-        const modal = document.getElementById('stationsModal');
-        if (modal) {
-            this.displayStations();
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    displayStations() {
-        const stationsList = document.getElementById('stationsList');
-        stationsList.innerHTML = '';
-        
-        const stationsToDisplay = this.currentStationCategory === 'current' 
-            ? this.currentStationData.current 
-            : this.currentStationData.next;
-        
-        stationsToDisplay.forEach(station => {
-            const stationBtn = document.createElement('button');
-            stationBtn.className = 'station-item';
-            stationBtn.innerHTML = `<span>${station.title}</span>`;
-            stationBtn.addEventListener('click', () => {
-                const messagePrefix = this.currentMessagePrefix || 'Now at:';
-                this.playStation(station, messagePrefix);
-            });
-            stationsList.appendChild(stationBtn);
-        });
-    }
-
-    playStation(station, messagePrefix = 'Now at:') {
-        this.currentStation = station;
-        this.closeModal();
-        
-        // Stop all existing videos first
-        this.stopAllVideos();
-        
-        const videoContainer = document.querySelector('.video-container');
-        let video = videoContainer.querySelector('.station-video-temp');
-        const videoCld = document.querySelector('.station-video-cld');
-        const audio = document.getElementById('doorsAudio');
-        
-        // Update video sources and play
-        if (video && station.cddVideo) {
-            video.querySelector('source').src = station.cddVideo;
-            video.style.display = 'block';
-            video.loop = station.cddLoop !== undefined ? station.cddLoop : true;
-            const blankImg = videoContainer.querySelector('img');
-            if (blankImg) blankImg.style.display = 'none';
-            video.load();
-            video.play().catch(err => console.log('CDD Video play error:', err));
-        }
-        
-        if (videoCld && station.cldVideo) {
-            videoCld.querySelector('source').src = station.cldVideo;
-            videoCld.loop = station.cldLoop !== undefined ? station.cldLoop : true;
-            videoCld.load();
-            videoCld.play().catch(err => console.log('CLD Video play error:', err));
-        }
-        
-        // Play announcement audio
-        if (station.audio) {
-            this.playAudio(station.audio);
-        }
-        
-        // Update station name display
-        const stationNameElement = document.querySelector('.station-name');
-        if (stationNameElement) {
-            stationNameElement.textContent = station.title;
-            stationNameElement.style.animation = 'none';
-            setTimeout(() => {
-                stationNameElement.style.animation = 'fadeInOut 0.5s ease';
-            }, 10);
-        }
-        
-        this.showToast(`${messagePrefix} ${station.title}`);
-    }
-
-    showMessages() {
-        const modal = document.getElementById('messagesModal');
-        if (modal) {
-            this.displayMessages(this.currentCategory);
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-    }
-
-    switchCategory(category) {
-        this.currentCategory = category;
-        // Update active button
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        categoryBtns.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.getAttribute('data-category') === category) {
-                btn.classList.add('active');
-            }
-        });
-        this.displayMessages(category);
-    }
-
-    displayMessages(category) {
-        const messagesList = document.getElementById('messagesList');
-        const categoryMessages = this.messages[category] || [];
-        
-        messagesList.innerHTML = '';
-        categoryMessages.forEach(msg => {
-            const msgBtn = document.createElement('button');
-            msgBtn.className = 'message-item';
-            msgBtn.innerHTML = `<span>${msg.title}</span>`;
-            msgBtn.addEventListener('click', () => this.playMessage(msg));
-            messagesList.appendChild(msgBtn);
-        });
-    }
-
-    playMessage(message) {
-        this.closeModal();
-        
-        // Stop all existing videos first
-        this.stopAllVideos();
-        
-        const videoContainer = document.querySelector('.video-container');
-        let video = videoContainer.querySelector('.station-video-temp');
-        const videoCld = document.querySelector('.station-video-cld');
-        const audio = document.getElementById('doorsAudio');
-        
-        // Update video sources and play
-        if (video && message.cddVideo) {
-            video.querySelector('source').src = message.cddVideo;
-            video.style.display = 'block';
-            video.loop = message.cddLoop !== undefined ? message.cddLoop : false;
-            const blankImg = videoContainer.querySelector('img');
-            if (blankImg) blankImg.style.display = 'none';
-            video.load();
-            video.play().catch(err => console.log('CDD Video play error:', err));
-        }
-        
-        if (videoCld && message.cldVideo) {
-            videoCld.querySelector('source').src = message.cldVideo;
-            videoCld.loop = message.cldLoop !== undefined ? message.cldLoop : false;
-            videoCld.load();
-            videoCld.play().catch(err => console.log('CLD Video play error:', err));
-        }
-        
-        // Play announcement audio
-        if (message.audio) {
-            this.playAudio(message.audio);
-        }
-        
-        this.showToast(`Playing: ${message.title}`);
-    }
-
-    closeModal() {
+    closeAllModals() {
         const messagesModal = document.getElementById('messagesModal');
         const stationsModal = document.getElementById('stationsModal');
+        const linesModal = document.getElementById('linesModal');
+        const transitLinesModal = document.getElementById('transitLinesModal');
         
         if (messagesModal && !messagesModal.classList.contains('hidden')) {
             messagesModal.classList.add('hidden');
@@ -356,11 +103,15 @@ class TransitDisplay {
             stationsModal.classList.add('hidden');
         }
         
+        if (linesModal && !linesModal.classList.contains('hidden')) {
+            linesModal.classList.add('hidden');
+        }
+        
+        if (transitLinesModal && !transitLinesModal.classList.contains('hidden')) {
+            transitLinesModal.classList.add('hidden');
+        }
+        
         document.body.style.overflow = 'auto';
-    }
-
-    handleNavigation() {
-        this.showToast('Navigation pressed');
     }
 
     showToast(message) {
@@ -375,22 +126,19 @@ class TransitDisplay {
         }
     }
 
-    initializeStation() {
-        console.log(`Transit Display initialized for ${this.currentStation.title}`);
+    setupStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInOut {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+        `;
+        document.head.appendChild(style);
     }
 }
 
-// Initialize the display when DOM is ready
+// Initialize page controller when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    new TransitDisplay();
+    window.pageController = new PageController();
 });
-
-// Add fade animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes fadeInOut {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.5; }
-    }
-`;
-document.head.appendChild(style);
