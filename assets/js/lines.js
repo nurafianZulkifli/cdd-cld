@@ -188,7 +188,7 @@ class TransitDisplay {
 
         if (videoCld && station.cldVideo) {
             videoCld.querySelector('source').src = station.cldVideo;
-            videoCld.loop = station.cddLoop !== undefined ? station.cddLoop : true;
+            videoCld.loop = station.cldLoop !== undefined ? station.cldLoop : true;
             videoCld.load();
             videoCld.play().catch(err => console.log('CLD Video play error:', err));
         }
@@ -269,7 +269,7 @@ class TransitDisplay {
 
         if (videoCld && message.cldVideo) {
             videoCld.querySelector('source').src = message.cldVideo;
-            videoCld.loop = message.cddLoop !== undefined ? message.cddLoop : false;
+            videoCld.loop = message.cldLoop !== undefined ? message.cldLoop : false;
             videoCld.load();
             videoCld.play().catch(err => console.log('CLD Video play error:', err));
         }
@@ -315,12 +315,12 @@ class LineSelector {
         this.nextLines = {
             NSL: {
                 toMSP: [
-                    { id: 1, line: 'NSL', direction: 'toMSP', title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cddLoop: false },
-                    { id: 2, line: 'NSL', direction: 'toMSP', title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', cddLoop: true, cddLoop: false }
+                    { id: 1, line: 'NSL', direction: 'toMSP', title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 2, line: 'NSL', direction: 'toMSP', title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', cddLoop: true, cldLoop: false }
                 ],
                 toJUR: [
-                    { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd.mp4', cldVideo: 'video/toJUR/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cddLoop: false },
-                    { id: 4, line: 'NSL', direction: 'toJUR', title: 'Jurong East', cddVideo: 'video/toJUR/jurong-east_cdd.mp4', cldVideo: 'video/toJUR/jurong-east_cld.mp4', audio: 'announcements/jurong-east-ann.wav', cddLoop: true, cddLoop: false }
+                    { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd.mp4', cldVideo: 'video/toJUR/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 4, line: 'NSL', direction: 'toJUR', title: 'Jurong East', cddVideo: 'video/toJUR/jurong-east_cdd.mp4', cldVideo: 'video/toJUR/jurong-east_cld.mp4', audio: 'announcements/jurong-east-ann.wav', cddLoop: true, cldLoop: false }
                 ]
             }
         };
