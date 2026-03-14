@@ -704,6 +704,17 @@ html, body {
         font-size: 36px;
     }
 
+    .station-display {
+        min-height: 150px;
+        align-items: self-start;
+    }
+
+    .display-panel {
+        margin-top: 3em;
+        gap: 65px;
+        margin-bottom: 15px;
+    }
+
     .control-panel {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
@@ -754,6 +765,15 @@ html, body {
 
     .station-name {
         font-size: 28px;
+    }
+
+    .station-display {
+        min-height: 120px;
+    }
+
+    .display-panel {
+        gap: 10px;
+        margin-bottom: 10px;
     }
 
     .control-panel {
@@ -808,7 +828,9 @@ html, body {
     }
 
     .display-panel {
-        gap: 20px;
+        margin-top: 3em;
+        gap: 65px;
+        margin-bottom: 10px;
     }
 
     .line-badge {
