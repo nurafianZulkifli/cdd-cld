@@ -23,7 +23,7 @@ class TransitDisplay {
         // Message data with associated videos and announcements
         this.messages = {
             alert: [
-                { id: 1, title: 'Emergency Evacuation', cddVideo: 'video/alert-cdd.mp4', cldVideo: 'video/alert-cld.mp4', audio: 'announcements/alert-evacuation-ann.wav', cddLoop: true, cddLoop: false },
+                { id: 1, title: 'Emergency Button', cddVideo: 'video/alert-cdd.mp4', cldVideo: 'video/alert-cld.mp4', audio: 'announcements/emgButton.wav', cddLoop: true, cddLoop: false },
                 { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', cddLoop: false, cddLoop: false }
             ],
             safety: [
@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Define transit lines with redirect URLs
             this.transitLines = [
                 { id: 1, name: 'North-South Line', code: 'NSL', url: 'index.html', icon: '🔴' },
-                { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: '🟢' }
+                // { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: '🟢' }
             ];
 
             this.setupLineButton();
