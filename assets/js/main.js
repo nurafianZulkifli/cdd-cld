@@ -2,37 +2,41 @@
 
 class TransitDisplay {
     constructor() {
-        this.currentStation = 'Bukit Batok';
-        this.currentLine = ['CC 4', 'DT 15'];
-        this.destination = 'HarbourFront';
-        this.doorStatus = true;
-        this.currentCategory = 'alert';
+        // Current and Next station data
+        this.currentStationData = {
+            current: [
+                { id: 1, title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
+                { id: 2, title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-arr-ann.wav', cddLoop: true, cldLoop: true },
+                { id: 3, title: 'Choa Chu Kang', cddVideo: 'video/toMSP/choa-chu-kang_cdd_arr.mp4', cldVideo: 'video/toMSP/choa-chu-kang_cld.mp4', audio: 'announcements/choa-chu-kang-arr-ann.wav', cddLoop: true, cldLoop: true },
+                { id: 4, title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd_arr.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-arr-ann.wav', cddLoop: true, cldLoop: true }
+            ],
+            next: [
+                { id: 1, title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
+                { id: 2, title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', cddLoop: true, cldLoop: true },
+                { id: 3, title: 'Choa Chu Kang', cddVideo: 'video/toMSP/choa-chu-kang_cdd.mp4', cldVideo: 'video/toMSP/choa-chu-kang_cld.mp4', audio: 'announcements/choa-chu-kang-ann.wav', cddLoop: true, cldLoop: true },
+                { id: 4, title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', cddLoop: true, cldLoop: true }
+            ]
+        };
         
-        // Station data with associated videos and announcements
-        this.stations = [
-            { name: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', loop: true },
-            { name: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', loop: true },
-            { name: 'Choa Chu Kang', cddVideo: 'video/toMSP/choa-chu-kang_cdd.mp4', cldVideo: 'video/toMSP/choa-chu-kang_cld.mp4', audio: 'announcements/choa-chu-kang-ann.wav', loop: true },
-            { name: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', loop: true }
-        ];
+        this.currentStation = this.currentStationData.current[0];
         
         // Message data with associated videos and announcements
         this.messages = {
             alert: [
-                { id: 1, title: 'Emergency Evacuation', cddVideo: 'video/alert-cdd.mp4', cldVideo: 'video/alert-cld.mp4', audio: 'announcements/alert-evacuation-ann.wav', loop: false },
-                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', loop: false }
+                { id: 1, title: 'Emergency Evacuation', cddVideo: 'video/alert-cdd.mp4', cldVideo: 'video/alert-cld.mp4', audio: 'announcements/alert-evacuation-ann.wav', cddLoop: true, cldLoop: false },
+                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', cddLoop: false, cldLoop: false }
             ],
             safety: [
-                { id: 1, title: 'Mind the Gap', cddVideo: 'video/gap-cdd.mp4', cldVideo: 'video/gap-cld.mp4', audio: 'announcements/safety-gap-ann.wav', loop: false },
-                { id: 2, title: 'Hold the Handrail', cddVideo: 'video/handrail-cdd.mp4', cldVideo: 'video/handrail-cld.mp4', audio: 'announcements/safety-handrail-ann.wav', loop: false }
+                { id: 1, title: 'Mind the Gap', cddVideo: 'video/gap-cdd.mp4', cldVideo: 'video/gap-cld.mp4', audio: 'announcements/safety-gap-ann.wav', cddLoop: false, cldLoop: false },
+                { id: 2, title: 'Hold the Handrail', cddVideo: 'video/handrail-cdd.mp4', cldVideo: 'video/handrail-cld.mp4', audio: 'announcements/safety-handrail-ann.wav', cddLoop: false, cldLoop: false }
             ],
             service: [
-                { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/maint-cdd.mp4', cldVideo: 'video/maint-cld.mp4', audio: 'announcements/service-maintenance-ann.wav', loop: false },
-                { id: 2, title: 'System Update', cddVideo: 'video/update-cdd.mp4', cldVideo: 'video/update-cld.mp4', audio: 'announcements/service-update-ann.wav', loop: false }
+                { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/maint-cdd.mp4', cldVideo: 'video/maint-cld.mp4', audio: 'announcements/service-maintenance-ann.wav', cddLoop: false, cldLoop: false },
+                { id: 2, title: 'System Update', cddVideo: 'video/update-cdd.mp4', cldVideo: 'video/update-cld.mp4', audio: 'announcements/service-update-ann.wav', cddLoop: false, cldLoop: false }
             ],
             info: [
-                { id: 1, title: 'Welcome Message', cddVideo: 'video/welcome-cdd.mp4', cldVideo: 'video/welcome-cld.mp4', audio: 'announcements/info-welcome-ann.wav', loop: false },
-                { id: 2, title: 'Station Info', cddVideo: 'video/info-cdd.mp4', cldVideo: 'video/info-cld.mp4', audio: 'announcements/info-station-ann.wav', loop: false }
+                { id: 1, title: 'Welcome Message', cddVideo: 'video/welcome-cdd.mp4', cldVideo: 'video/welcome-cld.mp4', audio: 'announcements/info-welcome-ann.wav', cddLoop: false, cldLoop: false },
+                { id: 2, title: 'Station Info', cddVideo: 'video/info-cdd.mp4', cldVideo: 'video/info-cld.mp4', audio: 'announcements/info-station-ann.wav', cddLoop: false, cldLoop: false }
             ]
         };
         
@@ -145,61 +149,41 @@ class TransitDisplay {
     }
 
     toggleDoors() {
-        this.doorStatus = !this.doorStatus;
         const videoContainer = document.querySelector('.video-container');
         let video = videoContainer.querySelector('.station-video-temp');
         const videoCld = document.querySelector('.station-video-cld');
-        const audio = document.getElementById('doorsAudio');
         
-        if (this.doorStatus) {
-            // Hide video and show blank image
-            if (video) {
-                video.style.display = 'none';
-                video.pause();
-            }
-            const blankImg = videoContainer.querySelector('img');
-            if (blankImg) blankImg.style.display = 'block';
-            if (videoCld) {
-                videoCld.pause();
-                videoCld.currentTime = 0;
-            }
-            if (audio) {
-                audio.pause();
-                audio.currentTime = 0;
-            }
-        } else {
-            // Stop all existing videos first
-            this.stopAllVideos();
-            
-            // Hide blank image and show video
-            const blankImg = videoContainer.querySelector('img');
-            if (blankImg) blankImg.style.display = 'none';
-            if (video) {
-                // Reset to doors closing video
-                video.querySelector('source').src = 'video/DC-CDD.mp4';
-                video.style.display = 'block';
-                video.loop = false;
-                video.currentTime = 0;
-                video.load();
-                video.play().catch(err => console.log('Video play error:', err));
-            }
-            if (videoCld) {
-                // Reset to doors closing video
-                videoCld.querySelector('source').src = 'video/DC-CLD.mp4';
-                videoCld.loop = false;
-                videoCld.currentTime = 0;
-                videoCld.load();
-                videoCld.play().catch(err => console.log('Video play error:', err));
-            }
-            // Play doors closing announcement
-            this.playAudio('announcements/dc-ann.wav');
+        // Stop all existing videos first
+        this.stopAllVideos();
+        
+        const blankImg = videoContainer.querySelector('img');
+        if (blankImg) blankImg.style.display = 'none';
+        
+        // Update video sources and play doors closing
+        if (video) {
+            video.querySelector('source').src = 'video/DC-CDD.mp4';
+            video.style.display = 'block';
+            video.loop = false;
+            video.load();
+            video.play().catch(err => console.log('Video play error:', err));
         }
-
+        
+        if (videoCld) {
+            videoCld.querySelector('source').src = 'video/DC-CLD.mp4';
+            videoCld.loop = false;
+            videoCld.load();
+            videoCld.play().catch(err => console.log('Video play error:', err));
+        }
+        
+        // Play doors closing announcement
+        this.playAudio('announcements/dc-ann.wav');
+        
         this.showToast('Doors Closing Triggered');
     }
 
     showCurrentStation() {
         this.currentMessagePrefix = 'Now at:';
+        this.currentStationCategory = 'current';
         const modal = document.getElementById('stationsModal');
         if (modal) {
             this.displayStations();
@@ -210,6 +194,7 @@ class TransitDisplay {
 
     showNextStation() {
         this.currentMessagePrefix = 'Next:';
+        this.currentStationCategory = 'next';
         const modal = document.getElementById('stationsModal');
         if (modal) {
             this.displayStations();
@@ -222,10 +207,14 @@ class TransitDisplay {
         const stationsList = document.getElementById('stationsList');
         stationsList.innerHTML = '';
         
-        this.stations.forEach(station => {
+        const stationsToDisplay = this.currentStationCategory === 'current' 
+            ? this.currentStationData.current 
+            : this.currentStationData.next;
+        
+        stationsToDisplay.forEach(station => {
             const stationBtn = document.createElement('button');
             stationBtn.className = 'station-item';
-            stationBtn.innerHTML = `<span>${station.name}</span>`;
+            stationBtn.innerHTML = `<span>${station.title}</span>`;
             stationBtn.addEventListener('click', () => {
                 const messagePrefix = this.currentMessagePrefix || 'Now at:';
                 this.playStation(station, messagePrefix);
@@ -235,7 +224,7 @@ class TransitDisplay {
     }
 
     playStation(station, messagePrefix = 'Now at:') {
-        this.currentStation = station.name;
+        this.currentStation = station;
         this.closeModal();
         
         // Stop all existing videos first
@@ -250,7 +239,7 @@ class TransitDisplay {
         if (video && station.cddVideo) {
             video.querySelector('source').src = station.cddVideo;
             video.style.display = 'block';
-            video.loop = station.loop !== undefined ? station.loop : true;
+            video.loop = station.cddLoop !== undefined ? station.cddLoop : true;
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             video.load();
@@ -259,7 +248,7 @@ class TransitDisplay {
         
         if (videoCld && station.cldVideo) {
             videoCld.querySelector('source').src = station.cldVideo;
-            videoCld.loop = station.loop !== undefined ? station.loop : true;
+            videoCld.loop = station.cldLoop !== undefined ? station.cldLoop : true;
             videoCld.load();
             videoCld.play().catch(err => console.log('CLD Video play error:', err));
         }
@@ -272,14 +261,14 @@ class TransitDisplay {
         // Update station name display
         const stationNameElement = document.querySelector('.station-name');
         if (stationNameElement) {
-            stationNameElement.textContent = this.currentStation;
+            stationNameElement.textContent = station.title;
             stationNameElement.style.animation = 'none';
             setTimeout(() => {
                 stationNameElement.style.animation = 'fadeInOut 0.5s ease';
             }, 10);
         }
         
-        this.showToast(`${messagePrefix} ${station.name}`);
+        this.showToast(`${messagePrefix} ${station.title}`);
     }
 
     showMessages() {
@@ -333,7 +322,7 @@ class TransitDisplay {
         if (video && message.cddVideo) {
             video.querySelector('source').src = message.cddVideo;
             video.style.display = 'block';
-            video.loop = message.loop !== undefined ? message.loop : false;
+            video.loop = message.cddLoop !== undefined ? message.cddLoop : false;
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             video.load();
@@ -342,7 +331,7 @@ class TransitDisplay {
         
         if (videoCld && message.cldVideo) {
             videoCld.querySelector('source').src = message.cldVideo;
-            videoCld.loop = message.loop !== undefined ? message.loop : false;
+            videoCld.loop = message.cldLoop !== undefined ? message.cldLoop : false;
             videoCld.load();
             videoCld.play().catch(err => console.log('CLD Video play error:', err));
         }
@@ -387,7 +376,7 @@ class TransitDisplay {
     }
 
     initializeStation() {
-        console.log(`Transit Display initialized for ${this.currentStation}`);
+        console.log(`Transit Display initialized for ${this.currentStation.title}`);
         console.log(`Lines: ${this.currentLine.join(', ')}`);
         console.log(`Destination: ${this.destination}`);
     }
