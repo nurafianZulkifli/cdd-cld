@@ -249,6 +249,35 @@ html, body {
     border-radius: var(--border-radius);
 }
 
+/* Fullscreen video styles */
+.video-container:fullscreen,
+.video-container:-webkit-full-screen,
+.video-container:-moz-full-screen,
+.station-display:fullscreen,
+.station-display:-webkit-full-screen,
+.station-display:-moz-full-screen {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+}
+
+.station-video-temp:fullscreen,
+.station-video-temp:-webkit-full-screen,
+.station-video-temp:-moz-full-screen,
+.station-video-cld:fullscreen,
+.station-video-cld:-webkit-full-screen,
+.station-video-cld:-moz-full-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 0;
+}
+
 /* Control Panel */
 .control-panel {
     display: grid;
