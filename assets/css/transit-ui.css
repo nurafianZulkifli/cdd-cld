@@ -612,6 +612,37 @@ html, body {
     display: none;
 }
 
+/* Fullscreen Button */
+.fullscreen-btn {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--accent-orange);
+    color: var(--accent-orange);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.fullscreen-btn:hover {
+    background: var(--accent-orange);
+    color: var(--primary-bg);
+    transform: scale(1.1);
+}
+
+.fullscreen-btn:active {
+    transform: scale(0.95);
+}
+
 @keyframes slideInUp {
     from {
         transform: translateY(100px);
@@ -641,11 +672,49 @@ html, body {
 
     .control-panel {
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .control-button {
+        padding: 12px;
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .btn-icon {
+        font-size: 20px;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .category-btn,
+    .line-category-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .transit-line-item {
+        min-height: 120px;
+        padding: 12px;
+    }
+
+    .transit-line-icon {
+        font-size: 32px;
     }
 
     .station-translations {
         flex-direction: column;
         gap: 10px;
+    }
+
+    /* Show fullscreen button on tablet */
+    .fullscreen-btn {
+        display: flex !important;
     }
 }
 
@@ -660,6 +729,53 @@ html, body {
 
     .control-panel {
         grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .control-button {
+        padding: 10px;
+        font-size: 11px;
+        gap: 5px;
+    }
+
+    .btn-icon {
+        font-size: 16px;
+    }
+
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .category-btn,
+    .line-category-btn {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+
+    .line-tab-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .transit-line-item {
+        min-height: 100px;
+        padding: 10px;
+    }
+
+    .transit-line-icon {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .transit-line-code {
+        font-size: 14px;
+    }
+
+    .transit-line-name {
+        font-size: 10px;
     }
 
     .display-panel {
@@ -668,5 +784,10 @@ html, body {
 
     .line-badge {
         flex-wrap: wrap;
+    }
+
+    /* Show fullscreen button on mobile */
+    .fullscreen-btn {
+        display: flex !important;
     }
 }
