@@ -49,6 +49,49 @@ class PageController {
                 if (e.target === transitLinesModal) this.closeAllModals();
             });
         }
+
+        // Setup mobile video fullscreen
+        this.setupMobileVideoFullscreen();
+    }
+
+    setupMobileVideoFullscreen() {
+        // Only on mobile devices
+        if (!this.isMobileDevice()) return;
+
+        const videoContainer = document.querySelector('.video-container');
+        const stationDisplay = document.querySelector('.station-display');
+
+        if (videoContainer) {
+            const video = videoContainer.querySelector('.station-video-temp');
+            if (video) {
+                video.style.cursor = 'pointer';
+                video.addEventListener('click', () => this.requestVideoFullscreen(videoContainer, video));
+            }
+        }
+
+        if (stationDisplay) {
+            const video = stationDisplay.querySelector('.station-video-cld');
+            if (video) {
+                video.style.cursor = 'pointer';
+                video.addEventListener('click', () => this.requestVideoFullscreen(stationDisplay, video));
+            }
+        }
+    }
+
+    isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+               window.innerWidth <= 768;
+    }
+
+    requestVideoFullscreen(container, video) {
+        if (container.requestFullscreen) {
+            container.requestFullscreen({ navigationUI: 'hide' }).then(() => {
+                // Request landscape orientation
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(err => console.log('Orientation lock failed:', err));
+                }
+            }).catch(err => console.log('Fullscreen request failed:', err));
+        }
     }
 
     stopAllVideos() {
