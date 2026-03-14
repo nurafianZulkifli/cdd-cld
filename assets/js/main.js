@@ -84,13 +84,27 @@ class PageController {
     }
 
     requestVideoFullscreen(container, video) {
-        if (container.requestFullscreen) {
-            container.requestFullscreen({ navigationUI: 'hide' }).then(() => {
+        // Try to request fullscreen on video element first, fall back to container
+        const elementToFullscreen = video || container;
+        
+        if (elementToFullscreen.requestFullscreen) {
+            elementToFullscreen.requestFullscreen({ navigationUI: 'hide' }).then(() => {
                 // Request landscape orientation
                 if (screen.orientation && screen.orientation.lock) {
                     screen.orientation.lock('landscape').catch(err => console.log('Orientation lock failed:', err));
                 }
-            }).catch(err => console.log('Fullscreen request failed:', err));
+                // Ensure video fills screen
+                if (video) {
+                    video.style.width = '100vw';
+                    video.style.height = '100vh';
+                    video.style.objectFit = 'contain';
+                }
+            }).catch(err => {
+                // Fall back to container if video fullscreen fails
+                if (container && video !== container && container.requestFullscreen) {
+                    container.requestFullscreen({ navigationUI: 'hide' }).catch(e => console.log('Container fullscreen failed:', e));
+                }
+            });
         }
     }
 
