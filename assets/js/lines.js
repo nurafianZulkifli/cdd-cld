@@ -13,16 +13,17 @@ class TransitDisplay {
             safety: [
                 { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements/pmtpg-ann.wav', cldLoop: false },
                 // { id: 2, title: 'Hold the Handrail', cddVideo: 'video/Msg_HoldHandrail_CDD.mp4', cldVideo: 'video/Msg_HoldHandrail_CLD.mp4', audio: 'announcements/safety-handrail-ann.wav', cddLoop: false, cldLoop: false }
+                { id: 2, title: 'Suspicious - ENG', cldVideo: 'video/Msg_SusENG_CLD.mp4', audio: 'announcements/sus-eng-ann.wav', cldLoop: false },
+                { id: 3, title: 'Suspicious - CHN', cldVideo: 'video/Msg_SusCHN_CLD.mp4', audio: 'announcements/sus-chn-ann.wav', cldLoop: false },
+                { id: 4, title: 'Suspicious - MLY', cldVideo: 'video/Msg_SusMLY_CLD.mp4', audio: 'announcements/sus-mly-ann.wav', cldLoop: false },
+                { id: 5, title: 'Suspicious - TML', cldVideo: 'video/Msg_SusTML_CLD.mp4', audio: 'announcements/sus-tml-ann.wav', cldLoop: false }
             ],
             // service: [
             //     { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/Msg_MaintenanceScheduled_CDD.mp4', cldVideo: 'video/Msg_MaintenanceScheduled_CLD.mp4', audio: 'announcements/service-maintenance-ann.wav', cddLoop: false, cddLoop: false },
             //     { id: 2, title: 'System Update', cddVideo: 'video/Msg_SystemUpdate_CDD.mp4', cldVideo: 'video/Msg_SystemUpdate_CLD.mp4', audio: 'announcements/service-update-ann.wav', cddLoop: false, cddLoop: false }
             // ],
             info: [
-                { id: 1, title: 'Suspicious - ENG', cldVideo: 'video/Msg_SusENG_CLD.mp4', audio: 'announcements/sus-eng-ann.wav', cldLoop: false },
-                // { id: 2, title: 'Suspicious - CHN', cldVideo: 'video/Msg_SusCHN_CLD.mp4', audio: 'announcements/sus-chn-ann.wav', cldLoop: false },
-                // { id: 3, title: 'Suspicious - MLY', cldVideo: 'video/Msg_SusMLY_CLD.mp4', audio: 'announcements/sus-mly-ann.wav', cldLoop: false },
-                { id: 4, title: 'Suspicious - TML', cldVideo: 'video/Msg_SusTML_CLD.mp4', audio: 'announcements/sus-tml-ann.wav', cldLoop: false }
+               { id: 1, title: 'Doors Open Both Sides', cldVideo: 'video/Msg_BothSidesCLD.mp4', audio: 'announcements/bothSides-ann.wav', cldLoop: false },
             ]
         };
 
