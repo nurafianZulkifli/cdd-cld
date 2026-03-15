@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transit Station Display</title>
     <script src="https://kit.fontawesome.com/965e82ac01.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/transit-ui.css">
+    <link rel="stylesheet" href="assets/css/transit-ui_nsl.css">
 </head>
 <body>
     <div class="container">
@@ -51,7 +51,7 @@
 
         <!-- Modal for Messages -->
         <div id="messagesModal" class="modal hidden">
-            <div class="modal-content">
+            <div class="modal-content msg">
                 <div class="modal-header">
                     <h2>Messages</h2>
                     <button class="modal-close">✕</button>
@@ -60,7 +60,7 @@
                     <div class="message-categories">
                         <button class="category-btn active" data-category="alert">🚨 Alerts</button>
                         <button class="category-btn" data-category="safety">⚠️ Safety</button>
-                        <button class="category-btn" data-category="service">🔧 Service</button>
+                        <!-- <button class="category-btn" data-category="service">🔧 Service</button> -->
                         <button class="category-btn" data-category="info">ℹ️ Info</button>
                     </div>
                     <div class="messages-list" id="messagesList">
@@ -71,23 +71,8 @@
         </div>
 
         <!-- Modal for Stations -->
-        <div id="stationsModal" class="modal hidden">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Select Station</h2>
-                    <button class="modal-close">✕</button>
-                </div>
-                <div class="modal-body">
-                    <div class="stations-list" id="stationsList">
-                        <!-- Stations will be populated here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal for Stations -->
         <div id="linesModal" class="modal hidden">
-            <div class="modal-content">
+            <div class="modal-content stn">
                 <div class="modal-header">
                     <h2>Select Stations</h2>
                     <button class="modal-close">✕</button>
@@ -110,7 +95,7 @@
 
         <!-- Modal for MRT Lines -->
         <div id="transitLinesModal" class="modal hidden">
-            <div class="modal-content">
+            <div class="modal-content ln">
                 <div class="modal-header">
                     <h2>Select MRT Line</h2>
                     <button class="modal-close">✕</button>

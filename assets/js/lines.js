@@ -23,20 +23,22 @@ class TransitDisplay {
         // Message data with associated videos and announcements
         this.messages = {
             alert: [
-                { id: 1, title: 'Emergency Button', cddVideo: 'video/alert-cdd.mp4', cldVideo: 'video/alert-cld.mp4', audio: 'announcements/emgButton.wav', cddLoop: true, cddLoop: false },
+                { id: 1, title: 'Emergency Button', cddVideo: 'video/Msg_EmgButton_CDD.mp4', cldVideo: 'video/Msg_EmgButton_CLD.mp4', audio: 'announcements/emgButton.wav', cddLoop: true, cddLoop: false },
                 { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', cddLoop: false, cddLoop: false }
             ],
             safety: [
-                { id: 1, title: 'Mind the Gap', cddVideo: 'video/gap-cdd.mp4', cldVideo: 'video/gap-cld.mp4', audio: 'announcements/safety-gap-ann.wav', cddLoop: false, cddLoop: false },
-                { id: 2, title: 'Hold the Handrail', cddVideo: 'video/handrail-cdd.mp4', cldVideo: 'video/handrail-cld.mp4', audio: 'announcements/safety-handrail-ann.wav', cddLoop: false, cddLoop: false }
+                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements/pmtpg-ann.wav', cldLoop: false },
+                // { id: 2, title: 'Hold the Handrail', cddVideo: 'video/Msg_HoldHandrail_CDD.mp4', cldVideo: 'video/Msg_HoldHandrail_CLD.mp4', audio: 'announcements/safety-handrail-ann.wav', cddLoop: false, cldLoop: false }
             ],
-            service: [
-                { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/maint-cdd.mp4', cldVideo: 'video/maint-cld.mp4', audio: 'announcements/service-maintenance-ann.wav', cddLoop: false, cddLoop: false },
-                { id: 2, title: 'System Update', cddVideo: 'video/update-cdd.mp4', cldVideo: 'video/update-cld.mp4', audio: 'announcements/service-update-ann.wav', cddLoop: false, cddLoop: false }
-            ],
+            // service: [
+            //     { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/Msg_MaintenanceScheduled_CDD.mp4', cldVideo: 'video/Msg_MaintenanceScheduled_CLD.mp4', audio: 'announcements/service-maintenance-ann.wav', cddLoop: false, cddLoop: false },
+            //     { id: 2, title: 'System Update', cddVideo: 'video/Msg_SystemUpdate_CDD.mp4', cldVideo: 'video/Msg_SystemUpdate_CLD.mp4', audio: 'announcements/service-update-ann.wav', cddLoop: false, cddLoop: false }
+            // ],
             info: [
-                { id: 1, title: 'Welcome Message', cddVideo: 'video/welcome-cdd.mp4', cldVideo: 'video/welcome-cld.mp4', audio: 'announcements/info-welcome-ann.wav', cddLoop: false, cddLoop: false },
-                { id: 2, title: 'Station Info', cddVideo: 'video/info-cdd.mp4', cldVideo: 'video/info-cld.mp4', audio: 'announcements/info-station-ann.wav', cddLoop: false, cddLoop: false }
+                { id: 1, title: 'Suspicious - ENG', cldVideo: 'video/Msg_SusENG_CLD.mp4', audio: 'announcements/sus-eng-ann.wav', cldLoop: false },
+                { id: 2, title: 'Suspicious - CHN', cldVideo: 'video/Msg_SusCHN_CLD.mp4', audio: 'announcements/sus-chn-ann.wav', cldLoop: false },
+                { id: 3, title: 'Suspicious - MLY', cldVideo: 'video/Msg_SusMLY_CLD.mp4', audio: 'announcements/sus-mly-ann.wav', cldLoop: false },
+                { id: 4, title: 'Suspicious - TML', cldVideo: 'video/Msg_SusTML_CLD.mp4', audio: 'announcements/sus-tml-ann.wav', cldLoop: false }
             ]
         };
 
@@ -265,6 +267,11 @@ class TransitDisplay {
             if (blankImg) blankImg.style.display = 'none';
             video.load();
             video.play().catch(err => console.log('CDD Video play error:', err));
+        } else if (video) {
+            // Hide video if no cddVideo is defined
+            video.style.display = 'none';
+            const blankImg = videoContainer.querySelector('img');
+            if (blankImg) blankImg.style.display = 'none';
         }
 
         if (videoCld && message.cldVideo) {
@@ -563,8 +570,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Define transit lines with redirect URLs
             this.transitLines = [
-                { id: 1, name: 'North-South Line', code: 'NSL', url: 'index.html', icon: '🔴' },
-                // { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: '🟢' }
+                { id: 1, name: 'North-South Line', code: 'NSL', url: 'index.html', icon: 'assets/caplets/NSLCap.png' },
+                { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: 'assets/caplets/EWLCap.png' }
             ];
 
             this.setupLineButton();
@@ -594,7 +601,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const lineBtn = document.createElement('button');
                 lineBtn.className = 'transit-line-item';
                 lineBtn.innerHTML = `
-                <span class="transit-line-icon">${line.icon}</span>
+                <img src="${line.icon}" alt="${line.code}" class="transit-line-icon">
                 <div class="transit-line-info">
                     <div class="transit-line-code">${line.code}</div>
                     <div class="transit-line-name">${line.name}</div>
