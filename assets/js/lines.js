@@ -311,11 +311,11 @@ class LineSelector {
                     { id: 1, line: 'NSL', direction: 'toMSP', title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 2, line: 'NSL', direction: 'toMSP', title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld_arr.mp4', audio: 'announcements/bukit-gombak-arr-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 3, line: 'NSL', direction: 'toMSP', title: 'Choa Chu Kang', cddVideo: 'video/toMSP/cck_cdd_arr.mp4', cldVideo: 'video/toMSP/cck_cld_arr.mp4', audio: 'announcements/cck-arr-ann.wav', cddLoop: true, cldLoop: false },
-                    { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd_arr.mp4', cldVideo: 'video/toMSP/yew-tee_cld_arr.mp4', audio: 'announcements/yew-tee-arr-ann.wav', cddLoop: true, cldLoop: false }
+                    // { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd_arr.mp4', cldVideo: 'video/toMSP/yew-tee_cld_arr.mp4', audio: 'announcements/yew-tee-arr-ann.wav', cddLoop: true, cldLoop: false }
                 ],
                 toJUR: [
-                    { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toJUR/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
-                    { id: 4, line: 'NSL', direction: 'toJUR', title: 'Jurong East', cddVideo: 'video/toJUR/jurong-east_cdd_arr.mp4', cldVideo: 'video/toJUR/jurong-east_cld_arr.mp4', audio: 'announcements/jurong-east-arr-ann.wav', cddLoop: true, cldLoop: false }
+                    // { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toJUR/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
+                    // { id: 4, line: 'NSL', direction: 'toJUR', title: 'Jurong East', cddVideo: 'video/toJUR/jurong-east_cdd_arr.mp4', cldVideo: 'video/toJUR/jurong-east_cld_arr.mp4', audio: 'announcements/jurong-east-arr-ann.wav', cddLoop: true, cldLoop: false }
                 ]
             }
         };
@@ -327,11 +327,11 @@ class LineSelector {
                     { id: 1, line: 'NSL', direction: 'toMSP', title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 2, line: 'NSL', direction: 'toMSP', title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 3, line: 'NSL', direction: 'toMSP', title: 'Choa Chu Kang', cddVideo: 'video/toMSP/cck_cdd.mp4', cldVideo: 'video/toMSP/cck_cld.mp4', audio: 'announcements/cck-ann.wav', cddLoop: true, cldLoop: false },
-                    { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', cddLoop: true, cldLoop: false }
+                    // { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', cddLoop: true, cldLoop: false }
                 ],
                 toJUR: [
-                    { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd.mp4', cldVideo: 'video/toJUR/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
-                    { id: 4, line: 'NSL', direction: 'toJUR', title: 'Jurong East', cddVideo: 'video/toJUR/jurong-east_cdd.mp4', cldVideo: 'video/toJUR/jurong-east_cld.mp4', audio: 'announcements/jurong-east-ann.wav', cddLoop: true, cldLoop: false }
+                    // { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd.mp4', cldVideo: 'video/toJUR/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
+                    // { id: 4, line: 'NSL', direction: 'toJUR', title: 'Jurong East', cddVideo: 'video/toJUR/jurong-east_cdd.mp4', cldVideo: 'video/toJUR/jurong-east_cld.mp4', audio: 'announcements/jurong-east-ann.wav', cddLoop: true, cldLoop: false }
                 ]
             }
         };
@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Define transit lines with redirect URLs
             this.transitLines = [
                 { id: 1, name: 'North-South Line', code: 'NSL', url: 'index.html', icon: 'assets/caplets/NSLCap.png' },
-                // { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: 'assets/caplets/EWLCap.png' }
+                { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: 'assets/caplets/EWLCap.png' }
             ];
 
             this.setupLineButton();
