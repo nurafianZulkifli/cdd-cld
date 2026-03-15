@@ -12,6 +12,9 @@ class PageController {
     }
 
     setupCoreEventListeners() {
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
         // Modal close buttons
         const modalCloseButtons = document.querySelectorAll('.modal-close');
         modalCloseButtons.forEach(btn => {
