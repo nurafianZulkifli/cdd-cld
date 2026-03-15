@@ -666,7 +666,8 @@ body {
 }
 
 .transit-line-icon {
-    font-size: 48px;
+    width: 73px;
+    height: 44px;
     margin-bottom: 10px;
 }
 
@@ -778,7 +779,8 @@ body {
     }
 
     .transit-line-icon {
-        font-size: 32px;
+        width: 73px;
+        height: 44px;
     }
 
     .station-translations {
@@ -849,7 +851,8 @@ body {
     }
 
     .transit-line-icon {
-        font-size: 24px;
+        width: 73px;
+        height: 44px;
         margin-bottom: 5px;
     }
 
