@@ -36,8 +36,8 @@ class TransitDisplay {
             // ],
             info: [
                 { id: 1, title: 'Suspicious - ENG', cldVideo: 'video/Msg_SusENG_CLD.mp4', audio: 'announcements/sus-eng-ann.wav', cldLoop: false },
-                // { id: 2, title: 'Suspicious - CHN', cldVideo: 'video/Msg_SusCHN_CLD.mp4', audio: 'announcements/sus-chn-ann.wav', cldLoop: false },
-                // { id: 3, title: 'Suspicious - MLY', cldVideo: 'video/Msg_SusMLY_CLD.mp4', audio: 'announcements/sus-mly-ann.wav', cldLoop: false },
+                { id: 2, title: 'Suspicious - CHN', cldVideo: 'video/Msg_SusCHN_CLD.mp4', audio: 'announcements/sus-chn-ann.wav', cldLoop: false },
+                { id: 3, title: 'Suspicious - MLY', cldVideo: 'video/Msg_SusMLY_CLD.mp4', audio: 'announcements/sus-mly-ann.wav', cldLoop: false },
                 { id: 4, title: 'Suspicious - TML', cldVideo: 'video/Msg_SusTML_CLD.mp4', audio: 'announcements/sus-tml-ann.wav', cldLoop: false }
             ]
         };
@@ -571,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Define transit lines with redirect URLs
             this.transitLines = [
                 { id: 1, name: 'North-South Line', code: 'NSL', url: 'index.html', icon: 'assets/caplets/NSLCap.png' },
-                { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: 'assets/caplets/EWLCap.png' }
+                // { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: 'assets/caplets/EWLCap.png' }
             ];
 
             this.setupLineButton();
