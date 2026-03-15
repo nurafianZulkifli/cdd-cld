@@ -66,6 +66,8 @@ class PageController {
             if (video) {
                 video.style.cursor = 'pointer';
                 video.addEventListener('click', () => this.requestVideoFullscreen(videoContainer, video));
+                // Listen for fullscreen exit
+                document.addEventListener('fullscreenchange', () => this.handleFullscreenExit(video));
             }
         }
 
@@ -74,6 +76,30 @@ class PageController {
             if (video) {
                 video.style.cursor = 'pointer';
                 video.addEventListener('click', () => this.requestVideoFullscreen(stationDisplay, video));
+                // Listen for fullscreen exit
+                document.addEventListener('fullscreenchange', () => this.handleFullscreenExit(video));
+            }
+        }
+    }
+
+    handleFullscreenExit(video) {
+        // When fullscreen exits, remove inline styles
+        if (!document.fullscreenElement) {
+            if (video) {
+                video.style.width = '';
+                video.style.height = '';
+                video.style.objectFit = '';
+            }
+            // Unlock orientation if possible
+            if (screen.orientation && typeof screen.orientation.unlock === 'function') {
+                try {
+                    const unlockResult = screen.orientation.unlock();
+                    if (unlockResult && typeof unlockResult.catch === 'function') {
+                        unlockResult.catch(err => console.log('Orientation unlock failed:', err));
+                    }
+                } catch (err) {
+                    // Silently handle errors on devices that don't support orientation unlocking
+                }
             }
         }
     }
