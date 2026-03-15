@@ -2,23 +2,7 @@
 
 class TransitDisplay {
     constructor() {
-        // Current and Next station data
-        this.currentStationData = {
-            current: [
-                { id: 1, title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 2, title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld_arr.mp4', audio: 'announcements/bukit-gombak-arr-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 3, title: 'Choa Chu Kang', cddVideo: 'video/toMSP/choa-chu-kang_cdd_arr.mp4', cldVideo: 'video/toMSP/choa-chu-kang_cld_arr.mp4', audio: 'announcements/choa-chu-kang-arr-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 4, title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd_arr.mp4', cldVideo: 'video/toMSP/yew-tee_cld_arr.mp4', audio: 'announcements/yew-tee-arr-ann.wav', cddLoop: true, cldLoop: false }
-            ],
-            next: [
-                { id: 1, title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 2, title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 3, title: 'Choa Chu Kang', cddVideo: 'video/toMSP/cck_cdd.mp4', cldVideo: 'video/toMSP/cck_cld.mp4', audio: 'announcements/cck-ann.wav', cddLoop: true, cldLoop: false },
-                { id: 4, title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', cddLoop: true, cldLoop: false }
-            ]
-        };
-
-        this.currentStation = this.currentStationData.current[0];
+        this.currentStation = null;
 
         // Message data with associated videos and announcements
         this.messages = {
@@ -151,9 +135,10 @@ class TransitDisplay {
         const stationsList = document.getElementById('stationsList');
         stationsList.innerHTML = '';
 
-        const stationsToDisplay = this.currentStationCategory === 'current' ?
-            this.currentStationData.current :
-            this.currentStationData.next;
+        const linesData = this.currentStationCategory === 'current' ?
+            this.lineSelector.currentLines :
+            this.lineSelector.nextLines;
+        const stationsToDisplay = linesData.NSL.toMSP;
 
         stationsToDisplay.forEach(station => {
             const stationBtn = document.createElement('button');
@@ -294,7 +279,13 @@ class TransitDisplay {
     }
 
     initializeStation() {
-        console.log(`Transit Display initialized for ${this.currentStation.title}`);
+        // Initialize current station from LineSelector
+        if (this.lineSelector) {
+            this.currentStation = this.lineSelector.currentLines.NSL.toMSP[0];
+        }
+        if (this.currentStation) {
+            console.log(`Transit Display initialized for ${this.currentStation.title}`);
+        }
     }
 }
 
@@ -311,7 +302,7 @@ class LineSelector {
                     { id: 1, line: 'NSL', direction: 'toMSP', title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 2, line: 'NSL', direction: 'toMSP', title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd_arr.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld_arr.mp4', audio: 'announcements/bukit-gombak-arr-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 3, line: 'NSL', direction: 'toMSP', title: 'Choa Chu Kang', cddVideo: 'video/toMSP/cck_cdd_arr.mp4', cldVideo: 'video/toMSP/cck_cld_arr.mp4', audio: 'announcements/cck-arr-ann.wav', cddLoop: true, cldLoop: false },
-                    // { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd_arr.mp4', cldVideo: 'video/toMSP/yew-tee_cld_arr.mp4', audio: 'announcements/yew-tee-arr-ann.wav', cddLoop: true, cldLoop: false }
+                    { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd_arr.mp4', cldVideo: 'video/toMSP/yew-tee_cld_arr.mp4', audio: 'announcements/yew-tee-arr-ann.wav', cddLoop: true, cldLoop: false }
                 ],
                 toJUR: [
                     // { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toJUR/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
@@ -327,7 +318,7 @@ class LineSelector {
                     { id: 1, line: 'NSL', direction: 'toMSP', title: 'Bukit Batok', cddVideo: 'video/toMSP/bukit-batok_cdd.mp4', cldVideo: 'video/toMSP/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 2, line: 'NSL', direction: 'toMSP', title: 'Bukit Gombak', cddVideo: 'video/toMSP/bukit-gombak_cdd.mp4', cldVideo: 'video/toMSP/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 3, line: 'NSL', direction: 'toMSP', title: 'Choa Chu Kang', cddVideo: 'video/toMSP/cck_cdd.mp4', cldVideo: 'video/toMSP/cck_cld.mp4', audio: 'announcements/cck-ann.wav', cddLoop: true, cldLoop: false },
-                    // { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', cddLoop: true, cldLoop: false }
+                    { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', cddLoop: true, cldLoop: false }
                 ],
                 toJUR: [
                     // { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd.mp4', cldVideo: 'video/toJUR/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
