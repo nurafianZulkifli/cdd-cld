@@ -542,6 +542,8 @@ body {
     flex-direction: column;
     gap: 10px;
     max-height: 300px;
+    overflow-y: auto;
+    padding-right: 8px;
 }
 
 .message-item {
@@ -572,6 +574,8 @@ body {
     flex-direction: column;
     gap: 10px;
     max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
 }
 
 /* Lines List */
@@ -580,6 +584,8 @@ body {
     flex-direction: column;
     gap: 10px;
     max-height: 300px;
+    overflow-y: auto;
+    padding-right: 8px;
 }
 
 .station-item {
@@ -716,6 +722,67 @@ body {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+/* Scrollbar Styling */
+/* Messages List - Blue */
+#messagesModal .messages-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#messagesModal .messages-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+#messagesModal .messages-list::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+#messagesModal .messages-list::-webkit-scrollbar-thumb:hover {
+    background: #0066ff;
+}
+
+/* Stations List - Red */
+#linesModal .lines-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#linesModal .lines-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+#linesModal .lines-list::-webkit-scrollbar-thumb {
+    background: var(--accent-red);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+#linesModal .lines-list::-webkit-scrollbar-thumb:hover {
+    background: #ee3333;
+}
+
+/* Transit Lines List - Orange */
+#transitLinesModal .transit-lines-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#transitLinesModal .transit-lines-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+#transitLinesModal .transit-lines-list::-webkit-scrollbar-thumb {
+    background: var(--accent-orange);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+#transitLinesModal .transit-lines-list::-webkit-scrollbar-thumb:hover {
+    background: #ff8c00;
 }
 
 /* Responsive Design */

@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SMRT CDD-CLD | Works by NRFZ</title>
-    <script src="https://kit.fontawesome.com/965e82ac01.js" crossorigin="anonymous"></script>
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    
+    <!-- Critical CSS - loaded with high priority -->
+    <link rel="preload" as="style" href="assets/css/transit-ui_nsl.css">
     <link rel="stylesheet" href="assets/css/transit-ui_nsl.css">
+    
+    <script src="https://kit.fontawesome.com/965e82ac01.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -112,7 +121,8 @@
         <div id="statusToast" class="status-toast hidden"></div>
     </div>
 
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/lines.js"></script>
+    <!-- Scripts loaded with defer for non-blocking rendering -->
+    <script defer src="assets/js/lines.js"></script>
+    <script defer src="assets/js/main.js"></script>
 </body>
 </html>
