@@ -171,7 +171,7 @@ class PageController {
         audio.load();
         const playPromise = audio.play();
         if (playPromise !== undefined) {
-            playPromise.catch(err => console.log('Audio play error:', err));
+            playPromise.catch(err => { if (err.name !== 'AbortError') console.log('Audio play error:', err); });
         }
     }
 
