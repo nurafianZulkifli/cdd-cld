@@ -95,14 +95,14 @@ class TransitDisplay {
             video.style.display = 'block';
             video.loop = false;
             video.load();
-            video.play().catch(err => console.log('Video play error:', err));
+            video.play().catch(err => { if (err.name !== 'AbortError') console.log('Video play error:', err); });
         }
 
         if (videoCld) {
             videoCld.querySelector('source').src = 'video/DC-CLD.mp4';
             videoCld.loop = false;
             videoCld.load();
-            videoCld.play().catch(err => console.log('Video play error:', err));
+            videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('Video play error:', err); });
         }
 
         // Play doors closing announcement
@@ -171,14 +171,14 @@ class TransitDisplay {
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             video.load();
-            video.play().catch(err => console.log('CDD Video play error:', err));
+            video.play().catch(err => { if (err.name !== 'AbortError') console.log('CDD Video play error:', err); });
         }
 
         if (videoCld && station.cldVideo) {
             videoCld.querySelector('source').src = station.cldVideo;
             videoCld.loop = station.cldLoop !== undefined ? station.cldLoop : true;
             videoCld.load();
-            videoCld.play().catch(err => console.log('CLD Video play error:', err));
+            videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('CLD Video play error:', err); });
         }
 
         // Play announcement audio
@@ -252,7 +252,7 @@ class TransitDisplay {
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             video.load();
-            video.play().catch(err => console.log('CDD Video play error:', err));
+            video.play().catch(err => { if (err.name !== 'AbortError') console.log('CDD Video play error:', err); });
         } else if (video) {
             // Hide video if no cddVideo is defined
             video.style.display = 'none';
@@ -264,7 +264,7 @@ class TransitDisplay {
             videoCld.querySelector('source').src = message.cldVideo;
             videoCld.loop = message.cldLoop !== undefined ? message.cldLoop : false;
             videoCld.load();
-            videoCld.play().catch(err => console.log('CLD Video play error:', err));
+            videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('CLD Video play error:', err); });
         }
 
         // Play announcement audio
@@ -493,14 +493,14 @@ class LineSelector {
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             video.load();
-            video.play().catch(err => console.log('CDD Video play error:', err));
+            video.play().catch(err => { if (err.name !== 'AbortError') console.log('CDD Video play error:', err); });
         }
 
         if (videoCld && station.cldVideo) {
             videoCld.querySelector('source').src = station.cldVideo;
             videoCld.loop = station.cldLoop !== undefined ? station.cldLoop : true;
             videoCld.load();
-            videoCld.play().catch(err => console.log('CLD Video play error:', err));
+            videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('CLD Video play error:', err); });
         }
 
         // Play announcement audio
@@ -529,14 +529,14 @@ class LineSelector {
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             videoElement.load();
-            videoElement.play().catch(err => console.log('CDD Video play error:', err));
+            videoElement.play().catch(err => { if (err.name !== 'AbortError') console.log('CDD Video play error:', err); });
         }
 
         if (videoCld && video.cldVideo) {
             videoCld.querySelector('source').src = video.cldVideo;
             videoCld.loop = video.cldLoop !== undefined ? video.cldLoop : false;
             videoCld.load();
-            videoCld.play().catch(err => console.log('CLD Video play error:', err));
+            videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('CLD Video play error:', err); });
         }
 
         // Play announcement audio
