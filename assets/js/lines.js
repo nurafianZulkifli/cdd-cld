@@ -307,6 +307,7 @@ class LineSelector {
                     { id: 5, line: 'NSL', direction: 'toMSP', title: 'Kranji', cddVideo: 'video/toMSP/kranji_cdd_arr.mp4', cldVideo: 'video/toMSP/kranji_cld_arr.mp4', audio: 'announcements/kranji-arr-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 6, line: 'NSL', direction: 'toMSP', title: 'Marsiling', cddVideo: 'video/toMSP/marsiling_cdd_arr.mp4', cldVideo: 'video/toMSP/marsiling_cld_arr.mp4', audio: 'announcements/marsiling-arr-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 7, line: 'NSL', direction: 'toMSP', title: 'Woodlands', cddVideo: 'video/toMSP/woodlands_cdd_arr.mp4', cldVideo: 'video/toMSP/woodlands_cld_arr.mp4', audio: 'announcements/woodlands-arr-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 8, line: 'NSL', direction: 'toMSP', title: 'Admiralty', cddVideo: 'video/toMSP/admiralty_cdd_arr.mp4', cldVideo: 'video/toMSP/admiralty_cld_arr.mp4', audio: 'announcements/admiralty-arr-ann.wav', cddLoop: true, cldLoop: false },
                 ],
                 toJUR: [
                     // { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toJUR/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
@@ -325,7 +326,8 @@ class LineSelector {
                     { id: 4, line: 'NSL', direction: 'toMSP', title: 'Yew Tee', cddVideo: 'video/toMSP/yew-tee_cdd.mp4', cldVideo: 'video/toMSP/yew-tee_cld.mp4', audio: 'announcements/yew-tee-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 5, line: 'NSL', direction: 'toMSP', title: 'Kranji', cddVideo: 'video/toMSP/kranji_cdd.mp4', cldVideo: 'video/toMSP/kranji_cld.mp4', audio: 'announcements/kranji-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 6, line: 'NSL', direction: 'toMSP', title: 'Marsiling', cddVideo: 'video/toMSP/marsiling_cdd.mp4', cldVideo: 'video/toMSP/marsiling_cld.mp4', audio: 'announcements/marsiling-ann.wav', cddLoop: true, cldLoop: false },
-                    { id: 7, line: 'NSL', direction: 'toMSP', title: 'Woodlands', cddVideo: 'video/toMSP/woodlands_cdd.mp4', cldVideo: 'video/toMSP/woodlands_cld.mp4', audio: 'announcements/woodlands-ann.wav', cddLoop: true, cldLoop: false }
+                    { id: 7, line: 'NSL', direction: 'toMSP', title: 'Woodlands', cddVideo: 'video/toMSP/woodlands_cdd.mp4', cldVideo: 'video/toMSP/woodlands_cld.mp4', audio: 'announcements/woodlands-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 8, line: 'NSL', direction: 'toMSP', title: 'Admiralty', cddVideo: 'video/toMSP/admiralty_cdd.mp4', cldVideo: 'video/toMSP/admiralty_cld.mp4', audio: 'announcements/admiralty-ann.wav', cddLoop: true, cldLoop: false },
                 ],
                 toJUR: [
                     // { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd.mp4', cldVideo: 'video/toJUR/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
