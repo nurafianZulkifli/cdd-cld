@@ -9,7 +9,8 @@ class PageController {
     init() {
         this.setupCoreEventListeners();
         this.setupStyles();
-        this.playInitVideos();
+        // Delay init video playback slightly to ensure DOM is fully ready
+        setTimeout(() => this.playInitVideos(), 100);
         console.log('Page Controller initialized');
     }
 
@@ -255,11 +256,15 @@ class PageController {
         const videoContainer = document.querySelector('.video-container');
         const stationDisplay = document.querySelector('.station-display');
         
+        console.log('playInitVideos called, videoContainer:', !!videoContainer, 'stationDisplay:', !!stationDisplay);
+        
         let videoCdd = videoContainer?.querySelector('.station-video-temp');
         let videoCld = stationDisplay?.querySelector('.station-video-cld');
         
+        console.log('Video elements found - CDD:', !!videoCdd, 'CLD:', !!videoCld);
+        
         if (!videoCdd || !videoCld) {
-            console.log('Init videos: One or both video elements not found');
+            console.error('Init videos: One or both video elements not found');
             return;
         }
         
@@ -294,6 +299,7 @@ class PageController {
         
         videoCdd.addEventListener('ended', () => {
             // Keep the init video displayed until user plays a different video
+            console.log('CDD video ended');
             checkIfBothFinished();
         }, { once: true });
         
@@ -307,24 +313,31 @@ class PageController {
         videoCld.load();
         
         videoCld.addEventListener('ended', () => {
+            console.log('CLD video ended');
             checkIfBothFinished();
         }, { once: true });
         
         // Play both videos
+        console.log('Attempting to play CDD video...');
         const playCdd = videoCdd.play();
         if (playCdd && typeof playCdd.then === 'function') {
             playCdd.catch(err => {
-                console.log('CDD video play error:', err);
+                console.error('CDD video play error:', err);
                 checkIfBothFinished();
             });
+        } else {
+            console.log('CDD play() did not return promise');
         }
         
+        console.log('Attempting to play CLD video...');
         const playCld = videoCld.play();
         if (playCld && typeof playCld.then === 'function') {
             playCld.catch(err => {
-                console.log('CLD video play error:', err);
+                console.error('CLD video play error:', err);
                 checkIfBothFinished();
             });
+        } else {
+            console.log('CLD play() did not return promise');
         }
     }
 }
