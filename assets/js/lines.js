@@ -342,7 +342,7 @@ class LineSelector {
             }
         };
 
-        // Door closing videos for General tab
+        // Door closing videos for Doors Closing tab
         this.doorClosingVideos = {
             toMSP: { id: 1, title: 'Doors Closing - to MSP', cddVideo: 'video/toMSP/DC-CDD.mp4', cldVideo: 'video/toMSP/DC-CLD.mp4', audio: 'announcements/dc-ann.wav', cddLoop: false, cldLoop: false },
             toJUR: { id: 2, title: 'Doors Closing - to JUR', cddVideo: 'video/toJUR/DC-CDD.mp4', cldVideo: 'video/toJUR/DC-CLD.mp4', audio: 'announcements/dc-ann.wav', cddLoop: false, cldLoop: false }
@@ -395,11 +395,11 @@ class LineSelector {
             return;
         }
 
-        // Handle General tab differently
-        if (this.currentLineTab === 'general') {
+        // Handle Doors Closing tab differently
+        if (this.currentLineTab === 'doors-closing') {
             categoriesContainer.innerHTML = '';
-            // For General tab, display door closing videos directly
-            this.displayLines('general');
+            // For Doors Closing tab, display door closing videos directly
+            this.displayLines('doors-closing');
             return;
         }
 
@@ -445,8 +445,8 @@ class LineSelector {
         const linesList = document.getElementById('linesList');
         linesList.innerHTML = '';
 
-        // Handle General tab with door closing videos
-        if (category === 'general') {
+        // Handle Doors Closing tab with door closing videos
+        if (category === 'doors-closing') {
             const doorVideos = [this.doorClosingVideos.toMSP, this.doorClosingVideos.toJUR];
             doorVideos.forEach(video => {
                 const lineBtn = document.createElement('button');
