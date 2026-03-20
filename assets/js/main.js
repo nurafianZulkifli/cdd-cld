@@ -2,12 +2,14 @@
 
 class PageController {
     constructor() {
+        this.isInitPlaying = true; // Flag to prevent button clicks during init
         this.init();
     }
 
     init() {
         this.setupCoreEventListeners();
         this.setupStyles();
+        this.playInitVideos();
         console.log('Page Controller initialized');
     }
 
@@ -219,8 +221,111 @@ class PageController {
                 0%, 100% { opacity: 1; }
                 50% { opacity: 0.5; }
             }
+            
+            .control-button:disabled {
+                opacity: 0.5 !important;
+                cursor: not-allowed !important;
+                pointer-events: none !important;
+                background: #393e53 !important;
+                color: var(--text-primary) !important;
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.233), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+                border-color: #2b2b2b33 !important;
+                transform: none !important;
+            }
+            
+            .control-button:disabled:hover {
+                border-color: #2b2b2b33 !important;
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.233), 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+                transform: none !important;
+            }
         `;
         document.head.appendChild(style);
+    }
+
+    setButtonsDisabled(disabled) {
+        const buttons = document.querySelectorAll('.control-button');
+        console.log(`Setting buttons disabled=${disabled}, found ${buttons.length} buttons`);
+        buttons.forEach(btn => {
+            btn.disabled = disabled;
+            console.log(`Button ${btn.className}: disabled=${btn.disabled}`);
+        });
+    }
+
+    playInitVideos() {
+        const videoContainer = document.querySelector('.video-container');
+        const stationDisplay = document.querySelector('.station-display');
+        
+        let videoCdd = videoContainer?.querySelector('.station-video-temp');
+        let videoCld = stationDisplay?.querySelector('.station-video-cld');
+        
+        if (!videoCdd || !videoCld) {
+            console.log('Init videos: One or both video elements not found');
+            return;
+        }
+        
+        console.log('Starting init video playback...');
+        
+        // Disable all buttons during playback
+        this.setButtonsDisabled(true);
+        
+        let videosFinished = 0;
+        const totalVideos = 2;
+        
+        const checkIfBothFinished = () => {
+            videosFinished++;
+            console.log(`Video finished (${videosFinished}/${totalVideos})`);
+            if (videosFinished === totalVideos) {
+                // Re-enable buttons when both videos finish
+                this.isInitPlaying = false;
+                this.setButtonsDisabled(false);
+                console.log('Init videos completed, buttons enabled');
+            }
+        };
+        
+        // Set up the CDD video (station-video-temp)
+        videoCdd.style.display = 'block';
+        let sourceCdd = videoCdd.querySelector('source') || document.createElement('source');
+        sourceCdd.src = 'video/toMSP/CDD_Init.mp4';
+        sourceCdd.type = 'video/mp4';
+        if (!videoCdd.contains(sourceCdd)) {
+            videoCdd.appendChild(sourceCdd);
+        }
+        videoCdd.load();
+        
+        videoCdd.addEventListener('ended', () => {
+            // Keep the init video displayed until user plays a different video
+            checkIfBothFinished();
+        }, { once: true });
+        
+        // Set up the CLD video (station-video-cld)
+        let sourceCld = videoCld.querySelector('source') || document.createElement('source');
+        sourceCld.src = 'video/toMSP/CLD_Init.mp4';
+        sourceCld.type = 'video/mp4';
+        if (!videoCld.contains(sourceCld)) {
+            videoCld.appendChild(sourceCld);
+        }
+        videoCld.load();
+        
+        videoCld.addEventListener('ended', () => {
+            checkIfBothFinished();
+        }, { once: true });
+        
+        // Play both videos
+        const playCdd = videoCdd.play();
+        if (playCdd && typeof playCdd.then === 'function') {
+            playCdd.catch(err => {
+                console.log('CDD video play error:', err);
+                checkIfBothFinished();
+            });
+        }
+        
+        const playCld = videoCld.play();
+        if (playCld && typeof playCld.then === 'function') {
+            playCld.catch(err => {
+                console.log('CLD video play error:', err);
+                checkIfBothFinished();
+            });
+        }
     }
 }
 

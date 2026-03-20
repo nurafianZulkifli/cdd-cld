@@ -57,6 +57,12 @@ class TransitDisplay {
     }
 
     handleControlClick(event) {
+        // Prevent clicks while init videos are playing
+        if (window.pageController && window.pageController.isInitPlaying) {
+            console.log('Init videos still playing, ignoring button click');
+            return;
+        }
+        
         const button = event.currentTarget;
         const action = button.getAttribute('data-action');
 
@@ -585,6 +591,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         showTransitLines() {
+            // Prevent action while init videos are playing
+            if (window.pageController && window.pageController.isInitPlaying) {
+                console.log('Init videos still playing, ignoring button click');
+                return;
+            }
+            
             const modal = document.getElementById('transitLinesModal');
             if (modal) {
                 this.displayTransitLines();
