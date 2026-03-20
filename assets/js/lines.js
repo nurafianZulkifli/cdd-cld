@@ -59,7 +59,6 @@ class TransitDisplay {
     handleControlClick(event) {
         // Prevent clicks while init videos are playing
         if (window.pageController && window.pageController.isInitPlaying) {
-            console.log('Init videos still playing, ignoring button click');
             return;
         }
         
@@ -593,7 +592,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showTransitLines() {
             // Prevent action while init videos are playing
             if (window.pageController && window.pageController.isInitPlaying) {
-                console.log('Init videos still playing, ignoring button click');
                 return;
             }
             

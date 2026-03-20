@@ -11,7 +11,6 @@ class PageController {
         this.setupStyles();
         // Delay init video playback slightly to ensure DOM is fully ready
         setTimeout(() => this.playInitVideos(), 100);
-        console.log('Page Controller initialized');
     }
 
     setupCoreEventListeners() {
@@ -245,10 +244,8 @@ class PageController {
 
     setButtonsDisabled(disabled) {
         const buttons = document.querySelectorAll('.control-button');
-        console.log(`Setting buttons disabled=${disabled}, found ${buttons.length} buttons`);
         buttons.forEach(btn => {
             btn.disabled = disabled;
-            console.log(`Button ${btn.className}: disabled=${btn.disabled}`);
         });
     }
 
@@ -256,19 +253,13 @@ class PageController {
         const videoContainer = document.querySelector('.video-container');
         const stationDisplay = document.querySelector('.station-display');
         
-        console.log('playInitVideos called, videoContainer:', !!videoContainer, 'stationDisplay:', !!stationDisplay);
-        
         let videoCdd = videoContainer?.querySelector('.station-video-temp');
         let videoCld = stationDisplay?.querySelector('.station-video-cld');
-        
-        console.log('Video elements found - CDD:', !!videoCdd, 'CLD:', !!videoCld);
         
         if (!videoCdd || !videoCld) {
             console.error('Init videos: One or both video elements not found');
             return;
         }
-        
-        console.log('Starting init video playback...');
         
         // Disable all buttons during playback
         this.setButtonsDisabled(true);
@@ -278,12 +269,10 @@ class PageController {
         
         const checkIfBothFinished = () => {
             videosFinished++;
-            console.log(`Video finished (${videosFinished}/${totalVideos})`);
             if (videosFinished === totalVideos) {
                 // Re-enable buttons when both videos finish
                 this.isInitPlaying = false;
                 this.setButtonsDisabled(false);
-                console.log('Init videos completed, buttons enabled');
             }
         };
         
@@ -299,7 +288,6 @@ class PageController {
         
         videoCdd.addEventListener('ended', () => {
             // Keep the init video displayed until user plays a different video
-            console.log('CDD video ended');
             checkIfBothFinished();
         }, { once: true });
         
@@ -313,31 +301,24 @@ class PageController {
         videoCld.load();
         
         videoCld.addEventListener('ended', () => {
-            console.log('CLD video ended');
             checkIfBothFinished();
         }, { once: true });
         
         // Play both videos
-        console.log('Attempting to play CDD video...');
         const playCdd = videoCdd.play();
         if (playCdd && typeof playCdd.then === 'function') {
             playCdd.catch(err => {
                 console.error('CDD video play error:', err);
                 checkIfBothFinished();
             });
-        } else {
-            console.log('CDD play() did not return promise');
         }
         
-        console.log('Attempting to play CLD video...');
         const playCld = videoCld.play();
         if (playCld && typeof playCld.then === 'function') {
             playCld.catch(err => {
                 console.error('CLD video play error:', err);
                 checkIfBothFinished();
             });
-        } else {
-            console.log('CLD play() did not return promise');
         }
     }
 }
