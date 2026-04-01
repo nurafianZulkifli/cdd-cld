@@ -100,6 +100,7 @@ class TransitDisplay {
             video.style.display = 'block';
             video.loop = false;
             video.load();
+            video.muted = false; // Unmute for audio
             video.play().catch(err => { if (err.name !== 'AbortError') console.log('Video play error:', err); });
         }
 
@@ -107,6 +108,7 @@ class TransitDisplay {
             videoCld.querySelector('source').src = 'video/DC-CLD.mp4';
             videoCld.loop = false;
             videoCld.load();
+            videoCld.muted = false; // Unmute for audio
             videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('Video play error:', err); });
         }
 
@@ -176,6 +178,7 @@ class TransitDisplay {
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             video.load();
+            video.muted = false;
             video.play().catch(err => { if (err.name !== 'AbortError') console.log('CDD Video play error:', err); });
         }
 
@@ -183,6 +186,7 @@ class TransitDisplay {
             videoCld.querySelector('source').src = station.cldVideo;
             videoCld.loop = station.cldLoop !== undefined ? station.cldLoop : true;
             videoCld.load();
+            videoCld.muted = false;
             videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('CLD Video play error:', err); });
         }
 
@@ -257,6 +261,7 @@ class TransitDisplay {
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             video.load();
+            video.muted = false;
             video.play().catch(err => { if (err.name !== 'AbortError') console.log('CDD Video play error:', err); });
         } else if (video) {
             // Hide video if no cddVideo is defined
@@ -266,9 +271,14 @@ class TransitDisplay {
         }
 
         if (videoCld && message.cldVideo) {
+            const stationDisplay = document.querySelector('.station-display');
             videoCld.querySelector('source').src = message.cldVideo;
+            videoCld.style.display = 'block';
             videoCld.loop = message.cldLoop !== undefined ? message.cldLoop : false;
+            const blankImg = stationDisplay.querySelector('img');
+            if (blankImg) blankImg.style.display = 'none';
             videoCld.load();
+            videoCld.muted = false;
             videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('CLD Video play error:', err); });
         }
 
@@ -313,6 +323,8 @@ class LineSelector {
                     { id: 6, line: 'NSL', direction: 'toMSP', title: 'Marsiling', cddVideo: 'video/toMSP/marsiling_cdd_arr.mp4', cldVideo: 'video/toMSP/marsiling_cld_arr.mp4', audio: 'announcements/marsiling-arr-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 7, line: 'NSL', direction: 'toMSP', title: 'Woodlands', cddVideo: 'video/toMSP/woodlands_cdd_arr.mp4', cldVideo: 'video/toMSP/woodlands_cld_arr.mp4', audio: 'announcements/woodlands-arr-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 8, line: 'NSL', direction: 'toMSP', title: 'Admiralty', cddVideo: 'video/toMSP/admiralty_cdd_arr.mp4', cldVideo: 'video/toMSP/admiralty_cld_arr.mp4', audio: 'announcements/admiralty-arr-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 9, line: 'NSL', direction: 'toMSP', title: 'Sembawang', cddVideo: 'video/toMSP/sembawang_cdd_arr.mp4', cldVideo: 'video/toMSP/sembawang_cld_arr.mp4', audio: 'announcements/sembawang-arr-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 10, line: 'NSL', direction: 'toMSP', title: 'Canberra', cddVideo: 'video/toMSP/canberra_cdd_arr.mp4', cldVideo: 'video/toMSP/canberra_cld_arr.mp4', audio: 'announcements/canberra-arr-ann.wav', cddLoop: true, cldLoop: false },
                 ],
                 toJUR: [
                     // { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd_arr.mp4', cldVideo: 'video/toJUR/bukit-batok_cld_arr.mp4', audio: 'announcements/bukit-batok-arr-ann.wav', cddLoop: true, cldLoop: false },
@@ -333,6 +345,8 @@ class LineSelector {
                     { id: 6, line: 'NSL', direction: 'toMSP', title: 'Marsiling', cddVideo: 'video/toMSP/marsiling_cdd.mp4', cldVideo: 'video/toMSP/marsiling_cld.mp4', audio: 'announcements/marsiling-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 7, line: 'NSL', direction: 'toMSP', title: 'Woodlands', cddVideo: 'video/toMSP/woodlands_cdd.mp4', cldVideo: 'video/toMSP/woodlands_cld.mp4', audio: 'announcements/woodlands-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 8, line: 'NSL', direction: 'toMSP', title: 'Admiralty', cddVideo: 'video/toMSP/admiralty_cdd.mp4', cldVideo: 'video/toMSP/admiralty_cld.mp4', audio: 'announcements/admiralty-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 9, line: 'NSL', direction: 'toMSP', title: 'Sembawang', cddVideo: 'video/toMSP/sembawang_cdd.mp4', cldVideo: 'video/toMSP/sembawang_cld.mp4', audio: 'announcements/sembawang-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 10, line: 'NSL', direction: 'toMSP', title: 'Canberra', cddVideo: 'video/toMSP/canberra_cdd.mp4', cldVideo: 'video/toMSP/canberra_cld.mp4', audio: 'announcements/canberra-ann.wav', cddLoop: true, cldLoop: false },
                 ],
                 toJUR: [
                     // { id: 3, line: 'NSL', direction: 'toJUR', title: 'Bukit Batok', cddVideo: 'video/toJUR/bukit-batok_cdd.mp4', cldVideo: 'video/toJUR/bukit-batok_cld.mp4', audio: 'announcements/bukit-batok-ann.wav', cddLoop: true, cldLoop: false },
@@ -500,13 +514,19 @@ class LineSelector {
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             video.load();
+            video.muted = false;
             video.play().catch(err => { if (err.name !== 'AbortError') console.log('CDD Video play error:', err); });
         }
 
         if (videoCld && station.cldVideo) {
+            const stationDisplay = document.querySelector('.station-display');
             videoCld.querySelector('source').src = station.cldVideo;
+            videoCld.style.display = 'block';
             videoCld.loop = station.cldLoop !== undefined ? station.cldLoop : true;
+            const blankImg = stationDisplay.querySelector('img');
+            if (blankImg) blankImg.style.display = 'none';
             videoCld.load();
+            videoCld.muted = false;
             videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('CLD Video play error:', err); });
         }
 
@@ -536,13 +556,19 @@ class LineSelector {
             const blankImg = videoContainer.querySelector('img');
             if (blankImg) blankImg.style.display = 'none';
             videoElement.load();
+            videoElement.muted = false;
             videoElement.play().catch(err => { if (err.name !== 'AbortError') console.log('CDD Video play error:', err); });
         }
 
         if (videoCld && video.cldVideo) {
+            const stationDisplay = document.querySelector('.station-display');
             videoCld.querySelector('source').src = video.cldVideo;
+            videoCld.style.display = 'block';
             videoCld.loop = video.cldLoop !== undefined ? video.cldLoop : false;
+            const blankImg = stationDisplay.querySelector('img');
+            if (blankImg) blankImg.style.display = 'none';
             videoCld.load();
+            videoCld.muted = false;
             videoCld.play().catch(err => { if (err.name !== 'AbortError') console.log('CLD Video play error:', err); });
         }
 

@@ -141,8 +141,9 @@ class PageController {
 
     stopAllVideos() {
         const videoContainer = document.querySelector('.video-container');
+        const stationDisplay = document.querySelector('.station-display');
         let video = videoContainer.querySelector('.station-video-temp');
-        const videoCld = document.querySelector('.station-video-cld');
+        const videoCld = stationDisplay.querySelector('.station-video-cld');
         
         if (video) {
             video.pause();
@@ -152,6 +153,17 @@ class PageController {
         if (videoCld) {
             videoCld.pause();
             videoCld.currentTime = 0;
+        }
+        
+        // Hide any blank images when stopping videos
+        const cddImg = videoContainer.querySelector('img');
+        if (cddImg) {
+            cddImg.style.display = 'none';
+        }
+        
+        const cldImg = stationDisplay.querySelector('img');
+        if (cldImg) {
+            cldImg.style.display = 'none';
         }
     }
 
@@ -250,6 +262,49 @@ class PageController {
     }
 
     playInitVideos() {
+        // Check if user has already viewed the init videos
+        if (localStorage.getItem('cddCldInitViewed')) {
+            console.log('Init videos already viewed, showing blank images');
+            this.isInitPlaying = false;
+            
+            // Show blank images instead
+            const videoContainer = document.querySelector('.video-container');
+            const stationDisplay = document.querySelector('.station-display');
+            
+            let videoCdd = videoContainer?.querySelector('.station-video-temp');
+            let videoCld = stationDisplay?.querySelector('.station-video-cld');
+            
+            if (videoCdd) {
+                videoCdd.style.display = 'none';
+                let img = videoContainer.querySelector('img') || document.createElement('img');
+                img.src = 'assets/DC-CDD_Blank.png';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                if (!videoContainer.contains(img)) {
+                    videoContainer.appendChild(img);
+                }
+                img.style.display = 'block';
+            }
+            
+            if (videoCld) {
+                videoCld.style.display = 'none';
+                let img = stationDisplay.querySelector('img') || document.createElement('img');
+                img.src = 'assets/DC-CLD_Blank.png';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                if (!stationDisplay.contains(img)) {
+                    stationDisplay.appendChild(img);
+                }
+                img.style.display = 'block';
+            }
+            
+            return;
+        }
+        
+        console.log('Starting init video playback');
+        
         const videoContainer = document.querySelector('.video-container');
         const stationDisplay = document.querySelector('.station-display');
         
@@ -269,10 +324,14 @@ class PageController {
         
         const checkIfBothFinished = () => {
             videosFinished++;
+            console.log(`Video finished: ${videosFinished}/${totalVideos}`);
             if (videosFinished === totalVideos) {
                 // Re-enable buttons when both videos finish
                 this.isInitPlaying = false;
                 this.setButtonsDisabled(false);
+                // Mark that user has seen the init videos
+                localStorage.setItem('cddCldInitViewed', 'true');
+                console.log('Init videos complete');
             }
         };
         
@@ -288,6 +347,7 @@ class PageController {
         
         videoCdd.addEventListener('ended', () => {
             // Keep the init video displayed until user plays a different video
+            console.log('CDD init video ended');
             checkIfBothFinished();
         }, { once: true });
         
@@ -301,25 +361,46 @@ class PageController {
         videoCld.load();
         
         videoCld.addEventListener('ended', () => {
+            console.log('CLD init video ended');
             checkIfBothFinished();
         }, { once: true });
         
-        // Play both videos
+        // Play both videos with muted state for autoplay
+        console.log('Attempting to play CDD video (muted)...');
         const playCdd = videoCdd.play();
         if (playCdd && typeof playCdd.then === 'function') {
-            playCdd.catch(err => {
+            playCdd.then(() => {
+                console.log('CDD video playing (muted for autoplay)');
+            }).catch(err => {
                 console.error('CDD video play error:', err);
                 checkIfBothFinished();
             });
         }
         
+        console.log('Attempting to play CLD video (muted)...');
         const playCld = videoCld.play();
         if (playCld && typeof playCld.then === 'function') {
-            playCld.catch(err => {
+            playCld.then(() => {
+                console.log('CLD video playing (muted for autoplay)');
+            }).catch(err => {
                 console.error('CLD video play error:', err);
                 checkIfBothFinished();
             });
         }
+        
+        // Unmute on first user interaction (required by browser autoplay policy)
+        const unmuteOnInteraction = () => {
+            console.log('User interaction detected, unmuting init videos');
+            videoCdd.muted = false;
+            videoCld.muted = false;
+            document.removeEventListener('click', unmuteOnInteraction);
+            document.removeEventListener('touchstart', unmuteOnInteraction);
+            document.removeEventListener('keydown', unmuteOnInteraction);
+        };
+        
+        document.addEventListener('click', unmuteOnInteraction, { once: true });
+        document.addEventListener('touchstart', unmuteOnInteraction, { once: true });
+        document.addEventListener('keydown', unmuteOnInteraction, { once: true });
     }
 }
 
