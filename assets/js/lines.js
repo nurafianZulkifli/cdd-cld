@@ -8,7 +8,8 @@ class TransitDisplay {
         this.messages = {
             alert: [
                 { id: 1, title: 'Emergency Button', cddVideo: 'video/Msg_EmgButton_CDD.mp4', cldVideo: 'video/Msg_EmgButton_CLD.mp4', audio: 'announcements/emgButton.wav', cddLoop: true, cddLoop: false },
-                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', cddLoop: false, cddLoop: false }
+                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', cddLoop: false, cddLoop: false },
+                { id: 3, title: 'Train Stopped', cddVideo: 'video/Msg_TrainStopped_CDD.mp4', cldVideo: 'video/Msg_TrainStopped_CLD.mp4', audio: 'announcements/train-stopped-ann.wav', cddLoop: false, cddLoop: false }
             ],
             safety: [
                 { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements/pmtpg-ann.wav', cldLoop: false },
@@ -23,7 +24,7 @@ class TransitDisplay {
             //     { id: 2, title: 'System Update', cddVideo: 'video/Msg_SystemUpdate_CDD.mp4', cldVideo: 'video/Msg_SystemUpdate_CLD.mp4', audio: 'announcements/service-update-ann.wav', cddLoop: false, cddLoop: false }
             // ],
             info: [
-               { id: 1, title: 'Doors Open Both Sides', cldVideo: 'video/Msg_BothSidesCLD.mp4', audio: 'announcements/bothSides-ann.wav', cldLoop: false },
+                { id: 1, title: 'Doors Open Both Sides', cldVideo: 'video/Msg_BothSidesCLD.mp4', audio: 'announcements/bothSides-ann.wav', cldLoop: false },
             ]
         };
 
@@ -61,7 +62,7 @@ class TransitDisplay {
         if (window.pageController && window.pageController.isInitPlaying) {
             return;
         }
-        
+
         const button = event.currentTarget;
         const action = button.getAttribute('data-action');
 
@@ -420,13 +421,13 @@ class LineSelector {
         if (categoryBtns.length === 0) {
             // Initialize categories
             const categories = [{
-                    label: 'NSL to MSP',
-                    value: 'NSL-toMSP'
-                },
-                {
-                    label: 'NSL to JUR',
-                    value: 'NSL-toJUR'
-                },
+                label: 'NSL to MSP',
+                value: 'NSL-toMSP'
+            },
+            {
+                label: 'NSL to JUR',
+                value: 'NSL-toJUR'
+            },
             ];
 
             categories.forEach(cat => {
@@ -583,78 +584,78 @@ class LineSelector {
 
 // Initialize TransitDisplay and LineSelector when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-        // Wait for PageController to be initialized
-        const initTransitDisplay = setInterval(() => {
-            if (window.pageController) {
-                const transitDisplay = new TransitDisplay();
-                transitDisplay.lineSelector = new LineSelector(transitDisplay);
-                new TransitLinesSelector(transitDisplay);
-                window.transitDisplay = transitDisplay;
-                clearInterval(initTransitDisplay);
-            }
-        }, 100);
-    });
+    // Wait for PageController to be initialized
+    const initTransitDisplay = setInterval(() => {
+        if (window.pageController) {
+            const transitDisplay = new TransitDisplay();
+            transitDisplay.lineSelector = new LineSelector(transitDisplay);
+            new TransitLinesSelector(transitDisplay);
+            window.transitDisplay = transitDisplay;
+            clearInterval(initTransitDisplay);
+        }
+    }, 100);
+});
 
-    class TransitLinesSelector {
-        constructor(transitDisplay) {
-            this.transitDisplay = transitDisplay;
+class TransitLinesSelector {
+    constructor(transitDisplay) {
+        this.transitDisplay = transitDisplay;
 
-            // Define transit lines with redirect URLs
-            this.transitLines = [
-                { id: 1, name: 'North-South Line', code: 'NSL', url: 'index.html', icon: 'assets/caplets/NSLCap.png' },
-                // { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: 'assets/caplets/EWLCap.png' }
-            ];
+        // Define transit lines with redirect URLs
+        this.transitLines = [
+            { id: 1, name: 'North-South Line', code: 'NSL', url: 'index.html', icon: 'assets/caplets/NSLCap.png' },
+            // { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: 'assets/caplets/EWLCap.png' }
+        ];
 
-            this.setupLineButton();
+        this.setupLineButton();
+    }
+
+    setupLineButton() {
+        const stationBtn = document.querySelector('[data-action="station"]');
+        if (stationBtn) {
+            stationBtn.addEventListener('click', () => this.showTransitLines());
+        }
+    }
+
+    showTransitLines() {
+        // Prevent action while init videos are playing
+        if (window.pageController && window.pageController.isInitPlaying) {
+            return;
         }
 
-        setupLineButton() {
-            const stationBtn = document.querySelector('[data-action="station"]');
-            if (stationBtn) {
-                stationBtn.addEventListener('click', () => this.showTransitLines());
-            }
+        const modal = document.getElementById('transitLinesModal');
+        if (modal) {
+            this.displayTransitLines();
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
+    }
 
-        showTransitLines() {
-            // Prevent action while init videos are playing
-            if (window.pageController && window.pageController.isInitPlaying) {
-                return;
-            }
-            
-            const modal = document.getElementById('transitLinesModal');
-            if (modal) {
-                this.displayTransitLines();
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            }
-        }
+    displayTransitLines() {
+        const linesList = document.getElementById('transitLinesList');
+        linesList.innerHTML = '';
 
-        displayTransitLines() {
-            const linesList = document.getElementById('transitLinesList');
-            linesList.innerHTML = '';
-
-            this.transitLines.forEach(line => {
-                const lineBtn = document.createElement('button');
-                lineBtn.className = 'transit-line-item';
-                lineBtn.innerHTML = `
+        this.transitLines.forEach(line => {
+            const lineBtn = document.createElement('button');
+            lineBtn.className = 'transit-line-item';
+            lineBtn.innerHTML = `
                 <img src="${line.icon}" alt="${line.code}" class="transit-line-icon">
                 <div class="transit-line-info">
                     <div class="transit-line-code">${line.code}</div>
                     <div class="transit-line-name">${line.name}</div>
                 </div>
             `;
-                lineBtn.addEventListener('click', () => this.selectTransitLine(line));
-                linesList.appendChild(lineBtn);
-            });
-        }
-
-        selectTransitLine(line) {
-            window.pageController.closeAllModals();
-            window.pageController.showToast(`Navigating to ${line.name}...`);
-
-            // Redirect to the line's page
-            setTimeout(() => {
-                window.location.href = line.url;
-            }, 500);
-        }
+            lineBtn.addEventListener('click', () => this.selectTransitLine(line));
+            linesList.appendChild(lineBtn);
+        });
     }
+
+    selectTransitLine(line) {
+        window.pageController.closeAllModals();
+        window.pageController.showToast(`Navigating to ${line.name}...`);
+
+        // Redirect to the line's page
+        setTimeout(() => {
+            window.location.href = line.url;
+        }, 500);
+    }
+}
