@@ -350,6 +350,7 @@ class LineSelector {
                     { id: 8, line: 'NSL', direction: 'toMSP', title: 'Admiralty', cddVideo: 'video/toMSP/admiralty_cdd.mp4', cldVideo: 'video/toMSP/admiralty_cld.mp4', audio: 'announcements/admiralty-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 9, line: 'NSL', direction: 'toMSP', title: 'Sembawang', cddVideo: 'video/toMSP/sembawang_cdd.mp4', cldVideo: 'video/toMSP/sembawang_cld.mp4', audio: 'announcements/sembawang-ann.wav', cddLoop: true, cldLoop: false },
                     { id: 10, line: 'NSL', direction: 'toMSP', title: 'Canberra', cddVideo: 'video/toMSP/canberra_cdd.mp4', cldVideo: 'video/toMSP/canberra_cld.mp4', audio: 'announcements/canberra-ann.wav', cddLoop: true, cldLoop: false },
+                    { id: 11, line: 'NSL', direction: 'toMSP', title: 'Yishun', cddVideo: 'video/toMSP/yishun_cdd.mp4', cldVideo: 'video/toMSP/yishun_cld.mp4', audio: 'announcements/yishun-ann.wav', cddLoop: true, cldLoop: false },
                 ],
                 toJUR: [
                     { id: 1, line: 'NSL', direction: 'toJUR', title: 'Bukit Gombak', cddVideo: 'video/toJUR/bukit-gombak_cdd.mp4', cldVideo: 'video/toJUR/bukit-gombak_cld.mp4', audio: 'announcements/bukit-gombak-ann.wav', cddLoop: true, cldLoop: false },
