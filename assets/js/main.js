@@ -3,6 +3,10 @@
 class PageController {
     constructor() {
         this.isInitPlaying = true; // Flag to prevent button clicks during init
+        this.preloadQueue = [];
+        this.preloadedMedia = new Map();
+        this.maxPreloadedMedia = 6;
+        this.isPreloading = false;
         this.init();
     }
 
@@ -57,6 +61,64 @@ class PageController {
 
         // Setup mobile video fullscreen
         this.setupMobileVideoFullscreen();
+    }
+
+    preloadMedia(mediaItems) {
+        if (!Array.isArray(mediaItems) || this.shouldSkipPreloading()) return;
+
+        const urls = mediaItems.flatMap(item => {
+            if (typeof item === 'string') return [item];
+            return [item?.cddVideo, item?.cldVideo, item?.audio];
+        }).filter(Boolean);
+
+        urls.forEach(url => {
+            if (!this.preloadedMedia.has(url) && !this.preloadQueue.includes(url)) {
+                this.preloadQueue.push(url);
+            }
+        });
+
+        this.processPreloadQueue();
+    }
+
+    shouldSkipPreloading() {
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        return connection?.saveData || ['slow-2g', '2g'].includes(connection?.effectiveType);
+    }
+
+    processPreloadQueue() {
+        if (this.isPreloading || this.preloadQueue.length === 0 || this.shouldSkipPreloading()) return;
+
+        this.isPreloading = true;
+        const url = this.preloadQueue.shift();
+        const mediaType = url.endsWith('.wav') ? 'audio' : 'video';
+        const media = document.createElement(mediaType);
+
+        media.preload = 'auto';
+        media.muted = true;
+        media.src = url;
+        media.addEventListener('error', () => this.preloadedMedia.delete(url), { once: true });
+
+        while (this.preloadedMedia.size >= this.maxPreloadedMedia) {
+            const oldestUrl = this.preloadedMedia.keys().next().value;
+            const oldestMedia = this.preloadedMedia.get(oldestUrl);
+            oldestMedia.removeAttribute('src');
+            oldestMedia.load();
+            this.preloadedMedia.delete(oldestUrl);
+        }
+
+        this.preloadedMedia.set(url, media);
+        media.load();
+
+        const continuePreloading = () => {
+            this.isPreloading = false;
+            this.processPreloadQueue();
+        };
+        media.addEventListener('loadedmetadata', continuePreloading, { once: true });
+    }
+
+    scheduleMediaPreload(mediaItems) {
+        const schedule = window.requestIdleCallback || (callback => setTimeout(callback, 250));
+        schedule(() => this.preloadMedia(mediaItems));
     }
 
     setupMobileVideoFullscreen() {
@@ -179,6 +241,11 @@ class PageController {
         const source = audio.querySelector('source');
         if (source) {
             source.src = audioPath;
+        } else {
+            const newSource = document.createElement('source');
+            newSource.type = 'audio/wav';
+            newSource.src = audioPath;
+            audio.appendChild(newSource);
         }
         
         // Load and play
@@ -332,6 +399,10 @@ class PageController {
                 // Mark that user has seen the init videos
                 localStorage.setItem('cddCldInitViewed', 'true');
                 console.log('Init videos complete');
+                this.scheduleMediaPreload([
+                    window.transitDisplay?.lineSelector?.currentLines?.NSL?.toMSP?.[0],
+                    window.transitDisplay?.messages?.alert?.[0]
+                ]);
             }
         };
         

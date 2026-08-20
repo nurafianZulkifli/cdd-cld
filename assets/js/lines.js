@@ -235,6 +235,8 @@ class TransitDisplay {
         const messagesList = document.getElementById('messagesList');
         const categoryMessages = this.messages[category] || [];
 
+        window.pageController?.scheduleMediaPreload(categoryMessages.slice(0, 2));
+
         messagesList.innerHTML = '';
         categoryMessages.forEach(msg => {
             const msgBtn = document.createElement('button');
@@ -466,6 +468,7 @@ class LineSelector {
         // Handle Doors Closing tab with door closing videos
         if (category === 'doors-closing') {
             const doorVideos = [this.doorClosingVideos.toMSP, this.doorClosingVideos.toJUR];
+            window.pageController?.scheduleMediaPreload(doorVideos);
             doorVideos.forEach(video => {
                 const lineBtn = document.createElement('button');
                 lineBtn.className = 'line-item';
@@ -498,6 +501,8 @@ class LineSelector {
             });
             linesList.appendChild(lineBtn);
         });
+
+        window.pageController?.scheduleMediaPreload(stationsToDisplay.slice(0, 2));
     }
 
     selectLine(station) {
@@ -595,6 +600,9 @@ document.addEventListener('DOMContentLoaded', () => {
             transitDisplay.lineSelector = new LineSelector(transitDisplay);
             new TransitLinesSelector(transitDisplay);
             window.transitDisplay = transitDisplay;
+            window.pageController.scheduleMediaPreload([
+                transitDisplay.lineSelector.currentLines.NSL.toMSP[0]
+            ]);
             clearInterval(initTransitDisplay);
         }
     }, 100);
