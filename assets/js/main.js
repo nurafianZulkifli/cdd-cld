@@ -7,6 +7,7 @@ class PageController {
         this.preloadedMedia = new Map();
         this.maxPreloadedMedia = 6;
         this.isPreloading = false;
+        this.activeMedia = null;
         this.init();
     }
 
@@ -61,6 +62,9 @@ class PageController {
 
         // Setup mobile video fullscreen
         this.setupMobileVideoFullscreen();
+
+        const replayButton = document.querySelector('.replay-button');
+        replayButton?.addEventListener('click', () => this.replayActiveMedia());
     }
 
     preloadMedia(mediaItems) {
@@ -119,6 +123,47 @@ class PageController {
     scheduleMediaPreload(mediaItems) {
         const schedule = window.requestIdleCallback || (callback => setTimeout(callback, 250));
         schedule(() => this.preloadMedia(mediaItems));
+    }
+
+    setActiveMedia(media) {
+        this.activeMedia = media;
+    }
+
+    replayActiveMedia() {
+        if (this.isInitPlaying || !this.activeMedia) return;
+
+        const { cddVideo, cldVideo, audio, cddLoop, cldLoop } = this.activeMedia;
+        const videoContainer = document.querySelector('.video-container');
+        const stationDisplay = document.querySelector('.station-display');
+        const cddElement = videoContainer?.querySelector('.station-video-temp');
+        const cldElement = stationDisplay?.querySelector('.station-video-cld');
+
+        this.stopAllVideos();
+
+        if (cddElement && cddVideo) {
+            cddElement.querySelector('source').src = cddVideo;
+            cddElement.style.display = 'block';
+            cddElement.loop = cddLoop;
+            cddElement.load();
+            cddElement.muted = false;
+            cddElement.play().catch(err => {
+                if (err.name !== 'AbortError') console.log('CDD replay error:', err);
+            });
+        }
+
+        if (cldElement && cldVideo) {
+            cldElement.querySelector('source').src = cldVideo;
+            cldElement.style.display = 'block';
+            cldElement.loop = cldLoop;
+            cldElement.load();
+            cldElement.muted = false;
+            cldElement.play().catch(err => {
+                if (err.name !== 'AbortError') console.log('CLD replay error:', err);
+            });
+        }
+
+        if (audio) this.playAudio(audio);
+        this.showToast('Replaying current media');
     }
 
     setupMobileVideoFullscreen() {
@@ -326,6 +371,9 @@ class PageController {
         buttons.forEach(btn => {
             btn.disabled = disabled;
         });
+
+        const replayButton = document.querySelector('.replay-button');
+        if (replayButton) replayButton.disabled = disabled;
     }
 
     playInitVideos() {

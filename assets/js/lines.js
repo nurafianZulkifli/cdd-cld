@@ -87,6 +87,13 @@ class TransitDisplay {
 
     toggleDoors() {
         window.pageController.stopAllVideos();
+        window.pageController.setActiveMedia({
+            cddVideo: 'video/DC-CDD.mp4',
+            cldVideo: 'video/DC-CLD.mp4',
+            audio: 'announcements/dc-ann.wav',
+            cddLoop: false,
+            cldLoop: false
+        });
 
         const videoContainer = document.querySelector('.video-container');
         let video = videoContainer.querySelector('.station-video-temp');
@@ -166,6 +173,13 @@ class TransitDisplay {
         window.pageController.closeAllModals();
 
         window.pageController.stopAllVideos();
+        window.pageController.setActiveMedia({
+            cddVideo: station.cddVideo,
+            cldVideo: station.cldVideo,
+            audio: station.audio,
+            cddLoop: station.cddLoop !== undefined ? station.cddLoop : true,
+            cldLoop: station.cldLoop !== undefined ? station.cldLoop : true
+        });
 
         const videoContainer = document.querySelector('.video-container');
         let video = videoContainer.querySelector('.station-video-temp');
@@ -251,6 +265,13 @@ class TransitDisplay {
         window.pageController.closeAllModals();
 
         window.pageController.stopAllVideos();
+        window.pageController.setActiveMedia({
+            cddVideo: message.cddVideo,
+            cldVideo: message.cldVideo,
+            audio: message.audio,
+            cddLoop: message.cddLoop !== undefined ? message.cddLoop : false,
+            cldLoop: message.cldLoop !== undefined ? message.cldLoop : false
+        });
 
         const videoContainer = document.querySelector('.video-container');
         let video = videoContainer.querySelector('.station-video-temp');
@@ -461,6 +482,13 @@ class LineSelector {
 
         // Stop all existing videos first
         window.pageController.stopAllVideos();
+        window.pageController.setActiveMedia({
+            cddVideo: station.cddVideo,
+            cldVideo: station.cldVideo,
+            audio: station.audio,
+            cddLoop: station.cddLoop !== undefined ? station.cddLoop : true,
+            cldLoop: station.cldLoop !== undefined ? station.cldLoop : true
+        });
 
         const videoContainer = document.querySelector('.video-container');
         let video = videoContainer.querySelector('.station-video-temp');
@@ -503,6 +531,13 @@ class LineSelector {
 
         // Stop all existing videos first
         window.pageController.stopAllVideos();
+        window.pageController.setActiveMedia({
+            cddVideo: video.cddVideo,
+            cldVideo: video.cldVideo,
+            audio: video.audio,
+            cddLoop: video.cddLoop !== undefined ? video.cddLoop : false,
+            cldLoop: video.cldLoop !== undefined ? video.cldLoop : false
+        });
 
         const videoContainer = document.querySelector('.video-container');
         let videoElement = videoContainer.querySelector('.station-video-temp');
