@@ -17,7 +17,8 @@
         { "id": 13, "line": "NSL", "direction": "toMSP", "title": "Yio Chu Kang", "cddVideo": "video/toMSP/yio-chu-kang_cdd_arr.mp4", "cldVideo": "video/toMSP/yio-chu-kang_cld_arr.mp4", "audio": "announcements/yio-chu-kang-arr-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 14, "line": "NSL", "direction": "toMSP", "title": "Ang Mo Kio", "cddVideo": "video/toMSP/ang-mo-kio_cdd_arr.mp4", "cldVideo": "video/toMSP/ang-mo-kio_cld_arr.mp4", "audio": "announcements/ang-mo-kio-arr-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 15, "line": "NSL", "direction": "toMSP", "title": "Bishan", "cddVideo": "video/toMSP/bishan_cdd_arr.mp4", "cldVideo": "video/toMSP/bishan_cld_arr.mp4", "audio": "announcements/bishan-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 16, "line": "NSL", "direction": "toMSP", "title": "Braddell", "cddVideo": "video/toMSP/braddell_cdd_arr.mp4", "cldVideo": "video/toMSP/braddell_cld_arr.mp4", "audio": "announcements/braddell-arr-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 16, "line": "NSL", "direction": "toMSP", "title": "Braddell", "cddVideo": "video/toMSP/braddell_cdd_arr.mp4", "cldVideo": "video/toMSP/braddell_cld_arr.mp4", "audio": "announcements/braddell-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 23, "line": "NSL", "direction": "toMSP", "title": "City Hall", "cddVideo": "video/toMSP/city-hall_cdd_arr.mp4", "cldVideo": "video/toMSP/city-hall_cld_arr.mp4", "audio": "announcements/city-hall_toMSP_arr-ann.wav", "cddLoop": true, "cldLoop": false }
     ],
       "toJUR": [
         { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Bukit Gombak", "cddVideo": "video/toJUR/bukit-gombak_cdd_arr.mp4", "cldVideo": "video/toJUR/bukit-gombak_cld_arr.mp4", "audio": "announcements/bukit-gombak-arr-ann.wav", "cddLoop": true, "cldLoop": false },
@@ -45,7 +46,8 @@
         { "id": 13, "line": "NSL", "direction": "toMSP", "title": "Yio Chu Kang", "cddVideo": "video/toMSP/yio-chu-kang_cdd.mp4", "cldVideo": "video/toMSP/yio-chu-kang_cld.mp4", "audio": "announcements/yio-chu-kang-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 14, "line": "NSL", "direction": "toMSP", "title": "Ang Mo Kio", "cddVideo": "video/toMSP/ang-mo-kio_cdd.mp4", "cldVideo": "video/toMSP/ang-mo-kio_cld.mp4", "audio": "announcements/ang-mo-kio-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 15, "line": "NSL", "direction": "toMSP", "title": "Bishan", "cddVideo": "video/toMSP/bishan_cdd.mp4", "cldVideo": "video/toMSP/bishan_cld.mp4", "audio": "announcements/bishan-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 16, "line": "NSL", "direction": "toMSP", "title": "Braddell", "cddVideo": "video/toMSP/braddell_cdd.mp4", "cldVideo": "video/toMSP/braddell_cld.mp4", "audio": "announcements/braddell-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 16, "line": "NSL", "direction": "toMSP", "title": "Braddell", "cddVideo": "video/toMSP/braddell_cdd.mp4", "cldVideo": "video/toMSP/braddell_cld.mp4", "audio": "announcements/braddell-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 23, "line": "NSL", "direction": "toMSP", "title": "City Hall", "cddVideo": "video/toMSP/city-hall_cdd.mp4", "cldVideo": "video/toMSP/city-hall_cld.mp4", "audio": "announcements/city-hall-ann.wav", "cddLoop": true, "cldLoop": false }
       ],
       "toJUR": [
         { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Bukit Gombak", "cddVideo": "video/toJUR/bukit-gombak_cdd.mp4", "cldVideo": "video/toJUR/bukit-gombak_cld.mp4", "audio": "announcements/bukit-gombak-ann.wav", "cddLoop": true, "cldLoop": false },
