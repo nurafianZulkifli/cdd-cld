@@ -21,9 +21,7 @@
         { "id": 17, "line": "NSL", "direction": "toMSP", "title": "Toa Payoh", "cddVideo": "video/toMSP/toa-payoh_cdd_arr.mp4", "cldVideo": "video/toMSP/toa-payoh_cld_arr.mp4", "audio": "announcements/toa-payoh-arr-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 18, "line": "NSL", "direction": "toMSP", "title": "Novena", "cddVideo": "video/toMSP/novena_cdd_arr.mp4", "cldVideo": "video/toMSP/novena_cld_arr.mp4", "audio": "announcements/novena-arr-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 19, "line": "NSL", "direction": "toMSP", "title": "Newton", "cddVideo": "video/toMSP/newton_cdd_arr.mp4", "cldVideo": "video/toMSP/newton_cld_arr.mp4", "audio": "announcements/newton-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 20, "line": "NSL", "direction": "toMSP", "title": "Orchard", "cddVideo": "video/toMSP/orchard_cdd_arr.mp4", "cldVideo": "video/toMSP/orchard_cld_arr.mp4", "audio": "announcements/orchard-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 21, "line": "NSL", "direction": "toMSP", "title": "Somerset", "cddVideo": "", "cldVideo": "", "audio": "announcements/somerset-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 22, "line": "NSL", "direction": "toMSP", "title": "Dhoby Ghaut", "cddVideo": "", "cldVideo": "", "audio": "announcements/dhoby-ghaut-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+       
         { "id": 23, "line": "NSL", "direction": "toMSP", "title": "City Hall", "cddVideo": "video/toMSP/city-hall_cdd_arr.mp4", "cldVideo": "video/toMSP/city-hall_cld_arr.mp4", "audio": "announcements/city-hall_toMSP_arr-ann.wav", "cddLoop": true, "cldLoop": false }
     ],
       "toJUR": [
@@ -56,9 +54,7 @@
         { "id": 17, "line": "NSL", "direction": "toMSP", "title": "Toa Payoh", "cddVideo": "video/toMSP/toa-payoh_cdd.mp4", "cldVideo": "video/toMSP/toa-payoh_cld.mp4", "audio": "announcements/toa-payoh-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 18, "line": "NSL", "direction": "toMSP", "title": "Novena", "cddVideo": "video/toMSP/novena_cdd.mp4", "cldVideo": "video/toMSP/novena_cld.mp4", "audio": "announcements/novena-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 19, "line": "NSL", "direction": "toMSP", "title": "Newton", "cddVideo": "video/toMSP/newton_cdd.mp4", "cldVideo": "video/toMSP/newton_cld.mp4", "audio": "announcements/newton-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 20, "line": "NSL", "direction": "toMSP", "title": "Orchard", "cddVideo": "", "cldVideo": "", "audio": "", "cddLoop": true, "cldLoop": false },
-        { "id": 21, "line": "NSL", "direction": "toMSP", "title": "Somerset", "cddVideo": "", "cldVideo": "", "audio": "", "cddLoop": true, "cldLoop": false },
-        { "id": 22, "line": "NSL", "direction": "toMSP", "title": "Dhoby Ghaut", "cddVideo": "", "cldVideo": "", "audio": "", "cddLoop": true, "cldLoop": false },
+       
         { "id": 23, "line": "NSL", "direction": "toMSP", "title": "City Hall", "cddVideo": "video/toMSP/city-hall_cdd.mp4", "cldVideo": "video/toMSP/city-hall_cld.mp4", "audio": "announcements/city-hall-ann.wav", "cddLoop": true, "cldLoop": false }
       ],
       "toJUR": [
