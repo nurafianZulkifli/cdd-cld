@@ -47,20 +47,26 @@
         </main>
 
         <!-- Control Buttons -->
-        <footer class="control-panel">
-            <button class="control-button messages-btn" data-action="messages">
-                <span class="btn-icon"><i class="fa-solid fa-message"></i></span>
-                <span class="btn-text">Messages</span>
+        <div class="control-panel-wrap">
+            <button class="control-toggle" type="button" aria-expanded="true" aria-controls="controlPanel" title="Collapse controls">
+                <span class="control-toggle-label">Controls</span>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
             </button>
-            <button class="control-button line-btn" data-action="line">
-                <span class="btn-icon"><i class="fa-solid fa-location-dot"></i></span>
-                <span class="btn-text">Stations</span>
-            </button>
+            <footer class="control-panel" id="controlPanel">
+                <button class="control-button messages-btn" data-action="messages">
+                    <span class="btn-icon"><i class="fa-solid fa-message"></i></span>
+                    <span class="btn-text">Messages</span>
+                </button>
+                <button class="control-button line-btn" data-action="line">
+                    <span class="btn-icon"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="btn-text">Stations</span>
+                </button>
                 <button class="control-button station-btn" data-action="station">
                     <span class="btn-icon"><i class="fa-kit fa-lta-train"></i></span>
                     <span class="btn-text">Lines</span>
                 </button>
-        </footer>
+            </footer>
+        </div>
 
         <!-- Modal for Messages -->
         <div id="messagesModal" class="modal hidden">

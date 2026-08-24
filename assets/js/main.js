@@ -22,6 +22,8 @@ class PageController {
         // Disable right-click context menu
         document.addEventListener('contextmenu', (e) => e.preventDefault());
 
+        this.setupControlPanelToggle();
+
         // Modal close buttons
         const modalCloseButtons = document.querySelectorAll('.modal-close');
         modalCloseButtons.forEach(btn => {
@@ -65,6 +67,29 @@ class PageController {
 
         const replayButton = document.querySelector('.replay-button');
         replayButton?.addEventListener('click', () => this.replayActiveMedia());
+    }
+
+    setupControlPanelToggle() {
+        const controlPanelWrap = document.querySelector('.control-panel-wrap');
+        const toggle = controlPanelWrap?.querySelector('.control-toggle');
+        if (!controlPanelWrap || !toggle) return;
+
+        const storageKey = 'cddCldControlsCollapsed';
+        let isCollapsed = localStorage.getItem(storageKey) === 'true';
+
+        const applyState = () => {
+            controlPanelWrap.classList.toggle('is-collapsed', isCollapsed);
+            toggle.setAttribute('aria-expanded', String(!isCollapsed));
+            toggle.title = `${isCollapsed ? 'Expand' : 'Collapse'} controls`;
+        };
+
+        toggle.addEventListener('click', () => {
+            isCollapsed = !isCollapsed;
+            localStorage.setItem(storageKey, String(isCollapsed));
+            applyState();
+        });
+
+        applyState();
     }
 
     preloadMedia(mediaItems) {
