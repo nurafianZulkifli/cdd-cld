@@ -29,6 +29,8 @@ class TransitDisplay {
         };
 
         this.currentCategory = 'alert';
+        this.selectedMessage = null;
+        this.selectedDoorClosing = null;
         this.init();
     }
 
@@ -154,7 +156,9 @@ class TransitDisplay {
         const linesData = this.currentStationCategory === 'current' ?
             this.lineSelector.currentLines :
             this.lineSelector.nextLines;
-        const stationsToDisplay = linesData.NSL.toMSP;
+        const lineCode = this.lineSelector.currentLineCode || Object.keys(linesData)[0];
+        const direction = this.lineSelector.currentDirection || Object.keys(linesData[lineCode] || {})[0];
+        const stationsToDisplay = linesData[lineCode]?.[direction] || [];
 
         stationsToDisplay.forEach(station => {
             const stationBtn = document.createElement('button');
@@ -255,6 +259,8 @@ class TransitDisplay {
         categoryMessages.forEach(msg => {
             const msgBtn = document.createElement('button');
             msgBtn.className = 'message-item';
+            msgBtn.setAttribute('aria-pressed', String(this.selectedMessage === msg));
+            if (this.selectedMessage === msg) msgBtn.classList.add('active');
             msgBtn.innerHTML = `<span>${msg.title}</span>`;
             msgBtn.addEventListener('click', () => this.playMessage(msg));
             messagesList.appendChild(msgBtn);
@@ -262,6 +268,10 @@ class TransitDisplay {
     }
 
     playMessage(message) {
+        this.selectedMessage = message;
+        this.selectedMessage = message;
+        this.selectedDoorClosing = null;
+        if (this.lineSelector) this.lineSelector.selectedLine = null;
         window.pageController.closeAllModals();
 
         window.pageController.stopAllVideos();
@@ -321,7 +331,7 @@ class TransitDisplay {
     initializeStation() {
         // Initialize current station from LineSelector
         if (this.lineSelector) {
-            this.currentStation = this.lineSelector.currentLines.NSL.toMSP[0];
+            this.currentStation = this.lineSelector.currentLine;
         }
         if (this.currentStation) {
             console.log(`Transit Display initialized for ${this.currentStation.title}`);
@@ -334,12 +344,16 @@ class LineSelector {
         this.transitDisplay = transitDisplay;
         this.currentLine = null;
         this.currentLineTab = 'current';
+        this.selectedLineTab = 'current';
+        this.selectedLine = null;
 
         this.currentLines = lineData.currentLines;
         this.nextLines = lineData.nextLines;
         this.doorClosingVideos = lineData.doorClosingVideos;
 
-        this.currentLine = this.currentLines.NSL.toMSP[0];
+        this.currentLineCode = Object.keys(this.currentLines)[0];
+        this.currentDirection = Object.keys(this.currentLines[this.currentLineCode] || {})[0];
+        this.currentLine = this.currentLines[this.currentLineCode]?.[this.currentDirection]?.[0];
         this.setupLineButton();
     }
 
@@ -394,31 +408,33 @@ class LineSelector {
             return;
         }
 
-        const categoryBtns = categoriesContainer.querySelectorAll('.line-category-btn');
-        if (categoryBtns.length === 0) {
-            // Initialize categories
-            const categories = [{
-                label: 'NSL to MSP',
-                value: 'NSL-toMSP'
-            },
-            {
-                label: 'NSL to JUR',
-                value: 'NSL-toJUR'
-            },
-            ];
+        const linesData = this.currentLineTab === 'current' ? this.currentLines : this.nextLines;
+        const categories = Object.entries(linesData).flatMap(([lineCode, directions]) =>
+            Object.keys(directions).map(direction => ({
+                label: `${lineCode} ${this.formatDirection(direction)}`,
+                value: `${lineCode}-${direction}`
+            }))
+        );
 
-            categories.forEach(cat => {
-                const btn = document.createElement('button');
-                btn.className = 'line-category-btn';
-                btn.setAttribute('data-category', cat.value);
-                btn.textContent = cat.label;
-                if (cat.value === 'NSL-toMSP') btn.classList.add('active');
-                btn.addEventListener('click', () => this.switchLineCategory(cat.value));
-                categoriesContainer.appendChild(btn);
-            });
-        }
+        categoriesContainer.innerHTML = '';
+        categories.forEach(category => {
+            const btn = document.createElement('button');
+            btn.className = 'line-category-btn';
+            btn.setAttribute('data-category', category.value);
+            btn.textContent = category.label;
+            btn.addEventListener('click', () => this.switchLineCategory(category.value));
+            categoriesContainer.appendChild(btn);
+        });
 
-        this.switchLineCategory('NSL-toMSP');
+        const selectedCategory = categories.some(category => category.value === this.currentLineCategory)
+            ? this.currentLineCategory
+            : categories[0]?.value;
+        if (selectedCategory) this.switchLineCategory(selectedCategory);
+    }
+
+    formatDirection(direction) {
+        const directionMatch = direction.match(/^to([A-Z].*)$/);
+        return directionMatch ? `to ${directionMatch[1]}` : direction;
     }
 
     switchLineCategory(category) {
@@ -443,6 +459,8 @@ class LineSelector {
             doorVideos.forEach(video => {
                 const lineBtn = document.createElement('button');
                 lineBtn.className = 'line-item';
+                lineBtn.setAttribute('aria-pressed', String(this.isSelectedDoorClosing(video)));
+                if (this.isSelectedDoorClosing(video)) lineBtn.classList.add('active');
                 lineBtn.innerHTML = `<span>${video.title}</span>`;
                 lineBtn.addEventListener('click', () => {
                     this.playDoorClosing(video);
@@ -455,17 +473,19 @@ class LineSelector {
         // Select data based on current tab
         const linesData = this.currentLineTab === 'current' ? this.currentLines : this.nextLines;
 
-        let stationsToDisplay = [];
-
-        if (category === 'NSL-toMSP') {
-            stationsToDisplay = linesData.NSL.toMSP;
-        } else if (category === 'NSL-toJUR') {
-            stationsToDisplay = linesData.NSL.toJUR;
-        }
+        const separatorIndex = category.indexOf('-');
+        const lineCode = category.slice(0, separatorIndex);
+        const direction = category.slice(separatorIndex + 1);
+        const stationsToDisplay = linesData[lineCode]?.[direction] || [];
+        this.currentLineCode = lineCode;
+        this.currentDirection = direction;
+        this.currentLineCategory = category;
 
         stationsToDisplay.forEach(station => {
             const lineBtn = document.createElement('button');
             lineBtn.className = 'line-item';
+            lineBtn.setAttribute('aria-pressed', String(this.isSelectedStation(station)));
+            if (this.isSelectedStation(station)) lineBtn.classList.add('active');
             lineBtn.innerHTML = `<span>${station.title}</span>`;
             lineBtn.addEventListener('click', () => {
                 this.selectLine(station);
@@ -476,8 +496,23 @@ class LineSelector {
         window.pageController?.scheduleMediaPreload(stationsToDisplay.slice(0, 2));
     }
 
+    isSelectedStation(station) {
+        return this.selectedLineTab === this.currentLineTab &&
+            this.selectedLine?.line === station.line &&
+            this.selectedLine?.direction === station.direction &&
+            this.selectedLine?.id === station.id;
+    }
+
+    isSelectedDoorClosing(video) {
+        return this.selectedDoorClosing?.id === video.id;
+    }
+
     selectLine(station) {
         this.currentLine = station;
+        this.selectedLine = station;
+        this.selectedLineTab = this.currentLineTab;
+        this.transitDisplay.selectedMessage = null;
+        this.transitDisplay.selectedDoorClosing = null;
         window.pageController.closeAllModals();
 
         // Stop all existing videos first
@@ -527,6 +562,9 @@ class LineSelector {
     }
 
     playDoorClosing(video) {
+        this.selectedDoorClosing = video;
+        this.transitDisplay.selectedMessage = null;
+        this.transitDisplay.lineSelector.selectedLine = null;
         window.pageController.closeAllModals();
 
         // Stop all existing videos first
@@ -590,10 +628,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (window.pageController) {
                 const transitDisplay = new TransitDisplay();
                 transitDisplay.lineSelector = new LineSelector(transitDisplay, lineData);
-                new TransitLinesSelector(transitDisplay);
+                new TransitLinesSelector(transitDisplay, lineData);
                 window.transitDisplay = transitDisplay;
                 window.pageController.scheduleMediaPreload([
-                    transitDisplay.lineSelector.currentLines.NSL.toMSP[0]
+                    transitDisplay.lineSelector.currentLine
                 ]);
                 clearInterval(initTransitDisplay);
             }
@@ -604,16 +642,31 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 class TransitLinesSelector {
-    constructor(transitDisplay) {
+    constructor(transitDisplay, lineData) {
         this.transitDisplay = transitDisplay;
+        this.selectedLineCode = null;
 
-        // Define transit lines with redirect URLs
-        this.transitLines = [
-            { id: 1, name: 'North-South Line', code: 'NSL', url: 'index.html', icon: 'assets/caplets/NSLCap.png' },
-            // { id: 2, name: 'East-West Line', code: 'EWL', url: 'ewl.html', icon: 'assets/caplets/EWLCap.png' }
-        ];
+        const lineCodes = Object.keys(lineData.currentLines || {});
+        this.transitLines = lineCodes.map((code, index) => ({
+            id: index + 1,
+            name: this.getLineName(code),
+            code,
+            url: code === 'NSL' ? 'index.html' : `${code.toLowerCase()}.html`,
+            icon: `assets/caplets/${code}Cap.png`
+        }));
 
         this.setupLineButton();
+    }
+
+    getLineName(code) {
+        const lineNames = {
+            NSL: 'North-South Line',
+            EWL: 'East-West Line',
+            CCL: 'Circle Line',
+            DTL: 'Downtown Line',
+            TEL: 'Thomson-East Coast Line'
+        };
+        return lineNames[code] || `${code} Line`;
     }
 
     setupLineButton() {
@@ -644,6 +697,8 @@ class TransitLinesSelector {
         this.transitLines.forEach(line => {
             const lineBtn = document.createElement('button');
             lineBtn.className = 'transit-line-item';
+            lineBtn.setAttribute('aria-pressed', String(this.selectedLineCode === line.code));
+            if (this.selectedLineCode === line.code) lineBtn.classList.add('active');
             lineBtn.innerHTML = `
                 <img src="${line.icon}" alt="${line.code}" class="transit-line-icon">
                 <div class="transit-line-info">
@@ -657,6 +712,7 @@ class TransitLinesSelector {
     }
 
     selectTransitLine(line) {
+        this.selectedLineCode = line.code;
         window.pageController.closeAllModals();
         window.pageController.showToast(`Navigating to ${line.name}...`);
 
