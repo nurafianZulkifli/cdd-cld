@@ -28,7 +28,12 @@
         { "id": 24, "line": "NSL", "direction": "toMSP", "title": "Raffles Place", "cddVideo": "video/toMSP/raffles-place_cdd_arr.mp4", "cldVideo":"video/toMSP/raffles-place_cld_arr.mp4", "audio":"announcements/raffles-place_toMSP_arr-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 25, "line": "NSL", "direction": "toMSP", "title": "Marina Bay", "cddVideo": "video/toMSP/marina-bay_cdd_arr.mp4", "cldVideo":"video/toMSP/marina-bay_cld_arr.mp4", "audio":"announcements/marina-bay-arr-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 26, "line": "NSL", "direction": "toMSP", "title": "Marina South Pier", "cddVideo": "video/toMSP/marina-south-pier_cdd_arr.mp4", "cldVideo":"video/toMSP/marina-south-pier_cld_arr.mp4", "audio":"announcements/marina-south-pier-arr-ann.wav", "cddLoop": true, "cldLoop": false }
-    ]
+    ],
+      "toJUR": [
+        { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Bukit Gombak", "cddVideo": "video/toJUR/bukit-gombak_cdd_arr.mp4", "cldVideo": "video/toJUR/bukit-gombak_cld_arr.mp4", "audio": "announcements/bukit-gombak-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "NSL", "direction": "toJUR", "title": "Bukit Batok", "cddVideo": "video/toJUR/bukit-batok_cdd_arr.mp4", "cldVideo": "video/toJUR/bukit-batok_cld_arr.mp4", "audio": "announcements/bukit-batok-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 3, "line": "NSL", "direction": "toJUR", "title": "Jurong East [D]", "cddVideo": "video/toJUR/jurD_cdd_arr.mp4", "cldVideo": "video/toJUR/jurD_cld_arr.mp4", "audio": "announcements/jurD-arr-ann.wav", "cddLoop": true, "cldLoop": false }
+      ]
     }
 
 
@@ -62,13 +67,18 @@
         { "id": 24, "line": "NSL", "direction": "toMSP", "title": "Raffles Place", "cddVideo": "video/toMSP/raffles-place_cdd.mp4", "cldVideo": "video/toMSP/raffles-place_cld.mp4", "audio": "announcements/raffles-place-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 25, "line": "NSL", "direction": "toMSP", "title": "Marina Bay", "cddVideo": "video/toMSP/marina-bay_cdd.mp4", "cldVideo": "video/toMSP/marina-bay_cld.mp4", "audio": "announcements/marina-bay-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 26, "line": "NSL", "direction": "toMSP", "title": "Marina South Pier", "cddVideo": "video/toMSP/marina-south-pier_cdd.mp4", "cldVideo": "video/toMSP/marina-south-pier_cld.mp4", "audio": "announcements/marina-south-pier-ann.wav", "cddLoop": true, "cldLoop": false }
+      ],
+      "toJUR": [
+        { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Bukit Gombak", "cddVideo": "video/toJUR/bukit-gombak_cdd.mp4", "cldVideo": "video/toJUR/bukit-gombak_cld.mp4", "audio": "announcements/bukit-gombak-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "NSL", "direction": "toJUR", "title": "Bukit Batok", "cddVideo": "video/toJUR/bukit-batok_cdd.mp4", "cldVideo": "video/toJUR/bukit-batok_cld.mp4", "audio": "announcements/bukit-batok-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 3, "line": "NSL", "direction": "toJUR", "title": "Jurong East [D]", "cddVideo": "video/toJUR/jurD_cdd.mp4", "cldVideo": "video/toJUR/jurD_cld.mp4", "audio": "announcements/jurD-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
-
     }
 
 
   },
   "doorClosingVideos": {
-    "toMSP": { "id": 1, "title": "Doors Closing - to MSP", "cddVideo": "video/toMSP/DC-CDD.mp4", "cldVideo": "video/toMSP/DC-CLD.mp4", "audio": "announcements/dc-ann.wav", "cddLoop": false, "cldLoop": false }
+    "toMSP": { "id": 1, "title": "Doors Closing - to MSP", "cddVideo": "video/toMSP/DC-CDD.mp4", "cldVideo": "video/toMSP/DC-CLD.mp4", "audio": "announcements/dc-ann.wav", "cddLoop": false, "cldLoop": false },
+    "toJUR": { "id": 2, "title": "Doors Closing - to JUR", "cddVideo": "video/toJUR/DC-CDD.mp4", "cldVideo": "video/toJUR/DC-CLD.mp4", "audio": "announcements/dc-ann.wav", "cddLoop": false, "cldLoop": false }
   }
 }
