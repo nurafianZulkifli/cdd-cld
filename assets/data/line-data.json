@@ -30,9 +30,11 @@
         { "id": 26, "line": "NSL", "direction": "toMSP", "title": "Marina South Pier", "cddVideo": "video/toMSP/marina-south-pier_cdd_arr.mp4", "cldVideo":"video/toMSP/marina-south-pier_cld_arr.mp4", "audio":"announcements/marina-south-pier-arr-ann.wav", "cddLoop": true, "cldLoop": false }
     ],
       "toJUR": [
-        { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Bukit Gombak", "cddVideo": "video/toJUR/bukit-gombak_cdd_arr.mp4", "cldVideo": "video/toJUR/bukit-gombak_cld_arr.mp4", "audio": "announcements/bukit-gombak-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 2, "line": "NSL", "direction": "toJUR", "title": "Bukit Batok", "cddVideo": "video/toJUR/bukit-batok_cdd_arr.mp4", "cldVideo": "video/toJUR/bukit-batok_cld_arr.mp4", "audio": "announcements/bukit-batok-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 3, "line": "NSL", "direction": "toJUR", "title": "Jurong East [D]", "cddVideo": "video/toJUR/jurD_cdd_arr.mp4", "cldVideo": "video/toJUR/jurD_cld_arr.mp4", "audio": "announcements/jurD-arr-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Yew Tee", "cddVideo": "video/toJUR/yew-tee_cdd_arr.mp4", "cldVideo": "video/toJUR/yew-tee_cld_arr.mp4", "audio": "announcements/yew-tee-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Choa Chu Kang", "cddVideo": "video/toJUR/cck_cdd_arr.mp4", "cldVideo": "video/toJUR/cck_cld_arr.mp4", "audio": "announcements/cck-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "NSL", "direction": "toJUR", "title": "Bukit Gombak", "cddVideo": "video/toJUR/bukit-gombak_cdd_arr.mp4", "cldVideo": "video/toJUR/bukit-gombak_cld_arr.mp4", "audio": "announcements/bukit-gombak-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 3, "line": "NSL", "direction": "toJUR", "title": "Bukit Batok", "cddVideo": "video/toJUR/bukit-batok_cdd_arr.mp4", "cldVideo": "video/toJUR/bukit-batok_cld_arr.mp4", "audio": "announcements/bukit-batok-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 4, "line": "NSL", "direction": "toJUR", "title": "Jurong East [D]", "cddVideo": "video/toJUR/jurD_cdd_arr.mp4", "cldVideo": "video/toJUR/jurD_cld_arr.mp4", "audio": "announcements/jurD-arr-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
     }
 
@@ -69,9 +71,11 @@
         { "id": 26, "line": "NSL", "direction": "toMSP", "title": "Marina South Pier", "cddVideo": "video/toMSP/marina-south-pier_cdd.mp4", "cldVideo": "video/toMSP/marina-south-pier_cld.mp4", "audio": "announcements/marina-south-pier-ann.wav", "cddLoop": true, "cldLoop": false }
       ],
       "toJUR": [
-        { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Bukit Gombak", "cddVideo": "video/toJUR/bukit-gombak_cdd.mp4", "cldVideo": "video/toJUR/bukit-gombak_cld.mp4", "audio": "announcements/bukit-gombak-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 2, "line": "NSL", "direction": "toJUR", "title": "Bukit Batok", "cddVideo": "video/toJUR/bukit-batok_cdd.mp4", "cldVideo": "video/toJUR/bukit-batok_cld.mp4", "audio": "announcements/bukit-batok-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 3, "line": "NSL", "direction": "toJUR", "title": "Jurong East [D]", "cddVideo": "video/toJUR/jurD_cdd.mp4", "cldVideo": "video/toJUR/jurD_cld.mp4", "audio": "announcements/jurD-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 1, "line": "NSL", "direction": "toJUR", "title": "Yew Tee", "cddVideo": "video/toJUR/yew-tee_cdd.mp4", "cldVideo": "video/toJUR/yew-tee_cld.mp4", "audio": "announcements/yew-tee-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "NSL", "direction": "toJUR", "title": "Choa Chu Kang", "cddVideo": "video/toJUR/cck_cdd.mp4", "cldVideo": "video/toJUR/cck_cld.mp4", "audio": "announcements/cck-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 3, "line": "NSL", "direction": "toJUR", "title": "Bukit Gombak", "cddVideo": "video/toJUR/bukit-gombak_cdd.mp4", "cldVideo": "video/toJUR/bukit-gombak_cld.mp4", "audio": "announcements/bukit-gombak-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 4, "line": "NSL", "direction": "toJUR", "title": "Bukit Batok", "cddVideo": "video/toJUR/bukit-batok_cdd.mp4", "cldVideo": "video/toJUR/bukit-batok_cld.mp4", "audio": "announcements/bukit-batok-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 5, "line": "NSL", "direction": "toJUR", "title": "Jurong East [D]", "cddVideo": "video/toJUR/jurD_cdd.mp4", "cldVideo":"video/toJUR/jurD_cld.mp4", "audio":"announcements/jurD-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
     }
 
