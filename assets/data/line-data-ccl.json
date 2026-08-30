@@ -3,8 +3,9 @@
   "currentLines": {
     "CCL":{
       "Clockwise" : [
-        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd_arr.mp4", "cldVideo": "video/clockwise/labrador-park_cld_arr.mp4", "audio": "announcements-ccl/lbd-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 2, "line": "CCL", "direction": "Clockwise", "title": "Pasir Panjang", "cddVideo": "video/clockwise/pasir-panjang_cdd_arr.mp4", "cldVideo": "video/clockwise/pasir-panjang_cld_arr.mp4", "audio": "announcements-ccl/ppj-arr-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Telok Blangah", "cddVideo": "video/clockwise/telok-blangah_cdd_arr.mp4", "cldVideo": "video/clockwise/telok-blangah_cld_arr.mp4", "audio": "announcements-ccl/tlb-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd_arr.mp4", "cldVideo": "video/clockwise/labrador-park_cld_arr.mp4", "audio": "announcements-ccl/lbd-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 3, "line": "CCL", "direction": "Clockwise", "title": "Pasir Panjang", "cddVideo": "video/clockwise/pasir-panjang_cdd_arr.mp4", "cldVideo": "video/clockwise/pasir-panjang_cld_arr.mp4", "audio": "announcements-ccl/ppj-arr-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
 
       
@@ -15,8 +16,9 @@
   "nextLines": {
     "CCL": {
       "Clockwise": [
-        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd.mp4", "cldVideo": "video/clockwise/labrador-park_cld.mp4", "audio": "announcements-ccl/lbd-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 2, "line": "CCL", "direction": "Clockwise", "title": "Pasir Panjang", "cddVideo": "video/clockwise/pasir-panjang_cdd.mp4", "cldVideo": "video/clockwise/pasir-panjang_cld.mp4", "audio": "announcements-ccl/ppj-ann.wav", "cddLoop": true, "cldLoop": false }
+         { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Telok Blangah", "cddVideo": "video/clockwise/telok-blangah_cdd.mp4", "cldVideo": "video/clockwise/telok-blangah_cld.mp4", "audio": "announcements-ccl/tlb-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd.mp4", "cldVideo": "video/clockwise/labrador-park_cld.mp4", "audio": "announcements-ccl/lbd-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 3, "line": "CCL", "direction": "Clockwise", "title": "Pasir Panjang", "cddVideo": "video/clockwise/pasir-panjang_cdd.mp4", "cldVideo": "video/clockwise/pasir-panjang_cld.mp4", "audio": "announcements-ccl/ppj-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
   }
 },
