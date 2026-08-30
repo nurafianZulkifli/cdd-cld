@@ -1,10 +1,9 @@
 {
-  "transitLines": ["CCL", "NSL"],
+  "transitLines": ["NSL", "CCL"],
   "currentLines": {
     "CCL":{
       "Clockwise" : [
         { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd_arr.mp4", "cldVideo": "video/clockwise/labrador-park_cld_arr.mp4", "audio": "announcements-ccl/lbd-arr-ann.wav", "cddLoop": true, "cldLoop": false }
-
       ]
 
       
@@ -16,7 +15,6 @@
     "CCL": {
       "Clockwise": [
         { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd.mp4", "cldVideo": "video/clockwise/labrador-park_cld.mp4", "audio": "announcements-ccl/lbd-ann.wav", "cddLoop": true, "cldLoop": false }
-
       ]
   }
 },

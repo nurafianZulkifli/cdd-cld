@@ -645,9 +645,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 class TransitLinesSelector {
     constructor(transitDisplay, lineData) {
         this.transitDisplay = transitDisplay;
-        this.selectedLineCode = null;
-
         const lineCodes = lineData.transitLines || Object.keys(lineData.currentLines || {});
+        this.selectedLineCode = lineCodes[0] || null;
         this.transitLines = lineCodes.map((code, index) => ({
             id: index + 1,
             name: this.getLineName(code),

@@ -4,6 +4,7 @@
     --primary-bg: #121521;
     --secondary-bg: #1c1f2b;
     --accent-orange: #ffa500;
+    --transit-line-active: #8f5f05;
     --accent-blue: #0052cc;
     --accent-red: #cc2121;
     --accent-green: #41a745;
@@ -766,8 +767,8 @@ body {
 }
 
 .transit-line-item.active {
-    border-color: var(--accent-orange);
-    background: var(--accent-orange);
+    border-color: var(--transit-line-active);
+    background: var(--transit-line-active);
     color: var(--primary-bg);
 }
 
