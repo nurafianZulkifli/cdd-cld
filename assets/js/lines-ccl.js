@@ -651,7 +651,7 @@ class TransitLinesSelector {
             id: index + 1,
             name: this.getLineName(code),
             code,
-            url: code === 'NSL' ? 'index.html' : `${code.toLowerCase()}.html`,
+            url: code === 'NSL' ? './' : `${code.toLowerCase()}.html`,
             icon: `assets/caplets/${code}Cap.png`
         }));
 
