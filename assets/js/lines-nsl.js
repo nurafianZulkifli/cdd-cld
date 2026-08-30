@@ -646,7 +646,7 @@ class TransitLinesSelector {
     constructor(transitDisplay, lineData) {
         this.transitDisplay = transitDisplay;
         const lineCodes = lineData.transitLines || Object.keys(lineData.currentLines || {});
-        this.selectedLineCode = lineCodes[0] || null;
+        this.selectedLineCode = Object.keys(lineData.currentLines || {})[0] || null;
         this.transitLines = lineCodes.map((code, index) => ({
             id: index + 1,
             name: this.getLineName(code),
