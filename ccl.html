@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,79 @@
     <title>SMRT CDD-CLD | Works by NRFZ</title>
 
     <link rel="icon" href="./assets/img/core-img/logo.png" type="image/png">
-    
+
     <!-- Performance optimizations -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    
+
     <!-- Critical CSS - loaded with high priority -->
     <link rel="preload" as="style" href="assets/css/transit-ui.css">
     <link rel="stylesheet" href="assets/css/transit-ui.css">
-    
+
     <script src="https://kit.fontawesome.com/965e82ac01.js" crossorigin="anonymous"></script>
 </head>
+
+<style>
+    .modal-content.stn {
+        border: 2px solid #ffa01c;
+    }
+
+    .line-category-btn.active {
+        border-color: #ffa01c;
+        background: #ffa01c;
+        color: #000;
+    }
+
+    .line-category-btn:hover {
+        border-color: #ffa01c;
+    }
+
+    .line-item:hover {
+        border-color: #ffa01c;
+        transform: translateX(5px);
+    }
+
+    .line-tab-btn.active {
+    color: #ffa01c;
+    border-bottom-color: #ffa01c;
+    }
+
+    .line-item.active {
+    border-color: #ffa01c;
+    background: #ffa01c;
+    color: #000;
+}
+
+    .status-toast {
+        background: #ffa01c;
+        color: #000;
+    }
+</style>
+
 <body>
     <div class="container">
         <!-- Main Display -->
         <main class="display-panel">
-            <button class="replay-button" type="button" aria-label="Replay current video and announcement" title="Replay current video and announcement">
+            <button class="replay-button" type="button" aria-label="Replay current video and announcement"
+                title="Replay current video and announcement">
                 <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
             </button>
 
             <!-- Video Display -->
             <div class="video-container">
                 <video class="station-video-temp" style="display: none;" muted playsinline preload="none">
-                    <source src="video/toMSP/DC-CDD.mp4" type="video/mp4">
+                    <source src="video/clockwise/DC-CDD.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <audio id="doorsAudio" style="display: none;" preload="none">
-                    <source src="announcements-msg/dc-ann.wav" type="audio/wav">
+                    <source src="announcements-ccl/dc-ann.wav" type="audio/wav">
                 </audio>
             </div>
 
             <!-- Station Display -->
             <div class="station-display">
                 <video class="station-video-cld" muted playsinline preload="none">
-                    <source src="video/toMSP/DC-CLD.mp4" type="video/mp4">
+                    <source src="video/clockwise/DC-CLD.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -48,7 +88,8 @@
 
         <!-- Control Buttons -->
         <div class="control-panel-wrap">
-            <button class="control-toggle" type="button" aria-expanded="true" aria-controls="controlPanel" title="Collapse controls">
+            <button class="control-toggle" type="button" aria-expanded="true" aria-controls="controlPanel"
+                title="Collapse controls">
                 <span class="control-toggle-label">Controls</span>
                 <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
             </button>
@@ -132,7 +173,8 @@
     </div>
 
     <!-- Scripts loaded with defer for non-blocking rendering -->
-    <script defer src="assets/js/lines-nsl.js"></script>
+    <script defer src="assets/js/lines-ccl.js"></script>
     <script defer src="assets/js/main.js"></script>
 </body>
+
 </html>

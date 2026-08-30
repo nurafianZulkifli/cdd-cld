@@ -1,0 +1,27 @@
+{
+  "transitLines": ["CCL", "NSL"],
+  "currentLines": {
+    "CCL":{
+      "Clockwise" : [
+        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd_arr.mp4", "cldVideo": "video/clockwise/labrador-park_cld_arr.mp4", "audio": "announcements-ccl/lbd-arr-ann.wav", "cddLoop": true, "cldLoop": false }
+
+      ]
+
+      
+    }
+
+
+  },
+  "nextLines": {
+    "CCL": {
+      "Clockwise": [
+        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd.mp4", "cldVideo": "video/clockwise/labrador-park_cld.mp4", "audio": "announcements-ccl/lbd-ann.wav", "cddLoop": true, "cldLoop": false }
+
+      ]
+  }
+},
+  "doorClosingVideos": {
+    "ccl": { "id": 1, "title": "Doors Closing - CCL", "cddVideo": "video/clockwise/DC-CDD.mp4", "cldVideo": "video/clockwise/DC-CLD.mp4", "audio": "announcements-ccl/dc-ann.wav", "cddLoop": false, "cldLoop": false }
+  }
+}
+

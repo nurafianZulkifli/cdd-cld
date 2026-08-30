@@ -4,28 +4,28 @@ class TransitDisplay {
     constructor() {
         this.currentStation = null;
 
-        // Message data with associated videos and announcements
+        // Message data with associated videos and announcements-msg
         this.messages = {
             alert: [
-                { id: 1, title: 'Emergency Button', cddVideo: 'video/Msg_EmgButton_CDD.mp4', cldVideo: 'video/Msg_EmgButton_CLD.mp4', audio: 'announcements/emgButton.wav', cddLoop: true, cddLoop: false },
-                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements/door-obstruct-ann.wav', cddLoop: false, cddLoop: false },
-                { id: 3, title: 'Train Stopped', cddVideo: 'video/Msg_TrainStopped_CDD.mp4', cldVideo: 'video/Msg_TrainStopped_CLD.mp4', audio: 'announcements/train-stopped-ann.wav', cddLoop: false, cddLoop: false },
-                { id: 4, title: 'Track Crossing', cldVideo: 'video/Msg_TrackCrossing_CLD.mp4', audio: 'announcements/track-crossing-ann.wav', cddLoop: false, cddLoop: false }
+                { id: 1, title: 'Emergency Button', cddVideo: 'video/Msg_EmgButton_CDD.mp4', cldVideo: 'video/Msg_EmgButton_CLD.mp4', audio: 'announcements-msg/emgButton.wav', cddLoop: true, cddLoop: false },
+                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements-msg/door-obstruct-ann.wav', cddLoop: false, cddLoop: false },
+                { id: 3, title: 'Train Stopped', cddVideo: 'video/Msg_TrainStopped_CDD.mp4', cldVideo: 'video/Msg_TrainStopped_CLD.mp4', audio: 'announcements-msg/train-stopped-ann.wav', cddLoop: false, cddLoop: false },
+                { id: 4, title: 'Track Crossing', cldVideo: 'video/Msg_TrackCrossing_CLD.mp4', audio: 'announcements-msg/track-crossing-ann.wav', cddLoop: false, cddLoop: false }
             ],
             safety: [
-                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements/pmtpg-ann.wav', cldLoop: false },
-                // { id: 2, title: 'Hold the Handrail', cddVideo: 'video/Msg_HoldHandrail_CDD.mp4', cldVideo: 'video/Msg_HoldHandrail_CLD.mp4', audio: 'announcements/safety-handrail-ann.wav', cddLoop: false, cldLoop: false }
-                { id: 2, title: 'Suspicious - ENG', cldVideo: 'video/Msg_SusENG_CLD.mp4', audio: 'announcements/sus-eng-ann.wav', cldLoop: false },
-                { id: 3, title: 'Suspicious - CHN', cldVideo: 'video/Msg_SusCHN_CLD.mp4', audio: 'announcements/sus-chn-ann.wav', cldLoop: false },
-                { id: 4, title: 'Suspicious - MLY', cldVideo: 'video/Msg_SusMLY_CLD.mp4', audio: 'announcements/sus-mly-ann.wav', cldLoop: false },
-                { id: 5, title: 'Suspicious - TML', cldVideo: 'video/Msg_SusTML_CLD.mp4', audio: 'announcements/sus-tml-ann.wav', cldLoop: false }
+                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-msg/pmtpg-ann.wav', cldLoop: false },
+                // { id: 2, title: 'Hold the Handrail', cddVideo: 'video/Msg_HoldHandrail_CDD.mp4', cldVideo: 'video/Msg_HoldHandrail_CLD.mp4', audio: 'announcements-msg/safety-handrail-ann.wav', cddLoop: false, cldLoop: false }
+                { id: 2, title: 'Suspicious - ENG', cldVideo: 'video/Msg_SusENG_CLD.mp4', audio: 'announcements-msg/sus-eng-ann.wav', cldLoop: false },
+                { id: 3, title: 'Suspicious - CHN', cldVideo: 'video/Msg_SusCHN_CLD.mp4', audio: 'announcements-msg/sus-chn-ann.wav', cldLoop: false },
+                { id: 4, title: 'Suspicious - MLY', cldVideo: 'video/Msg_SusMLY_CLD.mp4', audio: 'announcements-msg/sus-mly-ann.wav', cldLoop: false },
+                { id: 5, title: 'Suspicious - TML', cldVideo: 'video/Msg_SusTML_CLD.mp4', audio: 'announcements-msg/sus-tml-ann.wav', cldLoop: false }
             ],
             // service: [
-            //     { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/Msg_MaintenanceScheduled_CDD.mp4', cldVideo: 'video/Msg_MaintenanceScheduled_CLD.mp4', audio: 'announcements/service-maintenance-ann.wav', cddLoop: false, cddLoop: false },
-            //     { id: 2, title: 'System Update', cddVideo: 'video/Msg_SystemUpdate_CDD.mp4', cldVideo: 'video/Msg_SystemUpdate_CLD.mp4', audio: 'announcements/service-update-ann.wav', cddLoop: false, cddLoop: false }
+            //     { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/Msg_MaintenanceScheduled_CDD.mp4', cldVideo: 'video/Msg_MaintenanceScheduled_CLD.mp4', audio: 'announcements-msg/service-maintenance-ann.wav', cddLoop: false, cddLoop: false },
+            //     { id: 2, title: 'System Update', cddVideo: 'video/Msg_SystemUpdate_CDD.mp4', cldVideo: 'video/Msg_SystemUpdate_CLD.mp4', audio: 'announcements-msg/service-update-ann.wav', cddLoop: false, cddLoop: false }
             // ],
             info: [
-                { id: 1, title: 'Doors Open Both Sides', cldVideo: 'video/Msg_BothSidesCLD.mp4', audio: 'announcements/bothSides-ann.wav', cldLoop: false },
+                { id: 1, title: 'Doors Open Both Sides', cldVideo: 'video/Msg_BothSidesCLD.mp4', audio: 'announcements-msg/bothSides-ann.wav', cldLoop: false },
             ]
         };
 
@@ -93,7 +93,7 @@ class TransitDisplay {
         window.pageController.setActiveMedia({
             cddVideo: 'video/DC-CDD.mp4',
             cldVideo: 'video/DC-CLD.mp4',
-            audio: 'announcements/dc-ann.wav',
+            audio: 'announcements-ccl/dc-ann.wav',
             cddLoop: false,
             cldLoop: false
         });
@@ -124,7 +124,7 @@ class TransitDisplay {
         }
 
         // Play doors closing announcement
-        window.pageController.playAudio('announcements/dc-ann.wav');
+        window.pageController.playAudio('announcements-ccl/dc-ann.wav');
         window.pageController.showToast('Doors Closing Triggered');
     }
 
@@ -455,7 +455,7 @@ class LineSelector {
 
         // Handle Doors Closing tab with door closing videos
         if (category === 'doors-closing') {
-            const doorVideos = [this.doorClosingVideos.toMSP, this.doorClosingVideos.toJUR];
+            const doorVideos = [this.doorClosingVideos.ccl]; // Assuming only one door closing video for CCL
             window.pageController?.scheduleMediaPreload(doorVideos);
             doorVideos.forEach(video => {
                 const lineBtn = document.createElement('button');
@@ -618,7 +618,7 @@ class LineSelector {
 // Initialize TransitDisplay and LineSelector when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const lineDataResponse = await fetch('assets/data/line-data.json');
+        const lineDataResponse = await fetch('assets/data/line-data-ccl.json');
         if (!lineDataResponse.ok) {
             throw new Error(`Unable to load line data: ${lineDataResponse.status}`);
         }
@@ -647,7 +647,7 @@ class TransitLinesSelector {
         this.transitDisplay = transitDisplay;
         this.selectedLineCode = null;
 
-        const lineCodes = Object.keys(lineData.currentLines || {});
+        const lineCodes = lineData.transitLines || Object.keys(lineData.currentLines || {});
         this.transitLines = lineCodes.map((code, index) => ({
             id: index + 1,
             name: this.getLineName(code),
