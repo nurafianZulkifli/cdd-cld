@@ -23,6 +23,7 @@ class PageController {
         document.addEventListener('contextmenu', (e) => e.preventDefault());
 
         this.setupControlPanelToggle();
+        this.setupThemeToggle();
 
         // Modal close buttons
         const modalCloseButtons = document.querySelectorAll('.modal-close');
@@ -90,6 +91,122 @@ class PageController {
         });
 
         applyState();
+    }
+
+    setupTheme() {
+        const storageKey = 'cddCldThemeMode';
+        const savedTheme = localStorage.getItem(storageKey);
+        const themes = ['system', 'dark', 'light'];
+
+        const resolveThemeMode = (mode) => {
+            if (!mode || !themes.includes(mode)) return 'system';
+            return mode;
+        };
+
+        const applyTheme = (mode) => {
+            const root = document.documentElement;
+            const resolvedMode = resolveThemeMode(mode);
+            const isDarkMode = resolvedMode === 'dark' || (resolvedMode === 'system' && this.prefersDarkMode());
+
+            if (isDarkMode) {
+                root.classList.remove('light-mode');
+            } else {
+                root.classList.add('light-mode');
+            }
+
+            this.currentThemeMode = resolvedMode;
+            this.updateThemeIcon(resolvedMode);
+        };
+
+        const initialMode = resolveThemeMode(savedTheme || 'system');
+        applyTheme(initialMode);
+
+        if (!savedTheme && window.matchMedia) {
+            const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+            const handleSystemThemeChange = (event) => {
+                if (localStorage.getItem(storageKey)) return;
+                applyTheme('system');
+                if (event.matches) {
+                    document.documentElement.classList.remove('light-mode');
+                } else {
+                    document.documentElement.classList.add('light-mode');
+                }
+            };
+
+            if (typeof mediaQuery.addEventListener === 'function') {
+                mediaQuery.addEventListener('change', handleSystemThemeChange);
+            } else if (typeof mediaQuery.addListener === 'function') {
+                mediaQuery.addListener(handleSystemThemeChange);
+            }
+        }
+    }
+
+    setupThemeToggle() {
+        this.setupTheme();
+        const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+        if (!themeToggleBtn) return;
+
+        themeToggleBtn.addEventListener('click', () => {
+            this.toggleTheme();
+        });
+    }
+
+    toggleTheme() {
+        const storageKey = 'cddCldThemeMode';
+        const order = ['system', 'dark', 'light'];
+        const current = this.currentThemeMode || localStorage.getItem(storageKey) || 'system';
+        const index = order.indexOf(current);
+        const nextMode = order[(index + 1) % order.length];
+
+        localStorage.setItem(storageKey, nextMode);
+        this.applyThemeMode(nextMode);
+    }
+
+    applyThemeMode(mode) {
+        const root = document.documentElement;
+        const resolvedMode = mode || 'system';
+        const isDarkMode = resolvedMode === 'dark' || (resolvedMode === 'system' && this.prefersDarkMode());
+
+        if (isDarkMode) {
+            root.classList.remove('light-mode');
+        } else {
+            root.classList.add('light-mode');
+        }
+
+        this.currentThemeMode = resolvedMode;
+        this.updateThemeIcon(resolvedMode);
+    }
+
+    updateThemeIcon(mode) {
+        const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+        if (!themeToggleBtn) return;
+
+        const icon = themeToggleBtn.querySelector('i');
+        const indicator = themeToggleBtn.querySelector('.theme-mode-indicator');
+
+        if (icon) {
+            icon.className = 'fa-solid ' + {
+                system: 'fa-gear',
+                dark: 'fa-moon',
+                light: 'fa-sun'
+            }[mode || 'system'];
+        }
+
+        if (indicator) {
+            indicator.textContent = {
+                system: 'S',
+                dark: 'D',
+                light: 'L'
+            }[mode || 'system'];
+        }
+
+        themeToggleBtn.setAttribute('aria-label', `Theme: ${mode || 'system'}`);
+        themeToggleBtn.title = `Theme: ${mode || 'system'} - click to cycle`;
+    }
+
+    prefersDarkMode() {
+        if (typeof window === 'undefined') return true;
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
 
     preloadMedia(mediaItems) {
