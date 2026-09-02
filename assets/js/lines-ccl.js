@@ -14,7 +14,7 @@ class TransitDisplay {
             // ],
             safety: [
                 { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-ccl/pmtpg-ann.wav', cldLoop: false },
-                { id: 2, title: 'Courtesy', cldVideo: 'video/Msg_Courtesy_CLD.mp4', audio: 'announcements-ccl/courtesy-ann.wav', cldLoop: false },
+                { id: 2, title: 'Courtesy', cldVideo: 'video/Msg_MoveIn_CLD.mp4', audio: 'announcements-ccl/courtesy-ann.wav', cldLoop: false },
             ],
         };
 
