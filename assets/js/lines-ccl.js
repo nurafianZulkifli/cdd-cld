@@ -6,30 +6,19 @@ class TransitDisplay {
 
         // Message data with associated videos and announcements-msg
         this.messages = {
-            alert: [
-                { id: 1, title: 'Emergency Button', cddVideo: 'video/Msg_EmgButton_CDD.mp4', cldVideo: 'video/Msg_EmgButton_CLD.mp4', audio: 'announcements-msg/emgButton.wav', cddLoop: true, cddLoop: false },
-                { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements-msg/door-obstruct-ann.wav', cddLoop: false, cddLoop: false },
-                { id: 3, title: 'Train Stopped', cddVideo: 'video/Msg_TrainStopped_CDD.mp4', cldVideo: 'video/Msg_TrainStopped_CLD.mp4', audio: 'announcements-msg/train-stopped-ann.wav', cddLoop: false, cddLoop: false },
-                { id: 4, title: 'Track Crossing', cldVideo: 'video/Msg_TrackCrossing_CLD.mp4', audio: 'announcements-msg/track-crossing-ann.wav', cddLoop: false, cddLoop: false }
-            ],
-            safety: [
-                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-msg/pmtpg-ann.wav', cldLoop: false },
-                // { id: 2, title: 'Hold the Handrail', cddVideo: 'video/Msg_HoldHandrail_CDD.mp4', cldVideo: 'video/Msg_HoldHandrail_CLD.mp4', audio: 'announcements-msg/safety-handrail-ann.wav', cddLoop: false, cldLoop: false }
-                { id: 2, title: 'Suspicious - ENG', cldVideo: 'video/Msg_SusENG_CLD.mp4', audio: 'announcements-msg/sus-eng-ann.wav', cldLoop: false },
-                { id: 3, title: 'Suspicious - CHN', cldVideo: 'video/Msg_SusCHN_CLD.mp4', audio: 'announcements-msg/sus-chn-ann.wav', cldLoop: false },
-                { id: 4, title: 'Suspicious - MLY', cldVideo: 'video/Msg_SusMLY_CLD.mp4', audio: 'announcements-msg/sus-mly-ann.wav', cldLoop: false },
-                { id: 5, title: 'Suspicious - TML', cldVideo: 'video/Msg_SusTML_CLD.mp4', audio: 'announcements-msg/sus-tml-ann.wav', cldLoop: false }
-            ],
-            // service: [
-            //     { id: 1, title: 'Maintenance Scheduled', cddVideo: 'video/Msg_MaintenanceScheduled_CDD.mp4', cldVideo: 'video/Msg_MaintenanceScheduled_CLD.mp4', audio: 'announcements-msg/service-maintenance-ann.wav', cddLoop: false, cddLoop: false },
-            //     { id: 2, title: 'System Update', cddVideo: 'video/Msg_SystemUpdate_CDD.mp4', cldVideo: 'video/Msg_SystemUpdate_CLD.mp4', audio: 'announcements-msg/service-update-ann.wav', cddLoop: false, cddLoop: false }
+            // alert: [
+            //     { id: 1, title: 'Emergency Button', cddVideo: 'video/Msg_EmgButton_CDD.mp4', cldVideo: 'video/Msg_EmgButton_CLD.mp4', audio: 'announcements-msg/emgButton.wav', cddLoop: true, cddLoop: false },
+            //     { id: 2, title: 'Door Obstruction', cddVideo: 'video/Msg_DoorObstruct_CDD.mp4', cldVideo: 'video/Msg_DoorObstruct_CLD.mp4', audio: 'announcements-msg/door-obstruct-ann.wav', cddLoop: false, cddLoop: false },
+            //     { id: 3, title: 'Train Stopped', cddVideo: 'video/Msg_TrainStopped_CDD.mp4', cldVideo: 'video/Msg_TrainStopped_CLD.mp4', audio: 'announcements-msg/train-stopped-ann.wav', cddLoop: false, cddLoop: false },
+            //     { id: 4, title: 'Track Crossing', cldVideo: 'video/Msg_TrackCrossing_CLD.mp4', audio: 'announcements-msg/track-crossing-ann.wav', cddLoop: false, cddLoop: false }
             // ],
-            info: [
-                { id: 1, title: 'Doors Open Both Sides', cldVideo: 'video/Msg_BothSidesCLD.mp4', audio: 'announcements-msg/bothSides-ann.wav', cldLoop: false },
-            ]
+            safety: [
+                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-ccl/pmtpg-ann.wav', cldLoop: false },
+                { id: 2, title: 'Courtesy', cldVideo: 'video/Msg_Courtesy_CLD.mp4', audio: 'announcements-ccl/courtesy-ann.wav', cldLoop: false },
+            ],
         };
 
-        this.currentCategory = 'alert';
+        this.currentCategory = 'safety';
         this.selectedMessage = null;
         this.selectedDoorClosing = null;
         this.init();
