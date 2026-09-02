@@ -20,10 +20,10 @@
 
 /* Light Mode Theme */
 :root.light-mode {
-    --primary-bg: #f5f5f5;
+    --primary-bg: #ecebeb;
     --secondary-bg: #ffffff;
     --panel-bg: #f3f4f8;
-    --panel-alt-bg: #eef2f7;
+    --panel-alt-bg: #dde0e2;
     --panel-border: rgba(17, 24, 39, 0.12);
     --accent-orange: #ff9500;
     --transit-line-active: #ffc966;
@@ -40,7 +40,7 @@
     border-bottom-color: var(--panel-border);
 }
 
-:root.light-mode .category-btn,
+/* :root.light-mode .category-btn,
 :root.light-mode .line-category-btn,
 :root.light-mode .message-item,
 :root.light-mode .station-item,
@@ -50,7 +50,7 @@
     border-color: var(--panel-border);
     color: var(--text-primary);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0, 0, 0, 0.04);
-}
+} */
 
 :root.light-mode .category-btn:hover,
 :root.light-mode .line-category-btn:hover,
@@ -59,14 +59,6 @@
 :root.light-mode .line-item:hover,
 :root.light-mode .transit-line-item:hover {
     background: #e7edf6;
-}
-
-:root.light-mode .line-tab-btn {
-    color: var(--text-secondary);
-}
-
-:root.light-mode .line-tab-btn.active {
-    color: var(--accent-red);
 }
 
 :root.light-mode .modal-close {
@@ -707,6 +699,10 @@ body {
     gap: 10px;
     margin-bottom: 20px;
     border-bottom: 2px solid #393e53;
+}
+
+:root.light-mode .line-tabs {
+     border-bottom-color: var(--panel-border);
 }
 
 .line-tab-btn {
