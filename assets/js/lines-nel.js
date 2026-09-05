@@ -13,8 +13,8 @@ class TransitDisplay {
             //     { id: 4, title: 'Track Crossing', cldVideo: 'video/Msg_TrackCrossing_CLD.mp4', audio: 'announcements-msg/track-crossing-ann.wav', cddLoop: false, cddLoop: false }
             // ],
             safety: [
-                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-nel/pmtpg-ann.wav', cldLoop: false },
-                { id: 2, title: 'Courtesy', cldVideo: 'video/Msg_MoveIn_CLD.mp4', audio: 'announcements-nel/courtesy-ann.wav', cldLoop: false },
+                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-nel/pmtpg-ann.wav', cldLoop: false }
+                // { id: 2, title: 'Courtesy', cldVideo: 'video/Msg_MoveIn_CLD.mp4', audio: 'announcements-nel/courtesy-ann.wav', cldLoop: false },
             ],
         };
 
