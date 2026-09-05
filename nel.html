@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SBST CDD-CLD | Works by NRFZ</title>
+
+    <link rel="icon" href="./assets/img/core-img/logo.png" type="image/png">
+
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- Critical CSS - loaded with high priority -->
+    <link rel="preload" as="style" href="assets/css/transit-ui.css">
+    <link rel="stylesheet" href="assets/css/transit-ui.css">
+
+    <script src="https://kit.fontawesome.com/965e82ac01.js" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    .modal-content.stn {
+        border: 2px solid #9645a5;
+    }
+
+    .line-category-btn.active {
+        border-color: #9645a5;
+        background: #9645a5;
+        color: #fff;
+    }
+
+    .line-category-btn:hover {
+        border-color: #9645a5;
+    }
+
+    .line-item:hover {
+        border-color: #9645a5;
+        transform: translateX(5px);
+    }
+
+    .line-tab-btn.active {
+    color: #9645a5;
+    border-bottom-color: #9645a5;
+    }
+
+    .line-item.active {
+    border-color: #9645a5;
+    background: #9645a5;
+    color: #fff;
+}
+
+    .status-toast {
+        background: #9645a5;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <!-- Main Display -->
+        <main class="display-panel">
+            <div class="button-controls">
+                <button class="replay-button" type="button" aria-label="Replay current video and announcement"
+                    title="Replay current video and announcement">
+                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                </button>
+                <button class="theme-toggle-btn" type="button" aria-label="Theme: system"
+                    title="Theme: system">
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    <span class="theme-mode-indicator">S</span>
+                </button>
+            </div>
+
+            <!-- Video Display -->
+            <div class="video-container">
+                <video class="station-video-temp" style="display: none;" muted playsinline preload="none">
+                    <source src="video/clockwise/DC-CDD.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <audio id="doorsAudio" style="display: none;" preload="none">
+                    <source src="announcements-ccl/dc-ann.wav" type="audio/wav">
+                </audio>
+            </div>
+
+            <!-- Station Display -->
+            <div class="station-display">
+                <video class="station-video-cld" muted playsinline preload="none">
+                    <source src="video/clockwise/DC-CLD.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </main>
+
+        <!-- Control Buttons -->
+        <div class="control-panel-wrap">
+            <button class="control-toggle" type="button" aria-expanded="true" aria-controls="controlPanel"
+                title="Collapse controls">
+                <span class="control-toggle-label">Controls</span>
+                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <footer class="control-panel" id="controlPanel">
+                <button class="control-button messages-btn" data-action="messages">
+                    <span class="btn-icon"><i class="fa-solid fa-message"></i></span>
+                    <span class="btn-text">Messages</span>
+                </button>
+                <button class="control-button line-btn" data-action="line">
+                    <span class="btn-icon"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="btn-text">Stations</span>
+                </button>
+                <button class="control-button station-btn" data-action="station">
+                    <span class="btn-icon"><i class="fa-kit fa-lta-train"></i></span>
+                    <span class="btn-text">Lines</span>
+                </button>
+            </footer>
+        </div>
+
+        <!-- Modal for Messages -->
+        <div id="messagesModal" class="modal hidden">
+            <div class="modal-content msg">
+                <div class="modal-header">
+                    <h2>Messages</h2>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="message-categories">
+                        <!-- <button class="category-btn active" data-category="alert">⚠️ Warning</button> -->
+                        <button class="category-btn active" data-category="safety">⚠️ Safety</button>
+                        <!-- <button class="category-btn" data-category="service">🔧 Service</button> -->
+                        <!-- <button class="category-btn" data-category="info">ℹ️ Info</button> -->
+                    </div>
+                    <div class="messages-list" id="messagesList">
+                        <!-- Messages will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Stations -->
+        <div id="linesModal" class="modal hidden">
+            <div class="modal-content stn">
+                <div class="modal-header">
+                    <h2>Select Stations</h2>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="line-tabs">
+                    <button class="line-tab-btn active" data-tab="current">Current Station</button>
+                    <button class="line-tab-btn" data-tab="next">Next Station</button>
+                    <button class="line-tab-btn" data-tab="doors-closing">Doors Closing</button>
+                </div>
+                <div class="modal-body">
+                    <div class="line-categories">
+                        <!-- Station category buttons will be populated here -->
+                    </div>
+                    <div class="lines-list" id="linesList">
+                        <!-- Stations will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for MRT Lines -->
+        <div id="transitLinesModal" class="modal hidden">
+            <div class="modal-content ln">
+                <div class="modal-header">
+                    <h2>Select MRT Line</h2>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="transit-lines-list" id="transitLinesList">
+                        <!-- MRT lines will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Toast -->
+        <div id="statusToast" class="status-toast hidden"></div>
+    </div>
+
+    <!-- Scripts loaded with defer for non-blocking rendering -->
+    <script defer src="assets/js/lines-nel.js"></script>
+    <script defer src="assets/js/main.js"></script>
+</body>
+
+</html>

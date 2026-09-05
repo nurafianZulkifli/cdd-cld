@@ -664,6 +664,7 @@ class TransitLinesSelector {
             EWL: 'East-West Line',
             CCL: 'Circle Line',
             DTL: 'Downtown Line',
+            NEL: 'North East Line',
             TEL: 'Thomson-East Coast Line'
         };
         return lineNames[code] || `${code} Line`;

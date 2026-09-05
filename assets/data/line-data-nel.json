@@ -1,0 +1,25 @@
+{
+  "transitLines": ["NSL", "CCL", "NEL"],
+  "currentLines": {
+    "NEL":{
+      "toPGC" : [
+        { "id": 1, "line": "NEL", "direction": "toPGC", "title": "HarbourFront (to HBF)", "cddVideo": "video/toPGC/harbourfront_cdd_arr.mp4", "cldVideo": "video/toPGC/harbourfront_cld_arr.mp4", "audio": "announcements-nel/hbf-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "NEL", "direction": "toPGC", "title": "Outram Park", "cddVideo": "video/toPGC/outram-park_cdd_arr.mp4", "cldVideo": "video/toPGC/outram-park_cld_arr.mp4", "audio": "announcements-nel/otp-arr-ann.wav", "cddLoop": true, "cldLoop": false }
+      ]
+      
+    }
+
+
+  },
+  "nextLines": {
+    "NEL": {
+      "toPGC": [
+        { "id": 1, "line": "NEL", "direction": "toPGC", "title": "Outram Park", "cddVideo": "video/toPGC/outram-park_cdd.mp4", "cldVideo": "video/toPGC/outram-park_cld.mp4", "audio": "announcements-nel/otp-ann.wav", "cddLoop": true, "cldLoop": false }
+      ]
+  }
+},
+  "doorClosingVideos": {
+    "toPGC": { "id": 1, "title": "Doors Closing - NEL", "cddVideo": "video/toPGC/DC-CDD.mp4", "cldVideo": "video/toPGC/DC-CLD.mp4", "audio": "announcements-nel/dc-ann.wav", "cddLoop": false, "cldLoop": false }
+  }
+}
+

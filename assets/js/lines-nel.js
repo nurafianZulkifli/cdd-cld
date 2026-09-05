@@ -13,8 +13,8 @@ class TransitDisplay {
             //     { id: 4, title: 'Track Crossing', cldVideo: 'video/Msg_TrackCrossing_CLD.mp4', audio: 'announcements-msg/track-crossing-ann.wav', cddLoop: false, cddLoop: false }
             // ],
             safety: [
-                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-ccl/pmtpg-ann.wav', cldLoop: false },
-                { id: 2, title: 'Courtesy', cldVideo: 'video/Msg_MoveIn_CLD.mp4', audio: 'announcements-ccl/courtesy-ann.wav', cldLoop: false },
+                { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-nel/pmtpg-ann.wav', cldLoop: false },
+                { id: 2, title: 'Courtesy', cldVideo: 'video/Msg_MoveIn_CLD.mp4', audio: 'announcements-nel/courtesy-ann.wav', cldLoop: false },
             ],
         };
 
@@ -82,7 +82,7 @@ class TransitDisplay {
         window.pageController.setActiveMedia({
             cddVideo: 'video/DC-CDD.mp4',
             cldVideo: 'video/DC-CLD.mp4',
-            audio: 'announcements-ccl/dc-ann.wav',
+            audio: 'announcements-nel/dc-ann.wav',
             cddLoop: false,
             cldLoop: false
         });
@@ -113,7 +113,7 @@ class TransitDisplay {
         }
 
         // Play doors closing announcement
-        window.pageController.playAudio('announcements-ccl/dc-ann.wav');
+        window.pageController.playAudio('announcements-nel/dc-ann.wav');
         window.pageController.showToast('Doors Closing Triggered');
     }
 
@@ -444,7 +444,7 @@ class LineSelector {
 
         // Handle Doors Closing tab with door closing videos
         if (category === 'doors-closing') {
-            const doorVideos = [this.doorClosingVideos.ccl]; // Assuming only one door closing video for CCL
+            const doorVideos = [this.doorClosingVideos.toPGC]; // Assuming only one door closing video for CCL
             window.pageController?.scheduleMediaPreload(doorVideos);
             doorVideos.forEach(video => {
                 const lineBtn = document.createElement('button');
@@ -607,7 +607,7 @@ class LineSelector {
 // Initialize TransitDisplay and LineSelector when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const lineDataResponse = await fetch('assets/data/line-data-ccl.json');
+        const lineDataResponse = await fetch('assets/data/line-data-nel.json');
         if (!lineDataResponse.ok) {
             throw new Error(`Unable to load line data: ${lineDataResponse.status}`);
         }

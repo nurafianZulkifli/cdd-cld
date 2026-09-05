@@ -1,5 +1,5 @@
 {
-  "transitLines": ["NSL", "CCL"],
+  "transitLines": ["NSL", "CCL", "NEL"],
   "currentLines": {
     "CCL":{
       "Clockwise" : [
