@@ -22,6 +22,7 @@ class PageController {
         // Disable right-click context menu
         document.addEventListener('contextmenu', (e) => e.preventDefault());
 
+        this.setupPlaybackRecovery();
         this.setupControlPanelToggle();
         this.setupThemeToggle();
 
@@ -68,6 +69,39 @@ class PageController {
 
         const replayButton = document.querySelector('.replay-button');
         replayButton?.addEventListener('click', () => this.replayActiveMedia());
+    }
+
+    setupPlaybackRecovery() {
+        const resumeInterruptedVideos = () => {
+            document.querySelectorAll('video').forEach(video => {
+                if (video.paused && !video.ended && video.currentSrc) {
+                    this.resumeVideo(video);
+                }
+            });
+        };
+
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('pause', () => {
+                if (video.dataset.allowPause === 'true') {
+                    delete video.dataset.allowPause;
+                    return;
+                }
+
+                if (!video.ended && video.currentSrc) this.resumeVideo(video);
+            });
+        });
+
+        window.addEventListener('focus', resumeInterruptedVideos);
+        window.addEventListener('pageshow', resumeInterruptedVideos);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) resumeInterruptedVideos();
+        });
+    }
+
+    resumeVideo(video) {
+        video.play().catch(err => {
+            if (err.name !== 'AbortError') console.log('Video resume error:', err);
+        });
     }
 
     setupControlPanelToggle() {
@@ -395,11 +429,13 @@ class PageController {
         const videoCld = stationDisplay.querySelector('.station-video-cld');
         
         if (video) {
+            video.dataset.allowPause = 'true';
             video.pause();
             video.currentTime = 0;
         }
         
         if (videoCld) {
+            videoCld.dataset.allowPause = 'true';
             videoCld.pause();
             videoCld.currentTime = 0;
         }
