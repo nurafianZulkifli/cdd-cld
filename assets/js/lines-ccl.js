@@ -165,8 +165,17 @@ class TransitDisplay {
         });
     }
 
-    playStation(station, messagePrefix = 'Now at:') {
+    playStation(station, messagePrefix = 'Now at:', shouldUpdateUrl = true) {
         this.currentStation = station;
+        if (shouldUpdateUrl) {
+            this.updateSelectionUrl({
+                type: 'station',
+                tab: this.currentStationCategory,
+                line: station.line,
+                direction: station.direction,
+                id: station.id
+            });
+        }
         window.pageController.closeAllModals();
 
         window.pageController.stopAllVideos();
@@ -260,11 +269,14 @@ class TransitDisplay {
         });
     }
 
-    playMessage(message) {
+    playMessage(message, shouldUpdateUrl = true) {
         this.selectedMessage = message;
         this.selectedMessage = message;
         this.selectedDoorClosing = null;
         if (this.lineSelector) this.lineSelector.selectedLine = null;
+        if (shouldUpdateUrl) {
+            this.updateSelectionUrl({ type: 'message', category: this.currentCategory, id: message.id });
+        }
         window.pageController.closeAllModals();
 
         window.pageController.stopAllVideos();
@@ -319,6 +331,50 @@ class TransitDisplay {
 
     handleNavigation() {
         window.pageController.showToast('Navigation pressed');
+    }
+
+    updateSelectionUrl(parameters) {
+        const url = new URL(window.location.href);
+        url.search = new URLSearchParams(parameters).toString();
+        url.hash = '';
+        window.history.pushState(null, '', url);
+    }
+
+    restoreSelectionFromUrl() {
+        const parameters = new URLSearchParams(window.location.search);
+        const type = parameters.get('type');
+
+        if (type === 'message') {
+            const category = parameters.get('category');
+            const id = parameters.get('id');
+            const message = this.messages[category]?.find(item => String(item.id) === id);
+            if (message) {
+                this.currentCategory = category;
+                this.playMessage(message, false);
+            }
+            return;
+        }
+
+        if (type === 'station') {
+            const tab = parameters.get('tab');
+            const lineCode = parameters.get('line');
+            const direction = parameters.get('direction');
+            const id = parameters.get('id');
+            const linesData = tab === 'next' ? this.lineSelector.nextLines : this.lineSelector.currentLines;
+            const station = linesData[lineCode]?.[direction]?.find(item => String(item.id) === id);
+            if (station) {
+                this.lineSelector.currentLineTab = tab;
+                this.lineSelector.selectLine(station, false);
+            }
+            return;
+        }
+
+        if (type === 'doors-closing') {
+            const id = parameters.get('id');
+            const video = Object.values(this.lineSelector.doorClosingVideos)
+                .find(item => String(item.id) === id);
+            if (video) this.lineSelector.playDoorClosing(video, false);
+        }
     }
 
     initializeStation() {
@@ -500,12 +556,21 @@ class LineSelector {
         return this.selectedDoorClosing?.id === video.id;
     }
 
-    selectLine(station) {
+    selectLine(station, shouldUpdateUrl = true) {
         this.currentLine = station;
         this.selectedLine = station;
         this.selectedLineTab = this.currentLineTab;
         this.transitDisplay.selectedMessage = null;
         this.transitDisplay.selectedDoorClosing = null;
+        if (shouldUpdateUrl) {
+            this.transitDisplay.updateSelectionUrl({
+                type: 'station',
+                tab: this.currentLineTab,
+                line: station.line,
+                direction: station.direction,
+                id: station.id
+            });
+        }
         window.pageController.closeAllModals();
 
         // Stop all existing videos first
@@ -554,10 +619,11 @@ class LineSelector {
         window.pageController.showToast(`Selected: ${station.line} ${station.direction} - ${station.title}`);
     }
 
-    playDoorClosing(video) {
+    playDoorClosing(video, shouldUpdateUrl = true) {
         this.selectedDoorClosing = video;
         this.transitDisplay.selectedMessage = null;
         this.transitDisplay.lineSelector.selectedLine = null;
+        if (shouldUpdateUrl) this.transitDisplay.updateSelectionUrl({ type: 'doors-closing', id: video.id });
         window.pageController.closeAllModals();
 
         // Stop all existing videos first
@@ -626,6 +692,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 window.pageController.scheduleMediaPreload([
                     transitDisplay.lineSelector.currentLine
                 ]);
+                transitDisplay.restoreSelectionFromUrl();
                 clearInterval(initTransitDisplay);
             }
         }, 100);
