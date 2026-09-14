@@ -41,19 +41,29 @@
     }
 
     .line-tab-btn.active {
-    color: #ffa01c;
-    border-bottom-color: #ffa01c;
+        color: #ffa01c;
+        border-bottom-color: #ffa01c;
     }
 
     .line-item.active {
-    border-color: #ffa01c;
-    background: #ffa01c;
-    color: #000;
-}
+        border-color: #ffa01c;
+        background: #ffa01c;
+        color: #000;
+    }
 
     .status-toast {
         background: #ffa01c;
         color: #000;
+    }
+
+    #linesModal .lines-list::-webkit-scrollbar-thumb:hover {
+        background: #ad701b;
+    }
+
+    #linesModal .lines-list::-webkit-scrollbar-thumb {
+        background: #ffa01c;
+        border-radius: 10px;
+        transition: background 0.3s ease;
     }
 </style>
 
@@ -66,8 +76,7 @@
                     title="Replay current video and announcement">
                     <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
                 </button>
-                <button class="theme-toggle-btn" type="button" aria-label="Theme: system"
-                    title="Theme: system">
+                <button class="theme-toggle-btn" type="button" aria-label="Theme: system" title="Theme: system">
                     <i class="fa-solid fa-gear" aria-hidden="true"></i>
                     <span class="theme-mode-indicator">S</span>
                 </button>

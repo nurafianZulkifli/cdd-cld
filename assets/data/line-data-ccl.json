@@ -3,12 +3,14 @@
   "currentLines": {
     "CCL":{
       "Clockwise" : [
-        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Cantonment", "cddVideo": "video/clockwise/cantonment_cdd_arr.mp4", "cldVideo": "video/clockwise/cantonment_cld_arr.mp4", "audio": "announcements-ccl/cnt-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 2, "line": "CCL", "direction": "Clockwise", "title": "Keppel", "cddVideo": "video/clockwise/keppel_cdd_arr.mp4", "cldVideo": "video/clockwise/keppel_cld_arr.mp4", "audio": "announcements-ccl/kpl-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 3, "line": "CCL", "direction": "Clockwise", "title": "HarbourFront", "cddVideo": "video/clockwise/harbourfront_cdd_arr.mp4", "cldVideo": "video/clockwise/harbourfront_cld_arr.mp4", "audio": "announcements-ccl/hbf-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 4, "line": "CCL", "direction": "Clockwise", "title": "Telok Blangah", "cddVideo": "video/clockwise/telok-blangah_cdd_arr.mp4", "cldVideo": "video/clockwise/telok-blangah_cld_arr.mp4", "audio": "announcements-ccl/tlb-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 5, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd_arr.mp4", "cldVideo": "video/clockwise/labrador-park_cld_arr.mp4", "audio": "announcements-ccl/lbd-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 6, "line": "CCL", "direction": "Clockwise", "title": "Pasir Panjang", "cddVideo": "video/clockwise/pasir-panjang_cdd_arr.mp4", "cldVideo": "video/clockwise/pasir-panjang_cld_arr.mp4", "audio": "announcements-ccl/ppj-arr-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Marina Bay", "cddVideo": "video/clockwise/marina-bay_cdd_arr.mp4", "cldVideo": "video/clockwise/marina-bay_cld_arr.mp4", "audio": "announcements-ccl/mrb-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "CCL", "direction": "Clockwise", "title": "Prince Edward Road", "cddVideo": "video/clockwise/prince-edward-road_cdd_arr.mp4", "cldVideo": "video/clockwise/prince-edward-road_cld_arr.mp4", "audio": "announcements-ccl/per-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 3, "line": "CCL", "direction": "Clockwise", "title": "Cantonment", "cddVideo": "video/clockwise/cantonment_cdd_arr.mp4", "cldVideo": "video/clockwise/cantonment_cld_arr.mp4", "audio": "announcements-ccl/cnt-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 4, "line": "CCL", "direction": "Clockwise", "title": "Keppel", "cddVideo": "video/clockwise/keppel_cdd_arr.mp4", "cldVideo": "video/clockwise/keppel_cld_arr.mp4", "audio": "announcements-ccl/kpl-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 5, "line": "CCL", "direction": "Clockwise", "title": "HarbourFront", "cddVideo": "video/clockwise/harbourfront_cdd_arr.mp4", "cldVideo": "video/clockwise/harbourfront_cld_arr.mp4", "audio": "announcements-ccl/hbf-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 6, "line": "CCL", "direction": "Clockwise", "title": "Telok Blangah", "cddVideo": "video/clockwise/telok-blangah_cdd_arr.mp4", "cldVideo": "video/clockwise/telok-blangah_cld_arr.mp4", "audio": "announcements-ccl/tlb-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 7, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd_arr.mp4", "cldVideo": "video/clockwise/labrador-park_cld_arr.mp4", "audio": "announcements-ccl/lbd-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 8, "line": "CCL", "direction": "Clockwise", "title": "Pasir Panjang", "cddVideo": "video/clockwise/pasir-panjang_cdd_arr.mp4", "cldVideo": "video/clockwise/pasir-panjang_cld_arr.mp4", "audio": "announcements-ccl/ppj-arr-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
 
       
@@ -19,12 +21,14 @@
   "nextLines": {
     "CCL": {
       "Clockwise": [
-        { "id": 0, "line": "CCL", "direction": "Clockwise", "title": "Cantonment", "cddVideo": "video/clockwise/cantonment_cdd.mp4", "cldVideo": "video/clockwise/cantonment_cld.mp4", "audio": "announcements-ccl/cnt-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Keppel", "cddVideo": "video/clockwise/keppel_cdd.mp4", "cldVideo": "video/clockwise/keppel_cld.mp4", "audio": "announcements-ccl/kpl-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 2, "line": "CCL", "direction": "Clockwise", "title": "HarbourFront", "cddVideo": "video/clockwise/harbourfront_cdd.mp4", "cldVideo": "video/clockwise/harbourfront_cld.mp4", "audio": "announcements-ccl/hbf-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 3, "line": "CCL", "direction": "Clockwise", "title": "Telok Blangah", "cddVideo": "video/clockwise/telok-blangah_cdd.mp4", "cldVideo": "video/clockwise/telok-blangah_cld.mp4", "audio": "announcements-ccl/tlb-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 4, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd.mp4", "cldVideo": "video/clockwise/labrador-park_cld.mp4", "audio": "announcements-ccl/lbd-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 5, "line": "CCL", "direction": "Clockwise", "title": "Pasir Panjang", "cddVideo": "video/clockwise/pasir-panjang_cdd.mp4", "cldVideo": "video/clockwise/pasir-panjang_cld.mp4", "audio": "announcements-ccl/ppj-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 1, "line": "CCL", "direction": "Clockwise", "title": "Marina Bay", "cddVideo": "video/clockwise/marina-bay_cdd.mp4", "cldVideo": "video/clockwise/marina-bay_cld.mp4", "audio": "announcements-ccl/mrb-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 2, "line": "CCL", "direction": "Clockwise", "title": "Prince Edward Road", "cddVideo": "video/clockwise/prince-edward-road_cdd.mp4", "cldVideo": "video/clockwise/prince-edward-road_cld.mp4", "audio": "announcements-ccl/per-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 3, "line": "CCL", "direction": "Clockwise", "title": "Cantonment", "cddVideo": "video/clockwise/cantonment_cdd.mp4", "cldVideo": "video/clockwise/cantonment_cld.mp4", "audio": "announcements-ccl/cnt-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 4, "line": "CCL", "direction": "Clockwise", "title": "Keppel", "cddVideo": "video/clockwise/keppel_cdd.mp4", "cldVideo": "video/clockwise/keppel_cld.mp4", "audio": "announcements-ccl/kpl-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 5, "line": "CCL", "direction": "Clockwise", "title": "HarbourFront", "cddVideo": "video/clockwise/harbourfront_cdd.mp4", "cldVideo": "video/clockwise/harbourfront_cld.mp4", "audio": "announcements-ccl/hbf-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 6, "line": "CCL", "direction": "Clockwise", "title": "Telok Blangah", "cddVideo": "video/clockwise/telok-blangah_cdd.mp4", "cldVideo": "video/clockwise/telok-blangah_cld.mp4", "audio": "announcements-ccl/tlb-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 7, "line": "CCL", "direction": "Clockwise", "title": "Labrador Park", "cddVideo": "video/clockwise/labrador-park_cdd.mp4", "cldVideo": "video/clockwise/labrador-park_cld.mp4", "audio": "announcements-ccl/lbd-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 8, "line": "CCL", "direction": "Clockwise", "title": "Pasir Panjang", "cddVideo": "video/clockwise/pasir-panjang_cdd.mp4", "cldVideo": "video/clockwise/pasir-panjang_cld.mp4", "audio": "announcements-ccl/ppj-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
   }
 },
