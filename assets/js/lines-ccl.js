@@ -12,6 +12,9 @@ class TransitDisplay {
             //     { id: 3, title: 'Train Stopped', cddVideo: 'video/Msg_TrainStopped_CDD.mp4', cldVideo: 'video/Msg_TrainStopped_CLD.mp4', audio: 'announcements-msg/train-stopped-ann.wav', cddLoop: false, cddLoop: false },
             //     { id: 4, title: 'Track Crossing', cldVideo: 'video/Msg_TrackCrossing_CLD.mp4', audio: 'announcements-msg/track-crossing-ann.wav', cddLoop: false, cddLoop: false }
             // ],
+            direction: [
+                { id: 1, title: 'Clockwise', cldVideo: 'video/clockwise/Msg_CW_HBF_CLD.mp4', audio: 'announcements-ccl/cw-hbf-ann.wav', cldLoop: false },
+            ],
             safety: [
                 { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-ccl/pmtpg-ann.wav', cldLoop: false },
                 { id: 2, title: 'Courtesy', cldVideo: 'video/Msg_MoveIn_CLD.mp4', audio: 'announcements-ccl/courtesy-ann.wav', cldLoop: false },
