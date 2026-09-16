@@ -554,11 +554,45 @@ class PageController {
         if (replayButton) replayButton.disabled = disabled;
     }
 
+    showIntroTip() {
+        const displayPanel = document.querySelector('.display-panel');
+        if (!displayPanel || displayPanel.querySelector('.intro-tip')) return;
+
+        const tip = document.createElement('p');
+        tip.className = 'intro-tip';
+        tip.setAttribute('role', 'status');
+        tip.textContent = 'This introduction only plays on your first visit.';
+        displayPanel.appendChild(tip);
+        setTimeout(() => this.hideIntroTip(), 3000);
+    }
+
+    hideIntroTip() {
+        document.querySelector('.intro-tip')?.remove();
+    }
+
+    resumePendingFirstVisitTarget() {
+        const storageKey = 'cddCldPendingFirstVisitTarget';
+        const target = sessionStorage.getItem(storageKey);
+        if (!target) return;
+
+        sessionStorage.removeItem(storageKey);
+        const targetUrl = new URL(target, window.location.origin);
+        if (targetUrl.origin === window.location.origin &&
+            targetUrl.pathname === window.location.pathname &&
+            targetUrl.search) {
+            window.location.replace(targetUrl.href);
+        }
+    }
+
     playInitVideos() {
         // Check if user has already viewed the init videos
         if (localStorage.getItem('cddCldInitViewed')) {
             console.log('Init videos already viewed, showing blank images');
             this.isInitPlaying = false;
+
+            if (new URLSearchParams(window.location.search).has('type')) {
+                return;
+            }
             
             // Show blank images instead
             const videoContainer = document.querySelector('.video-container');
@@ -592,7 +626,7 @@ class PageController {
                 }
                 img.style.display = 'block';
             }
-            
+            this.resumePendingFirstVisitTarget();
             return;
         }
         
@@ -608,7 +642,9 @@ class PageController {
             console.error('Init videos: One or both video elements not found');
             return;
         }
-        
+
+        this.showIntroTip();
+
         // Disable all buttons during playback
         this.setButtonsDisabled(true);
         
@@ -622,9 +658,11 @@ class PageController {
                 // Re-enable buttons when both videos finish
                 this.isInitPlaying = false;
                 this.setButtonsDisabled(false);
+                this.hideIntroTip();
                 // Mark that user has seen the init videos
                 localStorage.setItem('cddCldInitViewed', 'true');
                 console.log('Init videos complete');
+                this.resumePendingFirstVisitTarget();
                 this.scheduleMediaPreload([
                     window.transitDisplay?.lineSelector?.currentLines?.NSL?.toMSP?.[0],
                     window.transitDisplay?.messages?.alert?.[0]

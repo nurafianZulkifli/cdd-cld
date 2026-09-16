@@ -1,5 +1,15 @@
 // Transit Display & Line Selection Module
 
+const pendingFirstVisitTargetKey = 'cddCldPendingFirstVisitTarget';
+
+function redirectFirstVisitDeepLink() {
+    if (!window.location.search || localStorage.getItem('cddCldInitViewed')) return false;
+
+    sessionStorage.setItem(pendingFirstVisitTargetKey, window.location.href);
+    window.location.replace(`${window.location.pathname}${window.location.hash}`);
+    return true;
+}
+
 class TransitDisplay {
     constructor() {
         this.currentStation = null;
@@ -675,6 +685,8 @@ class LineSelector {
 
 // Initialize TransitDisplay and LineSelector when DOM is ready
 document.addEventListener('DOMContentLoaded', async () => {
+    if (redirectFirstVisitDeepLink()) return;
+
     try {
         const lineDataResponse = await fetch('assets/data/line-data-ccl.json');
         if (!lineDataResponse.ok) {
