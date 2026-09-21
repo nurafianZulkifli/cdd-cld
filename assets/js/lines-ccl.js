@@ -23,7 +23,8 @@ class TransitDisplay {
             //     { id: 4, title: 'Track Crossing', cldVideo: 'video/Msg_TrackCrossing_CLD.mp4', audio: 'announcements-msg/track-crossing-ann.wav', cddLoop: false, cddLoop: false }
             // ],
             direction: [
-                { id: 1, title: 'Clockwise', cldVideo: 'video/clockwise/Msg_CW_HBF_CLD.mp4', audio: 'announcements-ccl/cw-hbf-ann.wav', cldLoop: false },
+                { id: 1, title: 'Clockwise_via HBF', cldVideo: 'video/clockwise/Msg_CW_HBF_CLD.mp4', audio: 'announcements-ccl/cw-hbf-ann.wav', cldLoop: false },
+                { id: 2, title: 'Clockwise_ends at DBG', cldVideo: 'video/clockwise/Msg_CW_DBG_CLD.mp4', audio: 'announcements-ccl/cw-dbg-ann.wav', cldLoop: false },
             ],
             safety: [
                 { id: 1, title: 'Mind the Gap', cldVideo: 'video/Msg_PMTPG_CLD.mp4', audio: 'announcements-ccl/pmtpg-ann.wav', cldLoop: false },
