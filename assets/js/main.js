@@ -24,6 +24,7 @@ class PageController {
 
         this.setupPlaybackRecovery();
         this.setupControlPanelToggle();
+        this.setupControlPanelPosition();
         this.setupThemeToggle();
 
         // Modal close buttons
@@ -125,6 +126,35 @@ class PageController {
         });
 
         applyState();
+    }
+
+    setupControlPanelPosition() {
+        const controlPanelWrap = document.querySelector('.control-panel-wrap');
+        const positionToggle = controlPanelWrap?.querySelector('.control-position-toggle');
+        if (!controlPanelWrap || !positionToggle) return;
+
+        const storageKey = 'cddCldControlsPosition';
+        const savedPosition = localStorage.getItem(storageKey);
+        const position = savedPosition === 'top' ? 'top' : 'bottom';
+
+        const applyPosition = (value) => {
+            const isTop = value === 'top';
+            controlPanelWrap.classList.toggle('is-top', isTop);
+            const nextPosition = isTop ? 'bottom' : 'top';
+            positionToggle.setAttribute('aria-label', `Move controls to ${nextPosition}`);
+            positionToggle.title = `Move controls to ${nextPosition}`;
+            positionToggle.setAttribute('aria-pressed', String(isTop));
+            positionToggle.querySelector('i')?.classList.toggle('fa-arrow-up', !isTop);
+            positionToggle.querySelector('i')?.classList.toggle('fa-arrow-down', isTop);
+        };
+
+        positionToggle.addEventListener('click', () => {
+            const nextPosition = controlPanelWrap.classList.contains('is-top') ? 'bottom' : 'top';
+            localStorage.setItem(storageKey, nextPosition);
+            applyPosition(nextPosition);
+        });
+
+        applyPosition(position);
     }
 
     setupTheme() {

@@ -61,18 +61,6 @@
     <div class="container">
         <!-- Main Display -->
         <main class="display-panel">
-            <div class="button-controls">
-                <button class="replay-button" type="button" aria-label="Replay current video and announcement"
-                    title="Replay current video and announcement">
-                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
-                </button>
-                <button class="theme-toggle-btn" type="button" aria-label="Theme: system"
-                    title="Theme: system">
-                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
-                    <span class="theme-mode-indicator">S</span>
-                </button>
-            </div>
-
             <!-- Video Display -->
             <div class="video-container">
                 <video class="station-video-temp" style="display: none;" muted playsinline preload="none">
@@ -95,11 +83,25 @@
 
         <!-- Control Buttons -->
         <div class="control-panel-wrap">
-            <button class="control-toggle" type="button" aria-expanded="true" aria-controls="controlPanel"
-                title="Collapse controls">
-                <span class="control-toggle-label">Controls</span>
-                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-            </button>
+            <div class="control-options">
+                <button class="control-position-toggle" type="button" aria-label="Move controls to top"
+                    aria-pressed="false" title="Move controls to top">
+                    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+                </button>
+                <button class="replay-button" type="button" aria-label="Replay current video and announcement"
+                    title="Replay current video and announcement">
+                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                </button>
+                <button class="control-toggle" type="button" aria-expanded="true" aria-controls="controlPanel"
+                    title="Collapse controls">
+                    <span class="control-toggle-label">Controls</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <button class="theme-toggle-btn" type="button" aria-label="Theme: system" title="Theme: system">
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    <span class="theme-mode-indicator">S</span>
+                </button>
+            </div>
             <footer class="control-panel" id="controlPanel">
                 <button class="control-button messages-btn" data-action="messages">
                     <span class="btn-icon"><i class="fa-solid fa-message"></i></span>
