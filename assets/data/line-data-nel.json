@@ -7,7 +7,9 @@
         { "id": 2, "line": "NEL", "direction": "toPGC", "title": "Outram Park", "cddVideo": "video/toPGC/outram-park_cdd_arr.mp4", "cldVideo": "video/toPGC/outram-park_cld_arr.mp4", "audio": "announcements-nel/otp-arr-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 3, "line": "NEL", "direction": "toPGC", "title": "Chinatown", "cddVideo": "video/toPGC/chinatown_cdd_arr.mp4", "cldVideo": "video/toPGC/chinatown_cld_arr.mp4", "audio": "announcements-nel/cnt-arr-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 4, "line": "NEL", "direction": "toPGC", "title": "Clarke Quay", "cddVideo": "video/toPGC/clarke-quay_cdd_arr.mp4", "cldVideo": "video/toPGC/clarke-quay_cld_arr.mp4", "audio": "announcements-nel/clq-arr-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 5, "line": "NEL", "direction": "toPGC", "title": "Dhoby Ghaut", "cddVideo": "video/toPGC/dhoby-ghaut_cdd_arr.mp4", "cldVideo": "video/toPGC/dhoby-ghaut_cld_arr.mp4", "audio": "announcements-nel/dbg-arr-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 5, "line": "NEL", "direction": "toPGC", "title": "Dhoby Ghaut", "cddVideo": "video/toPGC/dhoby-ghaut_cdd_arr.mp4", "cldVideo": "video/toPGC/dhoby-ghaut_cld_arr.mp4", "audio": "announcements-nel/dbg-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 6, "line": "NEL", "direction": "toPGC", "title": "Little India", "cddVideo": "video/toPGC/little-india_cdd_arr.mp4", "cldVideo": "video/toPGC/little-india_cld_arr.mp4", "audio": "announcements-nel/lti-arr-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 7, "line": "NEL", "direction": "toPGC", "title": "Farrer Park", "cddVideo": "video/toPGC/farrer-park_cdd_arr.mp4", "cldVideo": "video/toPGC/farrer-park_cld_arr.mp4", "audio": "announcements-nel/frp-arr-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
 
       
@@ -21,7 +23,9 @@
         { "id": 1, "line": "NEL", "direction": "toPGC", "title": "Outram Park", "cddVideo": "video/toPGC/outram-park_cdd.mp4", "cldVideo": "video/toPGC/outram-park_cld.mp4", "audio": "announcements-nel/otp-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 2, "line": "NEL", "direction": "toPGC", "title": "Chinatown", "cddVideo": "video/toPGC/chinatown_cdd.mp4", "cldVideo": "video/toPGC/chinatown_cld.mp4", "audio": "announcements-nel/cnt-ann.wav", "cddLoop": true, "cldLoop": false },
         { "id": 3, "line": "NEL", "direction": "toPGC", "title": "Clarke Quay", "cddVideo": "video/toPGC/clarke-quay_cdd.mp4", "cldVideo": "video/toPGC/clarke-quay_cld.mp4", "audio": "announcements-nel/clq-ann.wav", "cddLoop": true, "cldLoop": false },
-        { "id": 4, "line": "NEL", "direction": "toPGC", "title": "Dhoby Ghaut", "cddVideo": "video/toPGC/dhoby-ghaut_cdd.mp4", "cldVideo": "video/toPGC/dhoby-ghaut_cld.mp4", "audio": "announcements-nel/dbg-ann.wav", "cddLoop": true, "cldLoop": false }
+        { "id": 4, "line": "NEL", "direction": "toPGC", "title": "Dhoby Ghaut", "cddVideo": "video/toPGC/dhoby-ghaut_cdd.mp4", "cldVideo": "video/toPGC/dhoby-ghaut_cld.mp4", "audio": "announcements-nel/dbg-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 5, "line": "NEL", "direction": "toPGC", "title": "Little India", "cddVideo": "video/toPGC/little-india_cdd.mp4", "cldVideo": "video/toPGC/little-india_cld.mp4", "audio": "announcements-nel/lti-ann.wav", "cddLoop": true, "cldLoop": false },
+        { "id": 6, "line": "NEL", "direction": "toPGC", "title": "Farrer Park", "cddVideo": "video/toPGC/farrer-park_cdd.mp4", "cldVideo": "video/toPGC/farrer-park_cld.mp4", "audio": "announcements-nel/frp-ann.wav", "cddLoop": true, "cldLoop": false }
       ]
   }
 },
